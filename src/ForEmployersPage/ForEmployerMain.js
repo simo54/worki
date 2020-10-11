@@ -19,19 +19,21 @@ export default function ForEmployer() {
 
   const signup = () => {
     if (agreement === false) {
-      setWarning(!warning);
-    }
-    if (agreement === true) {
+      setWarning(true);
       return;
     }
   };
+
+  const employerLogin = () => {
+    alert("you are in!");
+  };
+
   return (
     <div>
       <div className="container">
         <div className="row mt-5">
           <div className="col">
             <h4>Sig up for Free!</h4>
-
             <div class="custom-control custom-checkbox mb-3">
               <input
                 type="checkbox"
@@ -45,7 +47,6 @@ export default function ForEmployer() {
                 <p>Are you a freelancer or a phisical person?</p>
               </label>
             </div>
-
             <form className="form-group">
               {toggle === false ? (
                 <div className="mt-4">
@@ -88,7 +89,6 @@ export default function ForEmployer() {
                   </div>{" "}
                 </>
               ) : null}
-
               <div className="mt-3">
                 <label className="mandatory">Email</label>
                 <input
@@ -124,7 +124,6 @@ export default function ForEmployer() {
                   placeholder="Your Address..."
                 />
               </div>
-
               <div className="form-row mt-3">
                 <div className="form-group col-lg-6">
                   <label className="mandatory">City</label>
@@ -159,10 +158,16 @@ export default function ForEmployer() {
                     required
                     onClick={checkAgreement}
                   />
-                  <label className="form-check-label mandatory">
-                    I accept the <a href="#">terms and conditions</a>{" "}
+                  <label className="form-check-label">
+                    I accept the{" "}
+                    <a href="#">
+                      terms and conditions
+                      <span className="mandatoryTerms"> *</span>
+                    </a>{" "}
                     {warning === true ? (
-                      <div>Plase accept terms and conditions</div>
+                      <div className="">
+                        Please read and accept terms and conditions
+                      </div>
                     ) : null}
                   </label>
                 </div>
@@ -176,7 +181,11 @@ export default function ForEmployer() {
             <h2 className="text-center">
               Looking for your next talent? You came in the right place!
             </h2>
-            <img src={svg} alt="" />
+            <img src={svg} alt="svg" />
+            <h6 className="text-center">
+              Already a user? Please{" "}
+              <Button onClick={employerLogin}>Login Here!</Button>
+            </h6>
           </div>
         </div>
       </div>

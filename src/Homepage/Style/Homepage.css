@@ -39,7 +39,7 @@ body {
 }
 
 #introRow {
-  background-color: #1b6cff;
+  background-color: whitesmoke;
   color: #383838;
 }
 
@@ -50,6 +50,17 @@ body {
 .introRowText p {
   font-size: 1.5rem;
 }
+
+#introRow #textIntroRow{
+  margin-left: 50px;
+}
+
+#introRow #imgIntroRow{
+  margin-right: 50px;
+  padding: 0;
+}
+
+
 
 .listHowWorks {
   font-family: "Pacifico", cursive;

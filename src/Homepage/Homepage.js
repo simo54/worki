@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import video from "./Editor-1.m4v";
 import myIcon from "./icons/undraw_job_offers_kw5d.svg";
 import svgfirstrow from "./icons/Job hunt-pana.svg";
-import { Button } from "react-bootstrap";
+import { Button, FormCheck } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Style/Homepage.css";
 
@@ -75,7 +75,7 @@ export default function Homepage() {
         className="container-fluid d-flex justify-content-center pt-5 pb-5"
       >
         <div className="row align-items-center">
-          <div className="col p-0 m-0 introRowText">
+          <div id="textIntroRow" className="col">
             <h2>
               The most Liable job platform for handy-people and qualified
               workers!
@@ -85,9 +85,9 @@ export default function Homepage() {
               best application experience
             </p>
           </div>
-          <div className="col p-0 m-0">
+          <div id="imgIntroRow" className="col">
             {/* Loading the svg for small devices */}
-            <div className="container">
+            <div className="container p-0">
               <img src={svgfirstrow} alt="icon" width="100%" height="auto" />
             </div>
             {/* Loading the svg for small devices */}
@@ -100,9 +100,15 @@ export default function Homepage() {
           <div className="col">How does it work?</div>
         </div>
         <div className="row text-center listHowWorks">
-          <div className="col connectedNumbers">1</div>
-          <div className="col connectedNumbers">2</div>
-          <div className="col connectedNumbers">3</div>
+          <div className="col connectedNumbers">
+            1.<span>Sign up</span>
+          </div>
+          <div className="col connectedNumbers">
+            2.<span>Sign up</span>
+          </div>
+          <div className="col connectedNumbers">
+            3.<span>Sign up</span>
+          </div>
         </div>
       </div>
       {/* third row - employer  */}
@@ -125,6 +131,12 @@ export default function Homepage() {
       >
         <div className="row-fluid">
           <div className="col">Meet the Team</div>
+          <div className="container">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Glasto17-44_%2835547413626%29_Cropped.jpg"
+              width="250px"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -132,7 +144,14 @@ export default function Homepage() {
         className="container-fluid d-flex justify-content-center pt-5 pb-5 "
       >
         <div className="row">
-          <div className="col">Connect with us!</div>
+          <div className="col">
+            Connect with us!
+            <ul className="list-inline d-flex justify-content-around">
+              <li className="list-inline-item">1</li>
+              <li className="list-inline-item">2</li>
+              <li className="list-inline-item">3</li>
+            </ul>
+          </div>
         </div>
       </div>
       <a href="https://stories.freepik.com/job">

@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import PrefixDropdown from "./PhonePrefix";
 import "./Style/UserSignup.css";
 
 export default function Signup() {
+  const [agreement, setAgreement] = useState(false);
+  const [warning, setWarning] = useState(false);
+
+  const checkAgreement = () => {
+    setAgreement(!agreement);
+  };
+
+  const signup = () => {
+    if (agreement === false) {
+      setWarning(true);
+      return;
+    }
+  };
+
   return (
     <div className="container mt-5">
       <h2>Please provide your personal info</h2>
@@ -46,10 +61,14 @@ export default function Signup() {
             placeholder="Your email..."
           />
         </div>
-        <div className="mt-3">
-          <label className="mandatory">Mobile</label>
-          <div className="form-inline">
+
+        <div className="form-row mt-3">
+          <div className="form-group col-md-4">
+            <label className="mandatory">Prefix</label>
             <PrefixDropdown />
+          </div>
+          <div className="form-group col-md-8">
+            <label className="mandatory">Mobile</label>
             <input
               required
               type="email"
@@ -66,12 +85,25 @@ export default function Signup() {
               type="checkbox"
               id="gridCheck"
               required
+              onClick={checkAgreement}
             />
-            <label className="form-check-label mandatory">
-              I accept the <a href="#">terms and conditions</a>
+            <label className="form-check-label">
+              I accept the{" "}
+              <a href="#">
+                terms and conditions
+                <span className="mandatoryTerms"> *</span>
+              </a>{" "}
+              {warning === true ? (
+                <div className="">
+                  Please read and accept terms and conditions
+                </div>
+              ) : null}
             </label>
           </div>
         </div>
+        <Button className="mt-3 btn" onClick={signup}>
+          Signup!
+        </Button>
       </form>
     </div>
   );

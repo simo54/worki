@@ -2,6 +2,10 @@
   padding-left: 0;
 }
 
+.mandatoryTerms{
+  color: red;
+}
+
 label.custom-control-label {
   position: relative;
   padding-right: 1.5rem;

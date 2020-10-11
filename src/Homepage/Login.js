@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "./Style/NavigationBar.css";
 
-export default function Login() {
+export default function Login({ testLogin }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const test = () => {
+    console.log("test");
+  };
   return (
     <div>
       {" "}
@@ -46,7 +49,12 @@ export default function Login() {
                 <a href="#"> Click here!</a>
               </span>{" "}
             </div>
-            <Button variant="primary" className="ml-3" onClick={handleClose}>
+            <Button
+              variant="primary"
+              className="ml-3"
+              onClick={handleClose}
+              onClick={() => testLogin()}
+            >
               Login
             </Button>
           </Modal.Footer>
