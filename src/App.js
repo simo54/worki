@@ -5,9 +5,9 @@ import Navigation from "./Homepage/Navigation";
 import UserSignUp from "./Homepage/UserSignup";
 import ForEmployers from "./ForEmployersPage/ForEmployerMain";
 import JobList from "./JobsMainView/JobsList";
-import Map from "./LeafletMap/Map";
 import UserProfile from "./UserProfile/UserProfile";
 import Footer from "./Footer/Footer";
+import EmployerProfile from "./EmployerProfile/EmployerProfile";
 // import Login from "./Signup/Signup";
 
 function App() {
@@ -20,10 +20,9 @@ function App() {
           <Route path="/" exact component={Homepage} />
           <Route path="/jobs" component={JobList} />
           <Route path="/usersignup" component={UserSignUp} />
-          <Route path="/profile/user" component={UserProfile} />
-          {/* <Route path="/profile/company" component={UserProfile} /> */}
-          <Route path="/employer" component={ForEmployers} />
-          <Route path="/map" component={Map} />
+          <Route path="/user/profile" component={UserProfile} />
+          <Route path="/employersignup" component={ForEmployers} />
+          <Route path="/employer/profile" component={EmployerProfile} />
         </Switch>
         <Footer />
       </div>

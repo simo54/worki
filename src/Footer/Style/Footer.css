@@ -7,3 +7,7 @@
 #fbIcon{
     width: 50px;
 }
+
+input{
+    border-radius: 50px !important;
+  }

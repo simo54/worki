@@ -51,12 +51,13 @@ export default function Navigation() {
                   {/* <Link to="/home">Home</Link> */}
                 </a>
               </li>
+
               <li className="nav-item">
                 <a className="nav-link" href="#">
                   How does it work?
                 </a>
               </li>
-              <Link to="/employer">
+              <Link to="/employersignup">
                 <li className="nav-item">
                   <a className="nav-link ml-5">For Employers</a>
                 </li>

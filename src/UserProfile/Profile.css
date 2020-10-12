@@ -9,9 +9,17 @@
   border-radius: 50%;
 }
 
+input{
+  border-radius: 50px !important;
+}
+
 #containerProfilePicture img {
   width: 100%;
   height: auto;
+}
+
+select{
+  border-radius: 50px !important;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */

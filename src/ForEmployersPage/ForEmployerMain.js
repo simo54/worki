@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import PrefixDropdown from "../Homepage/PhonePrefix";
 import svg from "./icons/Business deal-rafiki.svg";
-import "./Style/ForEmployer.css";
+import EmployerLogin from "./LoginEmployer";
+import "../Homepage/Style/NavigationBar.css";
 
 export default function ForEmployer() {
   const [toggle, setToggle] = useState(false);
@@ -183,15 +184,26 @@ export default function ForEmployer() {
             </h2>
             <img src={svg} alt="svg" />
             <h6 className="text-center">
-              Already a user? Please{" "}
-              <Button onClick={employerLogin}>Login Here!</Button>
+              Already an user? Please <EmployerLogin /> !
             </h6>
           </div>
         </div>
       </div>
-      <div className="container-fluid">Few things here</div>
-      <div className="container-fluid">Few things here</div>
-      <div className="container-fluid">Few things here</div>
+      <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
+        <div className="row">
+          <div className="col">check</div>
+        </div>
+      </div>
+      <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
+        <div className="row">
+          <div className="col">check</div>
+        </div>
+      </div>
+      <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
+        <div className="row">
+          <div className="col">check</div>
+        </div>
+      </div>
     </div>
   );
 }

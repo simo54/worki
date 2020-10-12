@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function SearchPage() {
+export default function DetailedJob() {
   return <div></div>;
 }

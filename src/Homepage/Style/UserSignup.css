@@ -2,3 +2,11 @@
   content: " *";
   color: red;
 }
+
+input{
+  border-radius: 50px !important;
+}
+
+select{
+  border-radius: 50px !important;
+}

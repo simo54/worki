@@ -4,6 +4,10 @@
   display: none;
 }
 
+input{
+  border-radius: 50px !important;
+}
+
 #loginButton {
   border-radius: 10px !important;
   background-color: #28df99 !important;
@@ -28,6 +32,10 @@
 #navList {
   font-size: 1.2em;
   color: black;
+}
+
+select{
+  border-radius: 50px !important;
 }
 
 #signupButton {

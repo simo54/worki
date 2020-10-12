@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import video from "./Editor-1.m4v";
 import myIcon from "./icons/undraw_job_offers_kw5d.svg";
 import svgfirstrow from "./icons/Job hunt-pana.svg";
-import { Button, FormCheck } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Style/Homepage.css";
 
@@ -119,7 +119,7 @@ export default function Homepage() {
         <div className="row">
           <div className="col" id="employerDiv">
             Are you an employer/jobhunter?
-            <Link to="/employersignup">
+            <Link to="/employer">
               <Button>ClickHere</Button>
             </Link>
           </div>
@@ -181,6 +181,16 @@ export default function Homepage() {
           <a href="https://www.flaticon.com/" title="Flaticon">
             www.flaticon.com
           </a>
+          <div>
+            Icons made by{" "}
+            <a href="http://www.freepik.com/" title="Freepik">
+              Freepik
+            </a>{" "}
+            from{" "}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+              www.flaticon.com
+            </a>
+          </div>
         </div>
       </div>
     </div>

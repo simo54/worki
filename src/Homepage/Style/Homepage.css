@@ -38,6 +38,10 @@ body {
   display: none;
 }
 
+input{
+  border-radius: 50px !important;
+}
+
 #introRow {
   background-color: whitesmoke;
   color: #383838;
@@ -59,8 +63,6 @@ body {
   margin-right: 50px;
   padding: 0;
 }
-
-
 
 .listHowWorks {
   font-family: "Pacifico", cursive;
@@ -99,6 +101,10 @@ body {
 
 #meetTheTeamColRow {
   font-size: 2.5rem;
+}
+
+select{
+  border-radius: 50px !important;
 }
 
 .roundNumber {
