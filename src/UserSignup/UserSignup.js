@@ -1,23 +1,50 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import PrefixDropdown from "./PhonePrefix";
-import ButtonLogin from "./Login";
-import svg from "./icons/Supermarket workers-rafiki.svg";
-import "./Style/UserSignup.css";
+import PrefixDropdown from "../Homepage/PhonePrefix";
+import ButtonLogin from "../Homepage/UserLogin";
+import svg from "./Supermarket workers-rafiki.svg";
+import axios from "axios";
+import "./UserSignup.css";
 
 export default function Signup() {
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [middleName, setmiddleName] = useState("");
+  // const [age, setage] = useState("");
+  const [email, setemail] = useState("");
+  const [mobile, setmobile] = useState("");
+  // const [address, setaddress] = useState("");
+  // const [city, setcity] = useState("");
+  // const [zipCode, setzipCode] = useState("");
+  // const [country, setcountry] = useState("");
+  const [password, setpassword] = useState("");
 
   const checkAgreement = () => {
     setAgreement(!agreement);
   };
 
-  const signup = () => {
-    if (agreement === false) {
-      setWarning(true);
-      return;
-    }
+  const signup = (e) => {
+    // if (agreement === false) {
+    //   setWarning(true);
+    //   return;
+    // }
+    e.preventDefault();
+
+    const userData = {
+      firstName: firstName,
+      lastName: lastName,
+      middleName: middleName,
+      email: email,
+      mobile: mobile,
+      password: password,
+    };
+
+    axios
+      .post("http://localhost:4000/user/create", userData)
+      .then((response) => console.log(response.data));
+    console.log("end of signup");
   };
 
   return (
@@ -32,8 +59,8 @@ export default function Signup() {
                 required
                 type="text"
                 className="form-control"
-                id=""
                 placeholder="Your First Name..."
+                onChange={(e) => setfirstName(e.target.value)}
               />
             </div>
             <div className="mt-3">
@@ -42,8 +69,8 @@ export default function Signup() {
                 required
                 type="text"
                 className="form-control"
-                id=""
                 placeholder="Your Last Name..."
+                onChange={(e) => setlastName(e.target.value)}
               />
             </div>
             <div className="mt-3">
@@ -51,8 +78,8 @@ export default function Signup() {
               <input
                 type="text"
                 className="form-control"
-                id=""
                 placeholder="Your Middle Name/s"
+                onChange={(e) => setmiddleName(e.target.value)}
               />
             </div>
             <div className="mt-3">
@@ -61,8 +88,8 @@ export default function Signup() {
                 required
                 type="email"
                 className="form-control"
-                id=""
                 placeholder="Your email..."
+                onChange={(e) => setemail(e.target.value)}
               />
             </div>
 
@@ -79,18 +106,24 @@ export default function Signup() {
                   className="form-control"
                   id="inputMobile"
                   placeholder="Insert your phone number..."
+                  onChange={(e) => setmobile(e.target.value)}
                 />
               </div>
             </div>
+            <div className="">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id=""
+                placeholder="Your Password"
+                onChange={(e) => setpassword(e.target.value)}
+              />
+            </div>
+
             <div className="mt-3">
               <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="gridCheck"
-                  required
-                  onClick={checkAgreement}
-                />
+                <input className="form-check-input" type="checkbox" required />
                 <label className="form-check-label">
                   I accept the{" "}
                   <a href="#">

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Style/UserSignup.css";
+import "../UserSignup/UserSignup.css";
 
 export default function PhonePrefix() {
   return (

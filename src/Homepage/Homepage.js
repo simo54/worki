@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import video from "./Editor-1.m4v";
 import myIcon from "./icons/undraw_job_offers_kw5d.svg";
 import svgfirstrow from "./icons/Job hunt-pana.svg";
@@ -38,9 +38,14 @@ export default function Homepage() {
                   className="form-control"
                   type="search"
                   placeholder="Try to search Baker..."
+                  id="searchBar"
                 />
                 <span className="input-group-append">
-                  <button className="btn btn-outline-secondary" type="button">
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    id="searchButton"
+                  >
                     <svg
                       width="1em"
                       height="1em"
@@ -94,20 +99,21 @@ export default function Homepage() {
           </div>
         </div>
       </div>
-      {/* second row - explaining jobby  */}
       <div id="firstvisualColRow" className="container-fluid pt-5 pb-5 ">
         <div className="row text-center firstvisualColRowText">
           <div className="col">How does it work?</div>
         </div>
         <div className="row text-center listHowWorks">
           <div className="col connectedNumbers">
-            1.<span>Sign up</span>
+            1.<span className="howItWorks"> Sign up on our website</span>
           </div>
           <div className="col connectedNumbers">
-            2.<span>Sign up</span>
+            2.
+            <span className="howItWorks"> Search for a suitable position</span>
           </div>
           <div className="col connectedNumbers">
-            3.<span>Sign up</span>
+            3.
+            <span className="howItWorks"> Send your personal application</span>
           </div>
         </div>
       </div>
@@ -119,7 +125,9 @@ export default function Homepage() {
         <div className="row">
           <div className="col" id="employerDiv">
             Are you an employer/jobhunter?
-            <Link to="/employer">
+          </div>
+          <div>
+            <Link to="/usersignup">
               <Button>ClickHere</Button>
             </Link>
           </div>
@@ -144,52 +152,34 @@ export default function Homepage() {
         className="container-fluid d-flex justify-content-center pt-5 pb-5 "
       >
         <div className="row">
-          <div className="col">
+          <div className="col text-center">
             Connect with us!
             <ul className="list-inline d-flex justify-content-around">
-              <li className="list-inline-item">1</li>
-              <li className="list-inline-item">2</li>
-              <li className="list-inline-item">3</li>
+              <li className="list-inline-item mr-4">
+                <img
+                  src="https://www.flaticon.com/svg/static/icons/svg/179/179319.svg"
+                  width="70px"
+                />
+              </li>
+              <li className="list-inline-item mr-4 ml-4">
+                <img
+                  src="https://www.flaticon.com/svg/static/icons/svg/179/179342.svg"
+                  width="70px"
+                />
+              </li>
+              <li className="list-inline-item mr-4 ml-4">
+                <img
+                  src="https://www.flaticon.com/svg/static/icons/svg/179/179346.svg"
+                  width="70px"
+                />
+              </li>
+              <li className="list-inline-item ml-4">
+                <img
+                  src="https://www.flaticon.com/svg/static/icons/svg/179/179330.svg"
+                  width="70px"
+                />
+              </li>
             </ul>
-          </div>
-        </div>
-      </div>
-      <a href="https://stories.freepik.com/job">
-        Illustration by Freepik Stories
-      </a>
-      <div>
-        Icons made by{" "}
-        <a
-          href="https://www.flaticon.com/authors/pixel-buddha"
-          title="Pixel Buddha"
-        >
-          Pixel Buddha
-        </a>{" "}
-        from{" "}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
-        <div>
-          Icons made by{" "}
-          <a
-            href="https://www.flaticon.com/authors/pixel-perfect"
-            title="Pixel perfect"
-          >
-            Pixel perfect
-          </a>{" "}
-          from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            www.flaticon.com
-          </a>
-          <div>
-            Icons made by{" "}
-            <a href="http://www.freepik.com/" title="Freepik">
-              Freepik
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
           </div>
         </div>
       </div>

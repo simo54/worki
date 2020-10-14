@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import PrefixDropdown from "../Homepage/PhonePrefix";
-import "./Style/FormJobPost.css";
+import "./JobApplication.css";
 
 export default function Example() {
   const [toggle, setToggle] = useState(false);
@@ -154,15 +154,6 @@ export default function Example() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <a
-            href="#"
-            role="button"
-            class="btn btn-secondary popover-test"
-            title="Popover title"
-            data-content="Popover body content is set in this attribute."
-          >
-            button
-          </a>
           <Button variant="primary" onClick={signup}>
             Submit
           </Button>

@@ -191,17 +191,19 @@ export default function ForEmployer() {
       </div>
       <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
         <div className="row">
-          <div className="col">check</div>
+          <div className="col">
+            An easy job page where to find the right fit!
+          </div>
         </div>
       </div>
       <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
         <div className="row">
-          <div className="col">check</div>
+          <div className="col">More thant 50+ thousand active users</div>
         </div>
       </div>
       <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
         <div className="row">
-          <div className="col">check</div>
+          <div className="col">5000 satisfied clients</div>
         </div>
       </div>
     </div>

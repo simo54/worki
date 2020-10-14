@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import ButtonLogin from "./Login";
+import Login from "./UserLogin";
 import "./Style/NavigationBar.css";
 
 export default function Navigation() {
@@ -72,10 +72,10 @@ export default function Navigation() {
           <div
             id="buttons"
             className={
-              location.pathname === "/employer" ? "hide" : "mr-5 d-flex"
+              location.pathname === "/employersignup" ? "hide" : "mr-5 d-flex"
             }
           >
-            <ButtonLogin testLogin={() => setLoggedIn(true)} />
+            <Login testLogin={() => setLoggedIn(true)} />
             <Link to="/usersignup">
               <Button id="signupButton" className="ml-2">
                 Sign up!

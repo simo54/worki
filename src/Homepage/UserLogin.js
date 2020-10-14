@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
 import "./Style/NavigationBar.css";
 
-export default function Login({ testLogin }) {
+export default function Login() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const test = () => {
-    console.log("test");
+  const loginSubmission = (e) => {
+    e.preventDefault();
+    console.log(username);
+    console.log(password);
+    axios
+      .post("/login", {
+        username,
+        password,
+      })
+      .then((results) => console.log(results.data));
+    console.log("loggedIn");
   };
   return (
     <>
@@ -26,17 +38,17 @@ export default function Login({ testLogin }) {
             <input
               type="text"
               placeholder="Enter Username"
-              name="uname"
               required
               className="w-100 form-control mb-3"
+              onChange={(e) => setUsername(e.target.value)}
             />
             <label>Password</label>
             <input
               type="password"
               placeholder="Enter Password"
-              name="psw"
               required
               className="w-100 form-control"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
         </Modal.Body>
@@ -51,7 +63,7 @@ export default function Login({ testLogin }) {
             variant="primary"
             className="ml-3"
             onClick={handleClose}
-            onClick={() => testLogin()}
+            onClick={loginSubmission}
           >
             Login
           </Button>

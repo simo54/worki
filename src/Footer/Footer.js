@@ -15,21 +15,23 @@ export default function Footer() {
                 <img src="./icons/sk512x512.png" width="50px" height="auto" />
               </div>
             </div> */}
-            <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 offset-md-3">
-              <h5 class="mb-4 font-weight-bold text-uppercase">Company</h5>
-              <ul class="list-group">
-                <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+            <div className="col-md-3 col-sm-6 col-6 mb-3 p-0 offset-md-3">
+              <h5 className="mb-4 font-weight-bold text-uppercase">Company</h5>
+              <ul className="list-group">
+                <li className="list-group-item bg-transparent border-0 p-0 mb-2">
                   <a href="#">About</a>
                 </li>
-                <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+                <li className="list-group-item bg-transparent border-0 p-0 mb-2">
                   <a href="#">For investors</a>
                 </li>
               </ul>
             </div>
-            <div class="col-md-3 col-sm-6 col-6 mb-3 p-0 ">
-              <h5 class="mb-4 font-weight-bold text-uppercase">Documents</h5>
-              <ul class="list-group">
-                <li class="list-group-item bg-transparent border-0 p-0 mb-2">
+            <div className="col-md-3 col-sm-6 col-6 mb-3 p-0 ">
+              <h5 className="mb-4 font-weight-bold text-uppercase">
+                Documents
+              </h5>
+              <ul className="list-group">
+                <li className="list-group-item bg-transparent border-0 p-0 mb-2">
                   <a href="#">About</a>
                 </li>
                 <li class="list-group-item bg-transparent border-0 p-0 mb-2">
@@ -38,13 +40,52 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div class="col-md-12">
-              <div class="py-4 d-flex justify-content-center align-items-center">
-                <a class="mr-4" href="#">
+            <div className="col-md-12">
+              <div className="py-4 d-flex justify-content-center align-items-center">
+                <a className="mr-4" href="#">
                   Privacy & terms
                 </a>
                 <a href="#">Sitemap</a>
               </div>
+            </div>
+          </div>
+        </div>
+        <a href="https://stories.freepik.com/job">
+          Illustration by Freepik Stories
+        </a>
+        <div>
+          Icons made by{" "}
+          <a
+            href="https://www.flaticon.com/authors/pixel-buddha"
+            title="Pixel Buddha"
+          >
+            Pixel Buddha
+          </a>{" "}
+          from{" "}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
+          <div>
+            Icons made by{" "}
+            <a
+              href="https://www.flaticon.com/authors/pixel-perfect"
+              title="Pixel perfect"
+            >
+              Pixel perfect
+            </a>{" "}
+            from{" "}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+              www.flaticon.com
+            </a>
+            <div>
+              Icons made by{" "}
+              <a href="http://www.freepik.com/" title="Freepik">
+                Freepik
+              </a>{" "}
+              from{" "}
+              <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </a>
             </div>
           </div>
         </div>
