@@ -15,12 +15,13 @@ export default function Homepage() {
         {/* Loading the svg for small devices */}
       </div>
 
-      <div className="video-section">
-        <video id="video-elem" preload="true" autoPlay loop>
-          <source src={video} type="video/mp4"></source>
-          Video not supported
-        </video>
-        {/* <iframe
+      <div id="videoContainer">
+        <div className="video-section">
+          <video id="video-elem" preload="true" autoPlay loop>
+            <source src={video} type="video/mp4"></source>
+            Video not supported
+          </video>
+          {/* <iframe
           id="video-elem"
           src="https://player.vimeo.com/video/466163847?autoplay=1&loop=1&title=0"
           frameborder="0"
@@ -28,48 +29,48 @@ export default function Homepage() {
           autoplay
           preload
         ></iframe> */}
-
-        <div className="video-overlay">
-          <div className="titleInputWrapper">
-            <h1>Start your Job Hunt!</h1>
-            <div id="inputContainer">
-              <div className="input-group">
-                <input
-                  className="form-control"
-                  type="search"
-                  placeholder="Try to search Baker..."
-                  id="searchBar"
-                />
-                <span className="input-group-append">
-                  <button
-                    className="btn btn-outline-secondary"
-                    type="button"
-                    id="searchButton"
-                  >
-                    <svg
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 16 16"
-                      className="bi bi-search"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
+          <div className="video-overlay">
+            <div className="titleInputWrapper">
+              <h1>Start your Job Hunt!</h1>
+              <div id="inputContainer">
+                <div className="input-group">
+                  <input
+                    className="form-control"
+                    type="search"
+                    placeholder="Try to search Baker..."
+                    id="searchBar"
+                  />
+                  <span className="input-group-append">
+                    <button
+                      className="btn btn-outline-secondary"
+                      type="button"
+                      id="searchButton"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
-                      />
-                    </svg>
-                  </button>
-                </span>
+                      <svg
+                        width="1em"
+                        height="1em"
+                        viewBox="0 0 16 16"
+                        className="bi bi-search"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
+                        />
+                        <path
+                          fillRule="evenodd"
+                          d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="mt-3">
-              Or visit our job page
-              <Link to="jobs"> clicking here</Link>
+              <div className="mt-3">
+                Or visit our job page
+                <Link to="jobs"> clicking here</Link>
+              </div>
             </div>
           </div>
         </div>

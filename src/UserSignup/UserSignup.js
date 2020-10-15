@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import PrefixDropdown from "../Homepage/PhonePrefix";
-import ButtonLogin from "../Homepage/UserLogin";
+import PrefixDropdown from "./PhonePrefix";
+import ButtonLogin from "../NavigationBar/UserLogin";
 import svg from "./Supermarket workers-rafiki.svg";
 import axios from "axios";
 import "./UserSignup.css";
@@ -9,43 +9,49 @@ import "./UserSignup.css";
 export default function Signup() {
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [middleName, setmiddleName] = useState("");
-  // const [age, setage] = useState("");
-  const [email, setemail] = useState("");
-  const [mobile, setmobile] = useState("");
-  // const [address, setaddress] = useState("");
-  // const [city, setcity] = useState("");
-  // const [zipCode, setzipCode] = useState("");
-  // const [country, setcountry] = useState("");
-  const [password, setpassword] = useState("");
+
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [middlename, setMiddlename] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const [prefixNumber, setPrefixNumber] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [country, setCountry] = useState("");
+  const [password, setPassword] = useState("");
 
   const checkAgreement = () => {
     setAgreement(!agreement);
   };
 
   const signup = (e) => {
-    // if (agreement === false) {
-    //   setWarning(true);
-    //   return;
-    // }
     e.preventDefault();
+    if (agreement === false) {
+      setWarning(true);
+      return;
+    }
+    axios.post("http://localhost:4000/user/create", {
+      firstname,
+      lastname,
+      middlename,
+      email,
+      age,
+      mobile,
+      city,
+      zip,
+      country,
+      password,
+    });
 
-    const userData = {
-      firstName: firstName,
-      lastName: lastName,
-      middleName: middleName,
-      email: email,
-      mobile: mobile,
-      password: password,
-    };
-
-    axios
-      .post("http://localhost:4000/user/create", userData)
-      .then((response) => console.log(response.data));
-    console.log("end of signup");
+    alert("usercreated!"); // must pressed ok otherwise will not finish the sending
   };
+
+  // axios
+  //   .post("http://localhost:4000/user/create", userData)
+  //   .then((response) => console.log(response.data));
+  // console.log("end of signup");
 
   return (
     <div className="container mt-5">
@@ -60,45 +66,57 @@ export default function Signup() {
                 type="text"
                 className="form-control"
                 placeholder="Your First Name..."
-                onChange={(e) => setfirstName(e.target.value)}
+                onChange={(e) => setFirstname(e.target.value)}
               />
             </div>
-            <div className="mt-3">
+            <div className="">
               <label className="mandatory">LastName</label>
               <input
                 required
                 type="text"
                 className="form-control"
                 placeholder="Your Last Name..."
-                onChange={(e) => setlastName(e.target.value)}
+                onChange={(e) => setLastname(e.target.value)}
               />
             </div>
-            <div className="mt-3">
+            <div className="">
               <label>Middle Names</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Your Middle Name/s"
-                onChange={(e) => setmiddleName(e.target.value)}
-              />
-            </div>
-            <div className="mt-3">
-              <label className="mandatory">Email</label>
-              <input
-                required
-                type="email"
-                className="form-control"
-                placeholder="Your email..."
-                onChange={(e) => setemail(e.target.value)}
+                onChange={(e) => setMiddlename(e.target.value)}
               />
             </div>
 
-            <div className="form-row mt-3">
-              <div className="form-group col-md-4">
+            <div className="form-row p-0 m-0">
+              <div className="form-group col-md-4  m-0">
+                <label>Age</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder=""
+                  onChange={(e) => setAge(e.target.value)}
+                />
+              </div>
+              <div className="form-group col-md-8  m-0">
+                <label className="mandatory">Email</label>
+                <input
+                  required
+                  type="email"
+                  className="form-control"
+                  placeholder="Your email..."
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="form-row p-0 m-0">
+              <div className="form-group col-md-4  m-0">
                 <label className="mandatory">Prefix</label>
                 <PrefixDropdown />
               </div>
-              <div className="form-group col-md-8">
+              <div className="form-group col-md-8  m-0">
                 <label className="mandatory">Mobile</label>
                 <input
                   required
@@ -106,9 +124,43 @@ export default function Signup() {
                   className="form-control"
                   id="inputMobile"
                   placeholder="Insert your phone number..."
-                  onChange={(e) => setmobile(e.target.value)}
+                  onChange={(e) => setMobile(e.target.value)}
                 />
               </div>
+            </div>
+            <div className="form-row  m-0">
+              <div className="form-group col-md-8  m-0">
+                <label className="mandatory">Zip Code</label>
+                <input
+                  required
+                  type="email"
+                  className="form-control"
+                  id="inputMobile"
+                  placeholder="Insert your phone number..."
+                  onChange={(e) => setZip(e.target.value)}
+                />
+              </div>
+              <div className="form-group col-md-4 p-0 m-0">
+                <label className="mandatory">Country</label>
+                <input
+                  required
+                  type="email"
+                  className="form-control"
+                  id="inputMobile"
+                  placeholder="Insert your phone number..."
+                  onChange={(e) => setCountry(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="">
+              <label className="mandatory">City</label>
+              <input
+                required
+                type="email"
+                className="form-control"
+                placeholder=""
+                onChange={(e) => setCity(e.target.value)}
+              />
             </div>
             <div className="">
               <label>Password</label>
@@ -117,13 +169,19 @@ export default function Signup() {
                 className="form-control"
                 id=""
                 placeholder="Your Password"
-                onChange={(e) => setpassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
             <div className="mt-3">
               <div className="form-check">
-                <input className="form-check-input" type="checkbox" required />
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="gridCheck"
+                  required
+                  onClick={checkAgreement}
+                />
                 <label className="form-check-label">
                   I accept the{" "}
                   <a href="#">

@@ -1,7 +1,12 @@
-import React from "react";
-import "../UserSignup/UserSignup.css";
+import React, { useState } from "react";
+import "./UserSignup.css";
 
-export default function PhonePrefix() {
+export default function PhonePrefix({ login }) {
+  const [prefix, setPrefix] = useState("");
+
+  function login(prefix) {
+    setPrefix(prefix);
+  }
   return (
     <div id="containerPrefix">
       <select
@@ -9,6 +14,8 @@ export default function PhonePrefix() {
         className="form-control"
         data-role="select-dropdown"
         defaultValue={"DEFAULT"}
+        onChange={(e) => login(e.target.value)}
+        value={prefix}
       >
         <option disabled selected value="DEFAULT">
           choose prefix

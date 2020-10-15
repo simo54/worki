@@ -1,0 +1,98 @@
+ @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+.hide {
+  display: none;
+}
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+
+  }
+
+
+#loginButton {
+  border-radius: 10px !important;
+  background-color: #28df99 !important;
+  border: none !important;
+}
+
+#mainTitle,
+:link,
+:visited {
+  font-family: "Varela Round", sans-serif;
+  text-decoration: none !important;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+#navigationBar {
+  background-color: #f6f5f5;
+  margin-left: auto;
+}
+
+#navList {
+  font-size: 1.2em;
+  color: black;
+}
+
+select{
+  border-radius: 50px !important;
+}
+
+#signupButton {
+  border-radius: 10px !important;
+  border: none !important;
+}
+
+
+/* @media (max-width: 575.98px) {
+} */
+
+
+/* @media (min-width: 576px) and (max-width: 767.98px) {
+  #navList {
+    font-size: 1.2em;
+    color: black;
+    position: absolute !important;
+   
+  }
+  #navbarSupportedContent{
+    position: absolute !important;
+    width: 100%;
+    margin: 50px 0;
+    height: 100px !important;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #navList {
+    font-size: 1.2em;
+    color: black;
+    position: absolute !important;
+   
+  }
+  #navbarSupportedContent{
+    position: absolute !important;
+    width: 100%;
+    margin: 50px 0;
+    height: 100px !important;
+
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+@media (min-width: 1200px) {
+}  */
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+/* Small devices (landscape phones, 576px and up) */
+/* Medium devices (tablets, 768px and up) */
+/* Large devices (desktops, 992px and up) */
+/* Extra large devices (large desktops, 1200px and up) */

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import "../Homepage/Style/NavigationBar.css";
+// import "../Homepage/Style/NavigationBar.css";
 
 export default function LoginEmployer({ testLogin }) {
   const [show, setShow] = useState(false);

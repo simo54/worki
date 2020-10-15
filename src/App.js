@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Homepage from "./Homepage/Homepage";
-import Navigation from "./Homepage/Navigation";
+import Navigation from "./NavigationBar/Navigation";
 import UserSignUp from "./UserSignup/UserSignup";
 import EmployerSignup from "./ForEmployersPage/EmployerSignup";
 import JobList from "./JobsMainView/JobsList";

@@ -1,14 +1,46 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import PrefixDropdown from "../Homepage/PhonePrefix";
+import PrefixDropdown from "../UserSignup/PhonePrefix";
 import svg from "./icons/Business deal-rafiki.svg";
 import EmployerLogin from "./LoginEmployer";
-import "../Homepage/Style/NavigationBar.css";
+import axios from "axios";
 
 export default function ForEmployer() {
   const [toggle, setToggle] = useState(false);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
+
+  // UseState of signup details
+  const [companyname, setCompanyname] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [middlename, setMiddlename] = useState("");
+  const [email, setEmail] = useState("");
+  const [prefixNumber, setPrefixNumber] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [country, setCountry] = useState("");
+  const [companysize, setCompanysize] = useState("");
+  const [password, setPassword] = useState("");
+  console.log(prefixNumber);
+
+  // console.log(
+  //   companyname,
+  //   firstname,
+  //   lastname,
+  //   middlename,
+  //   middlename,
+  //   email,
+  //   mobile,
+  //   address,
+  //   city,
+  //   zip,
+  //   country,
+  //   companysize,
+  //   password
+  // );
 
   const checkBox = () => {
     setToggle(!toggle);
@@ -18,15 +50,28 @@ export default function ForEmployer() {
     setAgreement(!agreement);
   };
 
-  const signup = () => {
+  const signup = (e) => {
+    e.preventDefault();
     if (agreement === false) {
       setWarning(true);
       return;
     }
-  };
+    // axios.post("http://localhost:4000/employer/create", {
+    //   companyname,
+    //   firstname,
+    //   lastname,
+    //   middlename,
+    //   email,
+    //   mobile,
+    //   address,
+    //   city,
+    //   zip,
+    //   country,
+    //   companysize,
+    //   password,
+    // });
 
-  const employerLogin = () => {
-    alert("you are in!");
+    alert("usercreated!"); // must pressed ok otherwise will not finish the sending
   };
 
   return (
@@ -57,6 +102,7 @@ export default function ForEmployer() {
                     type="text"
                     className="form-control"
                     placeholder="Your Company Name..."
+                    onChange={(e) => setCompanyname(e.target.value)}
                   />
                 </div>
               ) : null}
@@ -69,6 +115,7 @@ export default function ForEmployer() {
                       type="text"
                       className="form-control"
                       placeholder="Your First Name..."
+                      onChange={(e) => setFirstname(e.target.value)}
                     />
                   </div>
                   <div className="mt-3">
@@ -78,6 +125,7 @@ export default function ForEmployer() {
                       type="text"
                       className="form-control"
                       placeholder="Your Last Name..."
+                      onChange={(e) => setLastname(e.target.value)}
                     />
                   </div>
                   <div className="mt-3">
@@ -86,6 +134,7 @@ export default function ForEmployer() {
                       type="text"
                       className="form-control"
                       placeholder="Your Middle Name/s"
+                      onChange={(e) => setMiddlename(e.target.value)}
                     />
                   </div>{" "}
                 </>
@@ -97,13 +146,16 @@ export default function ForEmployer() {
                   type="email"
                   className="form-control"
                   placeholder="Your email..."
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mt-3">
                 <div className="form-row">
                   <div className="form-group col-md-4">
                     <label className="mandatory">Prefix</label>
-                    <PrefixDropdown />
+                    <PrefixDropdown
+                      login={(prefix) => setPrefixNumber(prefix)}
+                    />
                   </div>
                   <div className="form-group col-md-8">
                     <label className="mandatory">Mobile</label>
@@ -113,6 +165,7 @@ export default function ForEmployer() {
                       className="form-control"
                       id="inputMobile"
                       placeholder="Insert your phone number..."
+                      onChange={(e) => setMobile(e.target.value)}
                     />
                   </div>
                 </div>
@@ -123,25 +176,45 @@ export default function ForEmployer() {
                   type="text"
                   className="form-control"
                   placeholder="Your Address..."
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
               <div className="form-row mt-3">
                 <div className="form-group col-lg-6">
                   <label className="mandatory">City</label>
-                  <input type="text" className="form-control" id="inputCity" />
-                </div>
-                <div className="form-group col-lg-4">
-                  <label className="mandatory">Country</label>
-                  <input type="text" className="form-control" id="inputCity" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setCity(e.target.value)}
+                    id="inputCity"
+                  />
                 </div>
                 <div className="form-group col-lg-2">
                   <label className="mandatory">Zip</label>
-                  <input type="text" className="form-control" id="inputZip" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setZip(e.target.value)}
+                    id="inputZip"
+                  />
+                </div>
+                <div className="form-group col-lg-4">
+                  <label className="mandatory">Country</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setCountry(e.target.value)}
+                    id="inputCity"
+                  />
                 </div>
               </div>
               <div>
                 <label className="mandatory">Company Size</label>
-                <select className="form-control" data-role="select-dropdown">
+                <select
+                  className="form-control"
+                  data-role="select-dropdown"
+                  onChange={(e) => setCompanysize(e.target.value)}
+                >
                   <option disabled selected>
                     Size of the company
                   </option>
@@ -149,6 +222,15 @@ export default function ForEmployer() {
                   <option>Medium - 25/50 employees</option>
                   <option>Large - 50+ employees</option>
                 </select>
+              </div>
+              <div className="mt-3">
+                <label className="mandatory">Password</label>
+                <input
+                  required
+                  type="password"
+                  className="form-control"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <div className="mt-3">
                 <div className="form-check">
