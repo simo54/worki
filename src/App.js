@@ -8,6 +8,7 @@ import JobList from "./JobsMainView/JobsList";
 import UserProfile from "./UserProfile/UserProfile";
 import Footer from "./Footer/Footer";
 import EmployerProfile from "./EmployerProfile/EmployerProfile";
+import Howitworks from "./HowDoesItwork/HowDoesItWork";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Homepage} />
           <Route path="/jobs" component={JobList} />
+          <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
           <Route path="/user/profile" component={UserProfile} />
           <Route path="/employersignup" component={EmployerSignup} />

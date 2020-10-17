@@ -27,7 +27,7 @@ export default function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className=" text-right">
           <Nav className="text-right ml-auto" id="navUl">
-            <Nav.Link href="#home">How does it work?</Nav.Link>
+            <Nav.Link href="/howitworks?">How does it work?</Nav.Link>
             <Nav.Link href="#link">
               <Link to="/employersignup">For Employers</Link>
             </Nav.Link>
