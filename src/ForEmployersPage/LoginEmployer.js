@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
+
 // import "../Homepage/Style/NavigationBar.css";
 
 export default function LoginEmployer({ testLogin }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const test = () => {
-    console.log("test");
+  const loginSubmission = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/login/userEmployer", {
+        email,
+        password,
+      });
+    alert("loggedin!"); // must pressed ok otherwise will not finish the sending
   };
   return (
     <>
@@ -29,6 +39,7 @@ export default function LoginEmployer({ testLogin }) {
               name="uname"
               required
               className="w-100 form-control mb-3"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label>Password</label>
             <input
@@ -37,6 +48,7 @@ export default function LoginEmployer({ testLogin }) {
               name="psw"
               required
               className="w-100 form-control"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
         </Modal.Body>
@@ -50,8 +62,7 @@ export default function LoginEmployer({ testLogin }) {
           <Button
             variant="primary"
             className="ml-3"
-            onClick={handleClose}
-            onClick={() => testLogin()}
+            onClick={(e) => {handleClose();loginSubmission(e)}}
           >
             Login
           </Button>

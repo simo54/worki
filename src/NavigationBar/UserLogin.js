@@ -7,20 +7,17 @@ export default function Login() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const loginSubmission = (e) => {
     e.preventDefault();
-    console.log(username);
-    console.log(password);
     axios
-      .post("/login", {
-        username,
+      .post("http://localhost:5000/login/user", {
+        email,
         password,
-      })
-      .then((results) => console.log(results.data));
-    console.log("loggedIn");
+      });
+    alert("loggedin!"); // must pressed ok otherwise will not finish the sending
   };
   return (
     <>
@@ -40,7 +37,7 @@ export default function Login() {
               placeholder="Enter Username"
               required
               className="w-100 form-control mb-3"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label>Password</label>
             <input
@@ -62,8 +59,7 @@ export default function Login() {
           <Button
             variant="primary"
             className="ml-3"
-            onClick={handleClose}
-            onClick={loginSubmission}
+            onClick={(e) => {handleClose();loginSubmission(e)}}
           >
             Login
           </Button>

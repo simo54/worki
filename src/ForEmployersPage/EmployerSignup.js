@@ -51,25 +51,24 @@ export default function ForEmployer() {
   };
 
   const signup = (e) => {
-    e.preventDefault();
     if (agreement === false) {
       setWarning(true);
       return;
     }
-    // axios.post("http://localhost:4000/employer/create", {
-    //   companyname,
-    //   firstname,
-    //   lastname,
-    //   middlename,
-    //   email,
-    //   mobile,
-    //   address,
-    //   city,
-    //   zip,
-    //   country,
-    //   companysize,
-    //   password,
-    // });
+    axios.post("http://localhost:5000/employer/create", {
+      companyname,
+      firstname,
+      lastname,
+      middlename,
+      email,
+      mobile,
+      address,
+      city,
+      zip,
+      country,
+      companysize,
+      password,
+    });
 
     alert("usercreated!"); // must pressed ok otherwise will not finish the sending
   };
