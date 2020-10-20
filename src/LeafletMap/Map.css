@@ -1,12 +1,12 @@
 .leaflet-container {
-  width: 70%;
-  height: 40vh;
+  width: 80%;
+  height: 60vh;
 }
 
-input{
+input {
   border-radius: 50px !important;
 }
 
-select{
+select {
   border-radius: 50px !important;
 }

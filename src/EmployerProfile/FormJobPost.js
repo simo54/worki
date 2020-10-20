@@ -6,10 +6,22 @@ import "./Style/FormJobPost.css";
 export default function Example() {
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
+  const [jobtitle, setJobtitle] = useState("");
+  const [employmenttype, setEmploymenttype] = useState("");
+  const [introduction, setIntroduction] = useState("");
+  const [role, setRole] = useState("");
+  const [requirements, setRequirements] = useState("");
+  const [address, setAddress] = useState("");
+  const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [contactdetails, setContactdetails] = useState("");
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
 
   const checkAgreement = () => {
     setAgreement(!agreement);

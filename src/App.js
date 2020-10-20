@@ -9,6 +9,7 @@ import UserProfile from "./UserProfile/UserProfile";
 import Footer from "./Footer/Footer";
 import EmployerProfile from "./EmployerProfile/EmployerProfile";
 import Howitworks from "./HowDoesItwork/HowDoesItWork";
+import GeoMap from "./LeafletMap/MapGeoTest";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/user/profile" component={UserProfile} />
           <Route path="/employersignup" component={EmployerSignup} />
           <Route path="/employer/profile" component={EmployerProfile} />
+          <Route path="/geomap" component={GeoMap} />
         </Switch>
         <Footer />
       </div>

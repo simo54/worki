@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Profile.css";
 
 export default function UserProfile() {
-  const [error, setError] = useState(false);
   return (
     <div>
       <div className="container" id="profileContainer">
