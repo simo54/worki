@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 // import "../Homepage/Style/NavigationBar.css";
@@ -44,7 +45,6 @@ export default function LoginEmployer({ testLogin }) {
             <input
               type="password"
               placeholder="Enter Password"
-              name="psw"
               required
               className="w-100 form-control"
               onChange={(e) => setPassword(e.target.value)}
@@ -54,13 +54,10 @@ export default function LoginEmployer({ testLogin }) {
         <Modal.Footer>
           <div>
             Not a member?
-            <span>
-              <a href="http://localhost:3000/"> Click here!</a>
-            </span>{" "}
+            <Link to="/usersignup">Click here!</Link>
           </div>
           <Button
             variant="primary"
-            className="ml-3"
             onClick={(e) => {
               handleClose();
               loginSubmission(e);

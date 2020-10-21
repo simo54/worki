@@ -128,7 +128,7 @@ export default function Homepage() {
             Are you an employer/jobhunter?
           </div>
           <div>
-            <Link to="/usersignup">
+            <Link to="/employersignup">
               <Button>ClickHere</Button>
             </Link>
           </div>

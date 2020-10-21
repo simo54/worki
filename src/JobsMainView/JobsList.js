@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import JobDetails from "./DetailedJob";
-// import Apply from "../JobApplication/JobApplication";
 import Map from "../LeafletMap/Map";
 import axios from "axios";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Style/JobList.css";
 
 export default function JobsList() {
@@ -86,14 +86,20 @@ export default function JobsList() {
                       <h5 className="card-title">{jobDetails[1]}</h5>
                       <p className="card-text">{jobDetails[2]}</p>
                       <p>{jobDetails[3]}</p>
+                      <hr />
                       <p>{jobDetails[4]}</p>
                       <p>{jobDetails[5]}</p>
+                      <hr />
                       <p>{jobDetails[6]}</p>
                       <p>{jobDetails[7]}</p>
                       <p>{jobDetails[8]}</p>
                       <p>{jobDetails[9]}</p>
+                      <hr />
                       <p>{jobDetails[10]}</p>
                       <p>{jobDetails[11]}</p>
+                      <Link to="/">
+                        <Button>Apply</Button>
+                      </Link>
                     </div>
                   </div>
                 </div>

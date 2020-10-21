@@ -13,7 +13,6 @@ export default function Navigation() {
   //   console.log("test");
   //   setLoggedIn(true);
   // };
-
   return (
     <div>
       <Navbar id="navbar" expand="lg">
@@ -30,12 +29,14 @@ export default function Navigation() {
             <Nav.Link
               className="navLink align-items-center"
               href="/howitworks?"
+              id="linHowDoesItWork"
             >
               How does it work?
             </Nav.Link>
             <Nav.Link
               className="navLink align-items-center"
               href="/employersignup"
+              id="linkEmployerSignup"
             >
               For Employers
             </Nav.Link>
@@ -45,7 +46,9 @@ export default function Navigation() {
               <div
                 id="buttons"
                 className={
-                  location.pathname === "/employersignup" ? "hide" : "navLink"
+                  location.pathname === "/employersignup"
+                    ? "hide"
+                    : "navLink d-flex align-self-center"
                 }
               >
                 <Login testLogin={() => setLoggedIn(true)} />

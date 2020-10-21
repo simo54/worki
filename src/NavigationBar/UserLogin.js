@@ -4,9 +4,9 @@ import axios from "axios";
 import "./NavigationBar.css";
 
 export default function Login() {
-  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,15 +24,13 @@ export default function Login() {
   };
   return (
     <>
-      <span className="align-items-center mx-auto p-0 m-0">
-        <a id="loginButton" className="align-items-center" onClick={handleShow}>
-          Login
-        </a>
+      <span id="loginButton" className="mr-3 align-self-center">
+        <a onClick={handleShow}>Login</a>
       </span>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Sign In</Modal.Title>
+          <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>

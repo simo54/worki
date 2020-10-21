@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import PrefixDropdown from "../UserSignup/PhonePrefix";
 import svg from "./icons/Business deal-rafiki.svg";
 import EmployerLogin from "./LoginEmployer";
@@ -10,7 +11,12 @@ export default function ForEmployer() {
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
   const [toggleLogo, setToggleLogo] = useState(false);
+  const location = useLocation();
+  if (location.pathname === "/employersignup") {
+    window.scrollTo(0, 0);
+  }
 
+  console.log(location.pathname);
   // UseState of signup details
   const [companyname, setCompanyname] = useState("");
   const [logo, setLogo] = useState("");
@@ -26,7 +32,6 @@ export default function ForEmployer() {
   const [country, setCountry] = useState("");
   const [companysize, setCompanysize] = useState("");
   const [password, setPassword] = useState("");
-  console.log(prefixNumber);
 
   const checkBox = () => {
     setToggle(!toggle);

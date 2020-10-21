@@ -1,19 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
 .hide {
   display: none;
 }
 
+#linkEmployerSignup {
+  margin: 0 50px;
+  font-size: 20px;
+}
+
+#linHowDoesItWork {
+  font-size: 20px;
+}
+
 #loginButton {
-  border-radius: 10px !important;
-  border: none !important;
-  margin: 0 50px !important;
+  font-size: 20px;
+  display: inline-block;
+  color: grey;
+  cursor: pointer !important;
 }
 
 #mainTitle,
 :link,
 :visited {
-  font-family: "Varela Round", sans-serif;
+  font-family: "Quicksand", sans-serif;
   text-decoration: none !important;
   color: black;
   margin: 0;
