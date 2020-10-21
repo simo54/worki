@@ -144,6 +144,7 @@ export default function Homepage() {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Glasto17-44_%2835547413626%29_Cropped.jpg"
               width="250px"
+              alt="test"
             />
           </div>
         </div>
@@ -160,24 +161,28 @@ export default function Homepage() {
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/179/179319.svg"
                   width="70px"
+                  alt="test"
                 />
               </li>
               <li className="list-inline-item mr-4 ml-4">
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/179/179342.svg"
                   width="70px"
+                  alt="test"
                 />
               </li>
               <li className="list-inline-item mr-4 ml-4">
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/179/179346.svg"
                   width="70px"
+                  alt="test"
                 />
               </li>
               <li className="list-inline-item ml-4">
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/179/179330.svg"
                   width="70px"
+                  alt="test"
                 />
               </li>
             </ul>

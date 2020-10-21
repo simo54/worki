@@ -15,7 +15,7 @@ export default function Signup() {
   const [middlename, setMiddlename] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
-  const [prefixNumber, setPrefixNumber] = useState("");
+  // const [prefixNumber, setPrefixNumber] = useState("");
   const [mobile, setMobile] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
@@ -32,7 +32,7 @@ export default function Signup() {
       setWarning(true);
       return;
     }
-    axios.post("http://localhost:5000/user/create", {
+    axios.post("/user/create", {
       firstname,
       lastname,
       middlename,
@@ -184,7 +184,7 @@ export default function Signup() {
                 />
                 <label className="form-check-label">
                   I accept the{" "}
-                  <a href="#">
+                  <a href="http://localhost:3000/">
                     terms and conditions
                     <span className="mandatoryTerms"> *</span>
                   </a>{" "}

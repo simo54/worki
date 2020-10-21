@@ -12,18 +12,23 @@ export default function Login() {
 
   const loginSubmission = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/login/user", {
+    axios.post(
+      "/login/user",
+      {
         email,
         password,
-      });
+      },
+      { withCredentials: true }
+    );
     alert("loggedin!"); // must pressed ok otherwise will not finish the sending
   };
   return (
     <>
-      <Button id="loginButton" onClick={handleShow}>
-        Login
-      </Button>
+      <span className="align-items-center mx-auto p-0 m-0">
+        <a id="loginButton" className="align-items-center" onClick={handleShow}>
+          Login
+        </a>
+      </span>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -53,13 +58,16 @@ export default function Login() {
           <div>
             Not a member?
             <span>
-              <a href="#"> Click here!</a>
+              <a href="http://localhost:3000/"> Click here!</a>
             </span>{" "}
           </div>
           <Button
             variant="primary"
-            className="ml-3"
-            onClick={(e) => {handleClose();loginSubmission(e)}}
+            className=""
+            onClick={(e) => {
+              handleClose();
+              loginSubmission(e);
+            }}
           >
             Login
           </Button>

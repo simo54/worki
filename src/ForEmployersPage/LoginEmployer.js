@@ -13,11 +13,10 @@ export default function LoginEmployer({ testLogin }) {
 
   const loginSubmission = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/login/userEmployer", {
-        email,
-        password,
-      });
+    axios.post("/login/userEmployer", {
+      email,
+      password,
+    });
     alert("loggedin!"); // must pressed ok otherwise will not finish the sending
   };
   return (
@@ -56,13 +55,16 @@ export default function LoginEmployer({ testLogin }) {
           <div>
             Not a member?
             <span>
-              <a href="#"> Click here!</a>
+              <a href="http://localhost:3000/"> Click here!</a>
             </span>{" "}
           </div>
           <Button
             variant="primary"
             className="ml-3"
-            onClick={(e) => {handleClose();loginSubmission(e)}}
+            onClick={(e) => {
+              handleClose();
+              loginSubmission(e);
+            }}
           >
             Login
           </Button>

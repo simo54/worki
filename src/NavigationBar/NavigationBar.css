@@ -1,18 +1,13 @@
- @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 .hide {
   display: none;
 }
 
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-
-  }
-
-
 #loginButton {
   border-radius: 10px !important;
-  background-color: #28df99 !important;
   border: none !important;
+  margin: 0 50px !important;
 }
 
 #mainTitle,
@@ -25,71 +20,49 @@
   padding: 0;
 }
 
-
-
-#navigationBar {
-  background-color: #f6f5f5;
-  margin-left: auto;
+#navbar {
+  background-color: #f7fbfc;
 }
 
-#navList {
-  font-size: 1.2em;
-  color: black;
-}
-
-select{
+select {
   border-radius: 50px !important;
 }
 
 #signupButton {
   border-radius: 10px !important;
+  background-color: #28df99;
   border: none !important;
 }
 
-
-/* @media (max-width: 575.98px) {
-} */
-
-
-/* @media (min-width: 576px) and (max-width: 767.98px) {
-  #navList {
-    font-size: 1.2em;
-    color: black;
-    position: absolute !important;
-   
-  }
-  #navbarSupportedContent{
-    position: absolute !important;
-    width: 100%;
-    margin: 50px 0;
+@media (max-width: 575.98px) {
+  .navLink {
+    font-size: 30px !important;
     height: 100px !important;
+    text-align: center !important;
   }
 }
 
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .navLink {
+    font-size: 30px !important;
+    height: 100px !important;
+    text-align: center !important;
+  }
+}
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-  #navList {
-    font-size: 1.2em;
-    color: black;
-    position: absolute !important;
-   
-  }
-  #navbarSupportedContent{
-    position: absolute !important;
-    width: 100%;
-    margin: 50px 0;
-    height: 100px !important;
-
+  .navLink {
+    font-size: 25px !important;
+    height: 70px !important;
+    text-align: center !important;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-
 }
 
 @media (min-width: 1200px) {
-}  */
-
+}
 
 /* Extra small devices (portrait phones, less than 576px) */
 /* Small devices (landscape phones, 576px and up) */

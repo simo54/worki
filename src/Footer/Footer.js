@@ -19,10 +19,10 @@ export default function Footer() {
               <h5 className="mb-4 font-weight-bold text-uppercase">Company</h5>
               <ul className="list-group">
                 <li className="list-group-item bg-transparent border-0 p-0 mb-2">
-                  <a href="#">About</a>
+                  <a href="http://localhost:3000/">About</a>
                 </li>
                 <li className="list-group-item bg-transparent border-0 p-0 mb-2">
-                  <a href="#">For investors</a>
+                  <a href="http://localhost:3000/">For investors</a>
                 </li>
               </ul>
             </div>
@@ -32,20 +32,20 @@ export default function Footer() {
               </h5>
               <ul className="list-group">
                 <li className="list-group-item bg-transparent border-0 p-0 mb-2">
-                  <a href="#">About</a>
+                  <a href="http://localhost:3000/">About</a>
                 </li>
-                <li class="list-group-item bg-transparent border-0 p-0 mb-2">
-                  <a href="#">For investors</a>
+                <li className="list-group-item bg-transparent border-0 p-0 mb-2">
+                  <a href="http://localhost:3000/">For investors</a>
                 </li>
               </ul>
             </div>
 
             <div className="col-md-12">
               <div className="py-4 d-flex justify-content-center align-items-center">
-                <a className="mr-4" href="#">
+                <a className="mr-4" href="http://localhost:3000/">
                   Privacy & terms
                 </a>
-                <a href="#">Sitemap</a>
+                <a href="http://localhost:3000/">Sitemap</a>
               </div>
             </div>
           </div>

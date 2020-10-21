@@ -32,25 +32,8 @@ export default function MapLeaf() {
 
   return (
     <div>
-      {/* TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST */}
-      <select
-        id="demo_overview"
-        className="form-control"
-        data-role="select-dropdown"
-        defaultValue={"DEFAULT"}
-        onChange={(e) => transformValue(e)}
-        // value
-      >
-        <option disabled selected value="DEFAULT">
-          choose prefix
-        </option>
-        <option value={[48.782343, 9.180819]}>Stuttgart</option>
-        <option value={[52.516667, 13.4]}>Berlin</option>
-      </select>
-      {/* TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST */}
-
       <div className="container mt-5 d-flex justify-content-center">
-        <Map center={cities} zoom={toggler ? 11 : 6}>
+        <Map center={cities} zoom={toggler ? 11 : 5}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -88,6 +71,24 @@ export default function MapLeaf() {
           )}
         </Map>
       </div>
+      {/* TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST */}
+      <div className="w-25">
+        <select
+          id="demo_overview"
+          className="form-control"
+          data-role="select-dropdown"
+          defaultValue={"DEFAULT"}
+          onChange={(e) => transformValue(e)}
+          // value
+        >
+          <option disabled value="DEFAULT">
+            choose prefix
+          </option>
+          <option value={[48.782343, 9.180819]}>Stuttgart</option>
+          <option value={[52.516667, 13.4]}>Berlin</option>
+        </select>
+      </div>
+      {/* TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST */}
     </div>
   );
 }

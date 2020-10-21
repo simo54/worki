@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
 // import JobDetails from "./DetailedJob";
-import Apply from "../JobApplication/JobApplication";
+// import Apply from "../JobApplication/JobApplication";
 import Map from "../LeafletMap/Map";
 import axios from "axios";
 import "./Style/JobList.css";
 
 export default function JobsList() {
-  const [clickAndView, setClickAndView] = useState();
-  const [jobslist, setJoblist] = useState([]);
+  const [jobsList, setJobList] = useState([]);
+  const [jobDetails, setJobDetails] = useState();
 
   // Fetching the data from api
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((results) => {
+    axios.get("/jobs").then((results) => {
       const jobs = results.data;
-      setJoblist(jobs);
+      setJobList(jobs);
     });
   }, []);
 
   const clickViewJob = (e) => {
-    e.preventDefault();
-    setClickAndView(e.target.value);
+    setJobDetails(e);
   };
 
   return (
@@ -28,14 +27,13 @@ export default function JobsList() {
       <div className="container-fluid mt-3">
         <div className="row">
           <div id="jobListCol" className="col-4">
-            {jobslist && jobslist.length
-              ? jobslist.map((element, index) => (
+            {jobsList && jobsList.length
+              ? jobsList.map((element, index) => (
                   <div className="card mb-2" key={index}>
                     <div className="row no-gutters">
                       <div className="col-md-8">
                         <div className="card-body">
                           <h5 className="card-title">{element.jobtitle}</h5>
-                          <p className="card-text">{element.id}</p>
                           <p className="card-text">{element.role}</p>
                           <p className="card-text">{element.country}</p>
                           <p className="card-text">{element.city}</p>
@@ -47,9 +45,24 @@ export default function JobsList() {
                           </p>
                           <button
                             className="btn btn-primary"
-                            value={element.id}
+                            data-id={element.id}
                             onClick={(e) => {
-                              clickViewJob(e, "value");
+                              clickViewJob(
+                                [
+                                  element.id,
+                                  element.jobtitle,
+                                  element.employmenttype,
+                                  element.introduction,
+                                  element.role,
+                                  element.requirements,
+                                  element.address,
+                                  element.zip,
+                                  element.city,
+                                  element.country,
+                                  element.contactdetails,
+                                ],
+                                e
+                              );
                             }}
                           >
                             View Details and Apply
@@ -64,30 +77,28 @@ export default function JobsList() {
                 ))
               : null}
           </div>
-          <div id="jobselectedCol" className="col-6">
-            {jobslist && jobslist.length
-              ? jobslist.map((element, index) => (
-                  // Hiding all jobs, if clicked on the same id, g
-
-                  <div className="card" key={index}>
-                    <div className="row no-gutters">
-                      <div className="col">
-                        <h5 className="card-title">{element.jobtitle}</h5>
-                        <p className="card-text">{element.id}</p>
-                        <p>{element.employmenttype}</p>
-                        <p>{element.introduction}</p>
-                        <p>{element.role}</p>
-                        <p>{element.requirements}</p>
-                        <p>{element.address}</p>
-                        <p>{element.zip}</p>
-                        <p>{element.city}</p>
-                        <p>{element.country}</p>
-                        <p>{element.contactdetails}</p>
-                      </div>
+          <div id="jobselectedCol" className="col-6 m-0">
+            {jobDetails && jobDetails.length ? (
+              <div className="card" fixed="top">
+                <div id="bigCard" className="card-body">
+                  <div className="row no-gutters">
+                    <div className="col">
+                      <h5 className="card-title">{jobDetails[1]}</h5>
+                      <p className="card-text">{jobDetails[2]}</p>
+                      <p>{jobDetails[3]}</p>
+                      <p>{jobDetails[4]}</p>
+                      <p>{jobDetails[5]}</p>
+                      <p>{jobDetails[6]}</p>
+                      <p>{jobDetails[7]}</p>
+                      <p>{jobDetails[8]}</p>
+                      <p>{jobDetails[9]}</p>
+                      <p>{jobDetails[10]}</p>
+                      <p>{jobDetails[11]}</p>
                     </div>
                   </div>
-                ))
-              : null}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

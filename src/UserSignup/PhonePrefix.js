@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./UserSignup.css";
 
-export default function PhonePrefix({ login }) {
+export default function PhonePrefix() {
   const [prefix, setPrefix] = useState("");
 
   function login(prefix) {
@@ -13,11 +13,10 @@ export default function PhonePrefix({ login }) {
         id="demo_overview"
         className="form-control"
         data-role="select-dropdown"
-        defaultValue={"DEFAULT"}
         onChange={(e) => login(e.target.value)}
         value={prefix}
       >
-        <option disabled selected value="DEFAULT">
+        <option disabled value="DEFAULT">
           choose prefix
         </option>
         <option data-countrycode="DZ" value="213">

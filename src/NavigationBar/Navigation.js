@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button, Collapse, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Button, Navbar, Nav } from "react-bootstrap";
 import Login from "./UserLogin";
 import "./NavigationBar.css";
 
@@ -16,8 +16,8 @@ export default function Navigation() {
 
   return (
     <div>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">
+      <Navbar id="navbar" expand="lg">
+        <Navbar.Brand>
           <Link to="/">
             <h1 id="mainTitle" className="display-3 text-center ml-5">
               Worki
@@ -25,11 +25,19 @@ export default function Navigation() {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className=" text-right">
+        <Navbar.Collapse id="basic-navbar-nav" className="text-right">
           <Nav className="text-right ml-auto" id="navUl">
-            <Nav.Link href="/howitworks?">How does it work?</Nav.Link>
-            <Nav.Link href="#link">
-              <Link to="/employersignup">For Employers</Link>
+            <Nav.Link
+              className="navLink align-items-center"
+              href="/howitworks?"
+            >
+              How does it work?
+            </Nav.Link>
+            <Nav.Link
+              className="navLink align-items-center"
+              href="/employersignup"
+            >
+              For Employers
             </Nav.Link>
             {loggedIn ? (
               <div>Welcome Back!</div>
@@ -37,12 +45,12 @@ export default function Navigation() {
               <div
                 id="buttons"
                 className={
-                  location.pathname === "/employersignup" ? "hide" : ""
+                  location.pathname === "/employersignup" ? "hide" : "navLink"
                 }
               >
                 <Login testLogin={() => setLoggedIn(true)} />
                 <Link to="/usersignup">
-                  <Button id="signupButton" className="ml-2">
+                  <Button id="signupButton" className="btn btn-success">
                     Sign up!
                   </Button>
                 </Link>

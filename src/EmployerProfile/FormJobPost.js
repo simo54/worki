@@ -1,27 +1,26 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
 import PrefixDropdown from "../UserSignup/PhonePrefix";
 import "./Style/FormJobPost.css";
 
 export default function Example() {
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
-  const [jobtitle, setJobtitle] = useState("");
-  const [employmenttype, setEmploymenttype] = useState("");
-  const [introduction, setIntroduction] = useState("");
-  const [role, setRole] = useState("");
-  const [requirements, setRequirements] = useState("");
-  const [address, setAddress] = useState("");
-  const [zip, setZip] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [contactdetails, setContactdetails] = useState("");
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-
+  // const [jobtitle, setJobtitle] = useState("");
+  // const [employmenttype, setEmploymenttype] = useState("");
+  // const [introduction, setIntroduction] = useState("");
+  // const [role, setRole] = useState("");
+  // const [requirements, setRequirements] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [zip, setZip] = useState("");
+  // const [city, setCity] = useState("");
+  // const [country, setCountry] = useState("");
+  // const [contactdetails, setContactdetails] = useState("");
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -36,6 +35,20 @@ export default function Example() {
       setWarning(true);
       return;
     }
+    axios.post("/user/create", {
+      // jobtitle,
+      // employmenttype,
+      // introduction,
+      // role,
+      // requirements,
+      // address,
+      // zip,
+      // city,
+      // country,
+      // contactdetails,
+    });
+
+    alert("usercreated!"); // must pressed ok otherwise will not finish the sending
   };
 
   return (
@@ -62,7 +75,6 @@ export default function Example() {
                 required
                 type="text"
                 className="form-control"
-                id=""
                 placeholder=""
               />
             </div>
@@ -148,7 +160,7 @@ export default function Example() {
                 />
                 <label className="form-check-label">
                   I accept the{" "}
-                  <a href="#">
+                  <a href="http://localhost:3000/">
                     terms and conditions
                     <span className="mandatoryTerms"> *</span>
                   </a>{" "}
@@ -167,7 +179,7 @@ export default function Example() {
             Close
           </Button>
           <a
-            href="#"
+            href="http://localhost:3000/"
             role="button"
             class="btn btn-secondary popover-test"
             title="Popover title"

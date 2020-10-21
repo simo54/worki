@@ -9,9 +9,11 @@ export default function ForEmployer() {
   const [toggle, setToggle] = useState(false);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
+  const [toggleLogo, setToggleLogo] = useState(false);
 
   // UseState of signup details
   const [companyname, setCompanyname] = useState("");
+  const [logo, setLogo] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [middlename, setMiddlename] = useState("");
@@ -26,24 +28,12 @@ export default function ForEmployer() {
   const [password, setPassword] = useState("");
   console.log(prefixNumber);
 
-  // console.log(
-  //   companyname,
-  //   firstname,
-  //   lastname,
-  //   middlename,
-  //   middlename,
-  //   email,
-  //   mobile,
-  //   address,
-  //   city,
-  //   zip,
-  //   country,
-  //   companysize,
-  //   password
-  // );
-
   const checkBox = () => {
     setToggle(!toggle);
+  };
+
+  const checkBoxLogo = () => {
+    setToggleLogo(!toggleLogo);
   };
 
   const checkAgreement = () => {
@@ -55,8 +45,9 @@ export default function ForEmployer() {
       setWarning(true);
       return;
     }
-    axios.post("http://localhost:5000/employer/create", {
+    axios.post("/employer/create", {
       companyname,
+      logo,
       firstname,
       lastname,
       middlename,
@@ -79,15 +70,16 @@ export default function ForEmployer() {
         <div className="row mt-5">
           <div className="col">
             <h4>Sig up for Free!</h4>
-            <div class="custom-control custom-checkbox mb-3">
+            <div className="custom-control custom-checkbox mb-3">
               <input
                 type="checkbox"
-                class="custom-control-input"
+                className="custom-control-input"
                 id="customCheck"
                 name="example1"
                 onClick={checkBox}
               />
-              <label class="custom-control-label" for="customCheck">
+              {/* for="customCheck" */}
+              <label className="custom-control-label" htmlFor="customCheck">
                 {" "}
                 <p>Are you a freelancer or a phisical person?</p>
               </label>
@@ -138,6 +130,34 @@ export default function ForEmployer() {
                   </div>{" "}
                 </>
               ) : null}
+              <div className="custom-control custom-checkbox mb-3">
+                <input
+                  type="checkbox"
+                  className="custom-control-input"
+                  id="customLogoCheck"
+                  onClick={checkBoxLogo}
+                />
+                {/* for="customCheck" */}
+                <label
+                  className="custom-control-label"
+                  htmlFor="customLogoCheck"
+                >
+                  <p>Do you have a company logo?</p>
+                </label>
+              </div>
+              {toggleLogo ? (
+                <div className="mt-3">
+                  <label className="mandatory">Logo</label>
+                  <input
+                    required
+                    type="email"
+                    className="form-control"
+                    placeholder="Upload your logo"
+                    onChange={(e) => setLogo(e.target.value)}
+                  />
+                </div>
+              ) : null}
+
               <div className="mt-3">
                 <label className="mandatory">Email</label>
                 <input
@@ -186,6 +206,7 @@ export default function ForEmployer() {
                     className="form-control"
                     onChange={(e) => setCity(e.target.value)}
                     id="inputCity"
+                    placeholder="Your city..."
                   />
                 </div>
                 <div className="form-group col-lg-2">
@@ -195,6 +216,7 @@ export default function ForEmployer() {
                     className="form-control"
                     onChange={(e) => setZip(e.target.value)}
                     id="inputZip"
+                    placeholder="Your zipcode..."
                   />
                 </div>
                 <div className="form-group col-lg-4">
@@ -204,6 +226,7 @@ export default function ForEmployer() {
                     className="form-control"
                     onChange={(e) => setCountry(e.target.value)}
                     id="inputCity"
+                    placeholder="Your country..."
                   />
                 </div>
               </div>
@@ -214,7 +237,7 @@ export default function ForEmployer() {
                   data-role="select-dropdown"
                   onChange={(e) => setCompanysize(e.target.value)}
                 >
-                  <option disabled selected>
+                  <option disabled value="DEFAULT">
                     Size of the company
                   </option>
                   <option>Small - 0/25 employees</option>
@@ -242,7 +265,7 @@ export default function ForEmployer() {
                   />
                   <label className="form-check-label">
                     I accept the{" "}
-                    <a href="#">
+                    <a href="http://localhost:3000/">
                       terms and conditions
                       <span className="mandatoryTerms"> *</span>
                     </a>{" "}
@@ -265,7 +288,8 @@ export default function ForEmployer() {
             </h2>
             <img src={svg} alt="svg" />
             <h6 className="text-center">
-              Already an user? Please <EmployerLogin /> !
+              Already an user? Please
+              <EmployerLogin />!
             </h6>
           </div>
         </div>

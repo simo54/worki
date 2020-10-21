@@ -63,7 +63,7 @@ body {
   font-size: 2.5rem;
 }
 
-.howItWorks{
+.howItWorks {
   font-family: "Varela Round", sans-serif;
 }
 
@@ -84,11 +84,11 @@ body {
   font-size: 1.5rem;
 }
 
-#introRow #textIntroRow{
+#introRow #textIntroRow {
   margin-left: 50px;
 }
 
-#introRow #imgIntroRow{
+#introRow #imgIntroRow {
   margin-right: 50px;
   padding: 0;
 }
@@ -104,15 +104,15 @@ body {
   font-size: 2.5rem;
 }
 
-select{
+select {
   border-radius: 50px !important;
 }
 
-#searchBar{
+#searchBar {
   border-radius: 50px 0 0 50px !important;
 }
 
-#searchButton{
+#searchButton {
   border-radius: 0 50px 50px 0 !important;
   background-color: #f6f5f5;
 }
@@ -131,7 +131,7 @@ select{
   background-color: #f6f5f5;
 }
 
-#videoContainer{
+#videoContainer {
   position: relative;
 }
 
@@ -146,7 +146,7 @@ select{
 
 #video-elem {
   width: 100%;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .video-overlay {
