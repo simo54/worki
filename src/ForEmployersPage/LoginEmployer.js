@@ -3,8 +3,6 @@ import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// import "../Homepage/Style/NavigationBar.css";
-
 export default function LoginEmployer({ testLogin }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -22,9 +20,9 @@ export default function LoginEmployer({ testLogin }) {
   };
   return (
     <>
-      <Button id="loginButton" onClick={handleShow}>
-        Login
-      </Button>
+      <span id="loginButton" className="ml-2 mr-1 align-self-center">
+        <a onClick={handleShow}>Login</a>
+      </span>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>

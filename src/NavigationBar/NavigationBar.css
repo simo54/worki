@@ -12,13 +12,6 @@
   font-size: 20px;
 }
 
-#loginButton {
-  font-size: 20px;
-  display: inline-block;
-  color: grey;
-  cursor: pointer !important;
-}
-
 #mainTitle,
 :link,
 :visited {

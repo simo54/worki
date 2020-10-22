@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
-import "./NavigationBar.css";
+import "./UserLogin.css";
 
 export default function Login() {
   const handleClose = () => setShow(false);
@@ -24,7 +24,7 @@ export default function Login() {
   };
   return (
     <>
-      <span id="loginButton" className="mr-3 align-self-center">
+      <span id="loginButton" className="ml-2 mr-1 align-self-center">
         <a onClick={handleShow}>Login</a>
       </span>
 
