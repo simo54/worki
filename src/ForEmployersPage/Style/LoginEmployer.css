@@ -1,6 +1,7 @@
 #loginButton {
   font-size: 20px;
   display: inline-block;
-  color: grey;
+  color: rgb(56, 83, 240);
   cursor: pointer !important;
+  margin: 0 5px !important;
 }

@@ -18,13 +18,21 @@ body {
   background-color: #f6f5f5;
 }
 
+.cards {
+  width: auto;
+  height: auto;
+}
+
+.cards p {
+  font-size: 1.5rem;
+}
+
 #connectColRow {
   font-size: 2.5rem;
 }
 
 .connectedNumbers {
   display: inline-block;
-
   padding: 1em;
   margin: 0 2.5em 0 2.5em;
   position: relative;
@@ -55,7 +63,7 @@ body {
 }
 
 #firstvisualColRow {
-  background-color: #98ff61;
+  background-color: #d1892b;
   color: #383838;
 }
 
@@ -94,27 +102,12 @@ body {
 }
 
 .listHowWorks {
-  font-family: "Pacifico", cursive;
-  font-size: 1.5rem;
-  white-space: nowrap;
+  font-size: 2rem;
   text-align: center;
 }
 
 #meetTheTeamColRow {
   font-size: 2.5rem;
-}
-
-select {
-  border-radius: 50px !important;
-}
-
-#searchBar {
-  border-radius: 50px 0 0 50px !important;
-}
-
-#searchButton {
-  border-radius: 0 50px 50px 0 !important;
-  background-color: #f6f5f5;
 }
 
 .roundNumber {

@@ -3,4 +3,9 @@
   display: inline-block;
   color: grey;
   cursor: pointer !important;
+  margin-right: 30px !important;
+}
+
+#loginButton:hover {
+  text-decoration: underline;
 }

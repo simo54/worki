@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./Style/LoginEmployer.css";
 
 export default function LoginEmployer({ testLogin }) {
   const [show, setShow] = useState(false);
@@ -20,7 +21,7 @@ export default function LoginEmployer({ testLogin }) {
   };
   return (
     <>
-      <span id="loginButton" className="ml-2 mr-1 align-self-center">
+      <span id="loginButton" className="ml-2 pr-0 align-self-center">
         <a onClick={handleShow}>Login</a>
       </span>
 

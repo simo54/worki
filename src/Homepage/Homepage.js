@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import video from "./Editor-1.m4v";
 import myIcon from "./icons/undraw_job_offers_kw5d.svg";
 import svgfirstrow from "./icons/Job hunt-pana.svg";
+import signupscvg from "./icons/Add User-pana.svg";
+import searchsvg from "./icons/Usability testing-pana.svg";
+import applysvg from "./icons/Resume folder-pana.svg";
+import AutoComplete from "./Autocode";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Style/Homepage.css";
 
 export default function Homepage() {
+  const [value, setValue] = useState("");
+  const [options, setOptions] = useState([]);
+
+  // Fetching data from endpoint, map them and get jobtitles
+  useEffect(() => {
+    const titles = [];
+    new Array(5).fill().map((v, i) =>
+      axios(`/jobs/${i}`).then((res) => {
+        if (res.data.jobtitle !== undefined) {
+          // titles.push({ jobtitle: res.data.jobtitle });
+          titles.push(res.data.jobtitle);
+        }
+      })
+    );
+    setOptions(titles); //Setting array of jobtitles
+  }, []);
+
   return (
     <div className="bodyContainer">
       <div id="imgOnMobile">
@@ -32,41 +54,11 @@ export default function Homepage() {
           <div className="video-overlay">
             <div className="titleInputWrapper">
               <h1>Start your Job Hunt!</h1>
-              <div id="inputContainer">
-                <div className="input-group">
-                  <input
-                    className="form-control"
-                    type="search"
-                    placeholder="Try to search Baker..."
-                    id="searchBar"
-                  />
-                  <span className="input-group-append">
-                    <button
-                      className="btn btn-outline-secondary"
-                      type="button"
-                      id="searchButton"
-                    >
-                      <svg
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 16 16"
-                        className="bi bi-search"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
-                        />
-                        <path
-                          fillRule="evenodd"
-                          d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
-                        />
-                      </svg>
-                    </button>
-                  </span>
-                </div>
-              </div>
+              <AutoComplete
+                value={value}
+                onChange={(value) => setValue(value.toLowerCase())}
+                dataSource={options.map((element) => element.toLowerCase())}
+              />
               <div className="mt-3">
                 Or visit our job page
                 <Link to="jobs"> clicking here</Link>
@@ -104,17 +96,29 @@ export default function Homepage() {
         <div className="row text-center firstvisualColRowText">
           <div className="col">How does it work?</div>
         </div>
-        <div className="row text-center listHowWorks">
-          <div className="col connectedNumbers">
-            1.<span className="howItWorks"> Sign up on our website</span>
-          </div>
-          <div className="col connectedNumbers">
-            2.
-            <span className="howItWorks"> Search for a suitable position</span>
-          </div>
-          <div className="col connectedNumbers">
-            3.
-            <span className="howItWorks"> Send your personal application</span>
+        <div className="row listHowWorks d-flex justify-content-around mt-5">
+          <div className="card-deck">
+            <div className="card cards">
+              <img src={signupscvg} class="card-img-top" alt="..." />
+              <div className="card-body">
+                <h3 className="card-title">1. Signup</h3>
+                <p className="card-text">Signup and make a free account!</p>
+              </div>
+            </div>
+            <div className="card cards">
+              <img src={searchsvg} className="card-img-top" />
+              <div className="card-body">
+                <h3 className="card-title">2. Search for new job!</h3>
+                <p className="card-text">Browse and discover new positions</p>
+              </div>
+            </div>
+            <div className="card cards">
+              <img src={applysvg} class="card-img-top" alt="..." />
+              <div className="card-body">
+                <h3 className="card-title">3. Send your application</h3>
+                <p className="card-text">Apply with your profile!</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -153,10 +157,10 @@ export default function Homepage() {
         id="connectColRow"
         className="container-fluid d-flex justify-content-center pt-5 pb-5 "
       >
-        <div className="row">
+        <div className="row-fluid ">
           <div className="col text-center">
             Connect with us!
-            <ul className="list-inline d-flex justify-content-around">
+            <ul className="list-inline d-flex justify-content-around mt-5">
               <li className="list-inline-item mr-4">
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/179/179319.svg"

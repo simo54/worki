@@ -51,7 +51,9 @@ export default function Navigation() {
                     : "navLink d-flex align-self-center"
                 }
               >
-                <Login testLogin={() => setLoggedIn(true)} />
+                <div className="d-flex align-self-center mr-5">
+                  <Login testLogin={() => setLoggedIn(true)} />
+                </div>
                 <Link to="/usersignup">
                   <Button id="signupButton" className="btn btn-success">
                     Sign up!

@@ -10,7 +10,6 @@ import Footer from "./Footer/Footer";
 import EmployerProfile from "./EmployerProfile/EmployerProfile";
 import Howitworks from "./HowDoesItwork/HowDoesItWork";
 import GeoMap from "./LeafletMap/MapGeoTest";
-import Autocomplete from "./Homepage/Autocomplete";
 
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
           <Route path="/employersignup" component={EmployerSignup} />
           <Route path="/employer/profile" component={EmployerProfile} />
           <Route path="/geomap" component={GeoMap} />
-          <Route path="/autocomplete" component={Autocomplete} />
         </Switch>
         <Footer />
       </div>

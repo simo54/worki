@@ -8,7 +8,7 @@ export default function HowDoesItWork() {
         <div className="row">
           <div className="col">
             <div id="titleHowDoesItWork" className="text-center">
-              <h2>Job Board Careers are broken</h2>
+              <h2 className="display-2">Job Board Careers are broken</h2>
             </div>
           </div>
         </div>
