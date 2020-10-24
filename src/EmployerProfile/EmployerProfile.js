@@ -67,7 +67,7 @@ export default function RecruiterProfile() {
               {/* Right column for job posts available and other things */}
               <div className="col-6">
                 <div className="joblists mb-3">
-                  <label>Open Position in xxx</label>
+                  <label>Open Positions in xxx</label>
                   <ul className="list-group">
                     <a
                       href="#"
