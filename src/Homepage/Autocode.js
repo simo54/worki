@@ -87,6 +87,8 @@ export default function AutoComplete({ value, onChange, dataSource }) {
               return;
             }
             break;
+          default:
+            console.log("nothing to see here");
         }
       }}
     >

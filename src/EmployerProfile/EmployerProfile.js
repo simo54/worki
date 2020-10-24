@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import PostAjob from "./FormJobPost";
+import ListApplications from "./ApplicationsList";
 
 export default function RecruiterProfile() {
   const [error, setError] = useState(false);
@@ -42,34 +43,59 @@ export default function RecruiterProfile() {
                 <div className="">
                   <img
                     src="https://i.ytimg.com/vi/7OD55d6iRCQ/maxresdefault.jpg"
-                    alt="..."
+                    alt="profilepicture"
                     className="img-thumbnail"
                   />
+                </div>
+                <div className="container text-justify mt-4">
+                  <h3>About us</h3>
+                  <text>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                    nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  </text>
                 </div>
               </div>
 
               {/* Right column for job posts available and other things */}
               <div className="col-6">
                 <div className="joblists mb-3">
+                  <label>Open Position in xxx</label>
                   <ul className="list-group">
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      Example: job1
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                      Dapibus ac facilisis in
                       <span className="badge badge-primary badge-pill">
                         14 Applications
                       </span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      Example: job2
+                    </a>
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                      Dapibus ac facilisis in
                       <span className="badge badge-primary badge-pill">
-                        2 Applications
+                        14 Applications
                       </span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      Example: job2
+                    </a>
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                      Dapibus ac facilisis in
                       <span className="badge badge-primary badge-pill">
-                        1 Application
+                        14 Applications
                       </span>
-                    </li>
+                    </a>
                   </ul>
                 </div>
                 <PostAjob />

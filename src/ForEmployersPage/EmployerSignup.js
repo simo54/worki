@@ -12,17 +12,18 @@ export default function ForEmployer() {
   const [warning, setWarning] = useState(false);
   const [toggleLogo, setToggleLogo] = useState(false);
   const location = useLocation();
+
+  // Fixing issues when switching between pages (without this will let you see the page on half)
   if (location.pathname === "/employersignup") {
     window.scrollTo(0, 0);
   }
 
-  console.log(location.pathname);
   // UseState of signup details
   const [companyname, setCompanyname] = useState("");
-  const [logo, setLogo] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [middlename, setMiddlename] = useState("");
+  const [logo, setLogo] = useState("");
   const [email, setEmail] = useState("");
   const [prefixNumber, setPrefixNumber] = useState("");
   const [mobile, setMobile] = useState("");
@@ -73,9 +74,9 @@ export default function ForEmployer() {
     <div>
       <div className="container">
         <div className="row mt-5">
-          <div className="col">
+          <div className="col-7">
             <h4>Sig up for Free!</h4>
-            <div className="custom-control custom-checkbox mb-3">
+            <div className="custom-control custom-checkbox mt-4">
               <input
                 type="checkbox"
                 className="custom-control-input"
@@ -135,7 +136,7 @@ export default function ForEmployer() {
                   </div>{" "}
                 </>
               ) : null}
-              <div className="custom-control custom-checkbox mb-3">
+              <div className="custom-control custom-checkbox">
                 <input
                   type="checkbox"
                   className="custom-control-input"
@@ -144,20 +145,21 @@ export default function ForEmployer() {
                 />
                 {/* for="customCheck" */}
                 <label
-                  className="custom-control-label"
+                  className="custom-control-label mt-4"
                   htmlFor="customLogoCheck"
                 >
                   <p>Do you have a company logo?</p>
                 </label>
               </div>
               {toggleLogo ? (
-                <div className="mt-3">
-                  <label className="mandatory">Logo</label>
+                <div className="form-group">
+                  <label for="exampleFormControlFile1">
+                    Choose the file you want to upload
+                  </label>
                   <input
-                    required
-                    type="email"
-                    className="form-control"
-                    placeholder="Upload your logo"
+                    type="file"
+                    className="form-control-file"
+                    id="exampleFormControlFile1"
                     onChange={(e) => setLogo(e.target.value)}
                   />
                 </div>
@@ -221,7 +223,7 @@ export default function ForEmployer() {
                     className="form-control"
                     onChange={(e) => setZip(e.target.value)}
                     id="inputZip"
-                    placeholder="Your zipcode..."
+                    placeholder="Zipcode"
                   />
                 </div>
                 <div className="form-group col-lg-4">
@@ -287,7 +289,7 @@ export default function ForEmployer() {
               </Button>
             </form>
           </div>
-          <div className="col">
+          <div className="col-5">
             <h2 className="text-center">
               Looking for your next talent? You came in the right place!
             </h2>

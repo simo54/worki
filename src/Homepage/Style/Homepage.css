@@ -58,8 +58,13 @@ body {
   display: none;
 }
 
-#employerColRow {
-  font-size: 2.5rem;
+#containerRecruiters {
+  width: 500px;
+  padding: 0;
+}
+
+#containerRecruiters img {
+  width: 100%;
 }
 
 #firstvisualColRow {
@@ -104,10 +109,6 @@ body {
 .listHowWorks {
   font-size: 2rem;
   text-align: center;
-}
-
-#meetTheTeamColRow {
-  font-size: 2.5rem;
 }
 
 .roundNumber {

@@ -99,21 +99,21 @@ export default function Homepage() {
         <div className="row listHowWorks d-flex justify-content-around mt-5">
           <div className="card-deck">
             <div className="card cards">
-              <img src={signupscvg} class="card-img-top" alt="..." />
+              <img src={signupscvg} className="card-img-top" alt="signup" />
               <div className="card-body">
                 <h3 className="card-title">1. Signup</h3>
                 <p className="card-text">Signup and make a free account!</p>
               </div>
             </div>
             <div className="card cards">
-              <img src={searchsvg} className="card-img-top" />
+              <img src={searchsvg} className="card-img-top" alt="search" />
               <div className="card-body">
                 <h3 className="card-title">2. Search for new job!</h3>
                 <p className="card-text">Browse and discover new positions</p>
               </div>
             </div>
             <div className="card cards">
-              <img src={applysvg} class="card-img-top" alt="..." />
+              <img src={applysvg} className="card-img-top" alt="apply" />
               <div className="card-body">
                 <h3 className="card-title">3. Send your application</h3>
                 <p className="card-text">Apply with your profile!</p>
@@ -123,33 +123,33 @@ export default function Homepage() {
         </div>
       </div>
       {/* third row - employer  */}
-      <div
-        id="employerColRow"
-        className="container-fluid d-flex justify-content-center pt-5 pb-5 "
-      >
+      <div id="employerColRow" className="container pt-5 pb-5 ">
         <div className="row">
-          <div className="col" id="employerDiv">
-            Are you an employer/jobhunter?
+          <div
+            className="col-6 m-0 p-0 text-left align-self-center"
+            id="employerText"
+          >
+            <h3 className="p-0 m-0">Are you an employer or jobhunter?</h3>
+            <br />
+            <p>We offer a free platform for posting you open positions. </p>
+            <div className="row m-0 p-0">
+              <Link to="/employersignup">
+                <Button>ClickHere</Button>
+              </Link>
+            </div>
           </div>
-          <div>
-            <Link to="/employersignup">
-              <Button>ClickHere</Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div
-        id="meetTheTeamColRow"
-        className="container-fluid d-flex justify-content-center pt-5 pb-5 "
-      >
-        <div className="row-fluid">
-          <div className="col">Meet the Team</div>
-          <div className="container">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Glasto17-44_%2835547413626%29_Cropped.jpg"
-              width="250px"
-              alt="test"
-            />
+
+          <div
+            className="col-6 text-center align-self-center p-0 m-0"
+            id="employerButton"
+          >
+            <div className="container" id="containerRecruiters">
+              <img
+                src="https://pixabay.com/get/57e2d54a4c55a414f6da8c7dda2930791d39dde6544c704f752c7ed79545c65c_1280.jpg"
+                alt="recruiters"
+                width="300px"
+              />
+            </div>
           </div>
         </div>
       </div>
