@@ -6,10 +6,11 @@ import "./JobApplication.css";
 export default function Example() {
   const [toggle, setToggle] = useState(false);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -19,7 +20,7 @@ export default function Example() {
     setToggle(!toggle);
   };
 
-  const signup = () => {
+  const submitJob = () => {
     if (agreement === false) {
       setWarning(true);
       return;
@@ -55,22 +56,12 @@ export default function Example() {
               />
             </div>
             <div className="mt-3">
-              <label className="mandatory">Position details</label>
-              <textarea
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                rows="3"
-                placeholder="If you need more space you can expand this box..."
-              ></textarea>
-            </div>
-
-            <div className="mt-3">
               <label className="mr-2 mandatory">Type of contract</label>
               <select>
                 <option disabled selected value="DEFAULT">
                   -- select one --
                 </option>
-                <option>Full</option>
+                <option>eeeeeebbbbll</option>
                 <option>bla</option>
                 <option>eeeeee</option>
                 <option>eeeeee</option>
@@ -78,6 +69,16 @@ export default function Example() {
                 <option>eeeeee</option>
                 <option>eeeeee</option>
               </select>
+            </div>
+            <div className="mt-3">
+              <label className="mandatory">Role details</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                placeholder="If you need more space you can expand this box..."
+                onChange={(e) => setRole(e.target.value)}
+              />
             </div>
             <div class="form-check mt-3">
               <input
@@ -154,7 +155,7 @@ export default function Example() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={signup}>
+          <Button variant="primary" onClick={submitJob}>
             Submit
           </Button>
         </Modal.Footer>

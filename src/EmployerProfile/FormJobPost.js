@@ -11,16 +11,16 @@ export default function Example() {
   const [show, setShow] = useState(false);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
-  // const [jobtitle, setJobtitle] = useState("");
-  // const [employmenttype, setEmploymenttype] = useState("");
-  // const [introduction, setIntroduction] = useState("");
-  // const [role, setRole] = useState("");
-  // const [requirements, setRequirements] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [zip, setZip] = useState("");
-  // const [city, setCity] = useState("");
-  // const [country, setCountry] = useState("");
-  // const [contactdetails, setContactdetails] = useState("");
+
+  const [jobtitle, setJobtitle] = useState(false);
+  const [employmenttype, setEmploymenttype] = useState(false);
+  const [introduction, setIntroduction] = useState(false);
+  const [role, setRole] = useState(false);
+  const [requirements, setRequirements] = useState(false);
+  const [zip, setZip] = useState(false);
+  const [city, setCity] = useState(false);
+  const [country, setCountry] = useState(false);
+  const [contactdetails, setContactdetails] = useState(false);
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -35,20 +35,19 @@ export default function Example() {
       setWarning(true);
       return;
     }
-    axios.post("/user/create", {
-      // jobtitle,
-      // employmenttype,
-      // introduction,
-      // role,
-      // requirements,
-      // address,
-      // zip,
-      // city,
-      // country,
-      // contactdetails,
+    axios.post("/jobs/create", {
+      jobtitle,
+      employmenttype,
+      introduction,
+      role,
+      requirements,
+      zip,
+      city,
+      country,
+      contactdetails,
     });
 
-    alert("usercreated!"); // must pressed ok otherwise will not finish the sending
+    alert("jobcreated!"); // must pressed ok otherwise will not finish the sending
   };
 
   return (
@@ -76,7 +75,30 @@ export default function Example() {
                 type="text"
                 className="form-control"
                 placeholder=""
+                onChange={(e) => setJobtitle(e.target.value)}
               />
+            </div>
+            <div className="mt-3">
+              <label className="mr-2 mandatory">Type of contract</label>
+              <select onChange={(e) => setEmploymenttype(e.target.value)}>
+                <option disabled selected value="DEFAULT">
+                  -- select one --
+                </option>
+                <option>Permanent </option>
+                <option>Fixed-term</option>
+                <option>Casual</option>
+              </select>
+            </div>
+            <div className="mt-3">
+              <label className="mr-2 mandatory">Working Hours</label>
+              <select>
+                <option disabled selected value="DEFAULT">
+                  -- select one --
+                </option>
+                <option>Full-Time</option>
+                <option>Part-Time</option>
+                <option>Flexible</option>
+              </select>
             </div>
             <div className="mt-3">
               <label className="mandatory">Position details</label>
@@ -86,22 +108,6 @@ export default function Example() {
                 rows="3"
                 placeholder="If you need more space you can expand this box..."
               ></textarea>
-            </div>
-
-            <div className="mt-3">
-              <label className="mr-2 mandatory">Type of contract</label>
-              <select>
-                <option disabled selected value="DEFAULT">
-                  -- select one --
-                </option>
-                <option>Full</option>
-                <option>bla</option>
-                <option>eeeeee</option>
-                <option>eeeeee</option>
-                <option>eeeeee</option>
-                <option>eeeeee</option>
-                <option>eeeeee</option>
-              </select>
             </div>
             <div class="form-check mt-3">
               <input

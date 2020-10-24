@@ -12,6 +12,7 @@
     "cookie": "^0.4.1",
     "esri-leaflet": "^2.5.1",
     "esri-leaflet-geocoder": "^2.3.3",
+    "jwt-decode": "^3.0.0",
     "leaflet": "^1.7.1",
     "leaflet-geosearch": "^3.0.6",
     "react": "^16.13.1",

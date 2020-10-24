@@ -4,13 +4,7 @@
 
 #containerProfilePicture {
   overflow: hidden;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-}
-
-input{
-  border-radius: 50px !important;
+  width: 100%;
 }
 
 #containerProfilePicture img {
@@ -18,7 +12,7 @@ input{
   height: auto;
 }
 
-select{
+select {
   border-radius: 50px !important;
 }
 
