@@ -27,9 +27,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-md-3 col-sm-6 col-6 mb-3 p-0 ">
-              <h5 className="mb-4 font-weight-bold text-uppercase">
-                Documents
-              </h5>
+              <h5 className="mb-4 font-weight-bold text-uppercase">Press</h5>
               <ul className="list-group">
                 <li className="list-group-item bg-transparent border-0 p-0 mb-2">
                   <a href="http://localhost:3000/">About</a>

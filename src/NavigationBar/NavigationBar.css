@@ -23,8 +23,13 @@
   padding: 0;
 }
 
+#mainTitle {
+  background: linear-gradient(to top, #e4f815 30%, transparent 30%);
+  text-shadow: -2px 2px white;
+}
+
 #navbar {
-  background-color: #f7fbfc;
+  background-color: #f5faf8;
 }
 
 select {
@@ -33,7 +38,7 @@ select {
 
 #signupButton {
   border-radius: 10px !important;
-  background-color: #28df99;
+  background-color: #12aaf9;
   border: none !important;
 }
 

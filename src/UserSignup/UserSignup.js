@@ -203,12 +203,12 @@ export default function Signup() {
         </div>
         <div className="col inline">
           <h2 className="text-center">
-            Looking for your next talent? You came in the right place!
+            Looking for your next job? Signup and check it out!
           </h2>
           <img src={svg} alt="svg" />
           <div className="container d-inline">
             <h6 className="text-center">
-              Already a user? Please <ButtonLogin /> !{" "}
+              Already a user? Please <ButtonLogin /> !
             </h6>
           </div>
         </div>

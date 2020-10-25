@@ -1,11 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
+
 #loginButton {
   font-size: 20px;
+  font-family: "Quicksand", sans-serif;
   display: inline-block;
-  color: grey;
+  color: rgba(0, 0, 0, 0.5);
   cursor: pointer !important;
   margin-right: 30px !important;
 }
 
 #loginButton:hover {
   text-decoration: underline;
+  color: rgba(0, 0, 0, 0.7);
 }

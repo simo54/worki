@@ -5,6 +5,7 @@ import PrefixDropdown from "../UserSignup/PhonePrefix";
 import svg from "./icons/Business deal-rafiki.svg";
 import EmployerLogin from "./LoginEmployer";
 import axios from "axios";
+import "./Style/ForEmployer.css";
 
 export default function ForEmployer() {
   const [toggle, setToggle] = useState(false);
@@ -299,23 +300,6 @@ export default function ForEmployer() {
               <EmployerLogin />!
             </h6>
           </div>
-        </div>
-      </div>
-      <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
-        <div className="row">
-          <div className="col">
-            An easy job page where to find the right fit!
-          </div>
-        </div>
-      </div>
-      <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
-        <div className="row">
-          <div className="col">More thant 50+ thousand active users</div>
-        </div>
-      </div>
-      <div className="container-fluid d-flex justify-content-center pt-5 pb-5">
-        <div className="row">
-          <div className="col">5000 satisfied clients</div>
         </div>
       </div>
     </div>

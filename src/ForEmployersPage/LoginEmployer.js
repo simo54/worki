@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Style/LoginEmployer.css";
 
 export default function LoginEmployer({ testLogin }) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const loginSubmission = (e) => {
     e.preventDefault();
@@ -21,9 +21,11 @@ export default function LoginEmployer({ testLogin }) {
   };
   return (
     <>
-      <span id="loginButton" className="ml-2 pr-0 align-self-center">
-        <a onClick={handleShow}>Login</a>
-      </span>
+      <Nav.Link onClick={handleShow} className="navLink align-items-center">
+        {/* <a onClick={handleShow} id="loginNav"> */}
+        Login
+        {/* </a> */}
+      </Nav.Link>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>

@@ -6,14 +6,18 @@ import svgfirstrow from "./icons/Job hunt-pana.svg";
 import signupscvg from "./icons/Add User-pana.svg";
 import searchsvg from "./icons/Usability testing-pana.svg";
 import applysvg from "./icons/Resume folder-pana.svg";
+import imgEmployer from "./icons/women-1209678_640.jpg";
 import AutoComplete from "./Autocode";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Style/Homepage.css";
 
+// palette is https://colorhunt.co/palette/218884
+
 export default function Homepage() {
   const [value, setValue] = useState("");
   const [options, setOptions] = useState([]);
+  const [words, setWords] = useState([]);
 
   // Fetching data from endpoint, map them and get jobtitles
   useEffect(() => {
@@ -53,15 +57,20 @@ export default function Homepage() {
         ></iframe> */}
           <div className="video-overlay">
             <div className="titleInputWrapper">
-              <h1>Start your Job Hunt!</h1>
+              <div
+                id="containerSearchTitle"
+                className="d-flex justify-content-center"
+              >
+                <h2>Start your Job Hunt!</h2>
+              </div>
               <AutoComplete
                 value={value}
                 onChange={(value) => setValue(value.toLowerCase())}
                 dataSource={options.map((element) => element.toLowerCase())}
               />
-              <div className="mt-3">
+              <div id="textUnderSearch" className="mt-3">
                 Or visit our job page
-                <Link to="jobs"> clicking here</Link>
+                <Link to="jobs"> here</Link>
               </div>
             </div>
           </div>
@@ -108,7 +117,7 @@ export default function Homepage() {
             <div className="card cards">
               <img src={searchsvg} className="card-img-top" alt="search" />
               <div className="card-body">
-                <h3 className="card-title">2. Search for new job!</h3>
+                <h3 className="card-title">2. Search for new jobs!</h3>
                 <p className="card-text">Browse and discover new positions</p>
               </div>
             </div>
@@ -144,11 +153,7 @@ export default function Homepage() {
             id="employerButton"
           >
             <div className="container" id="containerRecruiters">
-              <img
-                src="https://pixabay.com/get/57e2d54a4c55a414f6da8c7dda2930791d39dde6544c704f752c7ed79545c65c_1280.jpg"
-                alt="recruiters"
-                width="300px"
-              />
+              <img src={imgEmployer} alt="recruiters" width="300px" />
             </div>
           </div>
         </div>

@@ -2,11 +2,15 @@
   padding-left: 0;
 }
 
-input{
+#firstRowFit {
+  background-color: #ff9494;
+}
+
+input {
   border-radius: 50px !important;
 }
 
-.mandatoryTerms{
+.mandatoryTerms {
   color: red;
 }
 
@@ -19,4 +23,8 @@ label.custom-control-label::before,
 label.custom-control-label::after {
   right: 0;
   left: auto;
+}
+
+#secondRowFit {
+  background-color: #12aaf9;
 }

@@ -1,11 +1,6 @@
-#loginButton {
-  font-size: 20px;
-  display: inline-block;
-  color: rgb(56, 83, 240);
-  cursor: pointer;
-  margin: 0 5px !important;
-}
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
 
-#welcome {
-  margin-top: 50px;
+#loginNav {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Quicksand", sans-serif;
 }
