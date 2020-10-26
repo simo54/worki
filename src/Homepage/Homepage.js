@@ -43,18 +43,19 @@ export default function Homepage() {
 
       <div id="videoContainer">
         <div className="video-section">
-          <video id="video-elem" preload="true" autoPlay loop>
+          {/* <video id="video-elem" preload="true" autoPlay loop>
             <source src={video} type="video/mp4"></source>
             Video not supported
-          </video>
-          {/* <iframe
-          id="video-elem"
-          src="https://player.vimeo.com/video/466163847?autoplay=1&loop=1&title=0"
-          frameborder="0"
-          allow="autoplay"
-          autoplay
-          preload
-        ></iframe> */}
+          </video> */}
+          <div className="embed-responsive embed-responsive-16by9">
+            <iframe
+              id="video-elem"
+              preload="true"
+              src="https://player.vimeo.com/video/466163847?autoplay=1&loop=1&title=0"
+              allow="autoplay"
+              className="embed-responsive-item"
+            />
+          </div>
           <div className="video-overlay">
             <div className="titleInputWrapper">
               <div
@@ -84,8 +85,7 @@ export default function Homepage() {
         <div className="row align-items-center">
           <div id="textIntroRow" className="col">
             <h2>
-              The most Liable job platform for handy-people and qualified
-              workers!
+              The most Liable job platform for workhands and qualified workers!
             </h2>
             <p>
               Worki! allows you to find jobs in your area and will provide the

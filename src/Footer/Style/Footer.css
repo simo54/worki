@@ -1,13 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
 
-#footerTitle{
-    font-family: "Varela Round", sans-serif;
+/* #footerTitle {
+  font-family: "Varela Round", sans-serif;
+} */
+
+#credits {
+  font-size: 12px;
 }
 
-#fbIcon{
-    width: 50px;
+#footerTitle h2 span {
+  width: 50%;
+  font-family: "Quicksand", sans-serif;
+  background: linear-gradient(to top, #e4f815 30%, transparent 30%);
+  text-shadow: -2px 2px white;
+  color: #222831;
 }
 
-input{
-    border-radius: 50px !important;
-  }
+#fbIcon {
+  width: 50px;
+}
+
+input {
+  border-radius: 50px !important;
+}

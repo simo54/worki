@@ -11,7 +11,7 @@ export default function JobsList() {
 
   // Fetching the data from api
   useEffect(() => {
-    axios.get("/jobs").then((results) => {
+    axios.get("/employer/jobs").then((results) => {
       const jobs = results.data;
       setJobList(jobs);
     });
@@ -114,7 +114,15 @@ export default function JobsList() {
                         </div>
                       </div>
                       <div className="col-md-4">
-                        <img src="..." className="card-img" alt="something" />
+                        <div id="containerLogo" className="align-middle">
+                          <img
+                            // src="./logo2.jpg"
+                            href="./logo2.png"
+                            alt="something"
+                            // width="10"
+                            // height="200"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>

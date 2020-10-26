@@ -278,7 +278,7 @@ export default function ForEmployer() {
                       <span className="mandatoryTerms"> *</span>
                     </a>{" "}
                     {warning === true ? (
-                      <div className="">
+                      <div className="text-danger">
                         Please read and accept terms and conditions
                       </div>
                     ) : null}

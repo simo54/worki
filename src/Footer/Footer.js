@@ -8,7 +8,9 @@ export default function Footer() {
         <div className="container pt-5 border-bottom">
           <div className="row">
             <div id="footerTitle" className="col-md-3 col-sm-6 col-6 mb-3 p-0">
-              <h2>Worki</h2>
+              <h2>
+                <span>Worki</span>
+              </h2>
             </div>
             {/* <div id="footerTitle" className="col-md-3 col-sm-6 col-6 mb-3 p-0">
               <div id="fbIcon" className="container">
@@ -48,10 +50,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <a href="https://stories.freepik.com/job">
-          Illustration by Freepik Stories
-        </a>
-        <div>
+        <div id="credits" className="d-flex justify-content-center pb-0 mt-5">
+          <a href="https://stories.freepik.com/job">
+            Illustration by Freepik Stories
+          </a>
           Icons made by{" "}
           <a
             href="https://www.flaticon.com/authors/pixel-buddha"
@@ -63,29 +65,25 @@ export default function Footer() {
           <a href="https://www.flaticon.com/" title="Flaticon">
             www.flaticon.com
           </a>
-          <div>
-            Icons made by{" "}
-            <a
-              href="https://www.flaticon.com/authors/pixel-perfect"
-              title="Pixel perfect"
-            >
-              Pixel perfect
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-            <div>
-              Icons made by{" "}
-              <a href="http://www.freepik.com/" title="Freepik">
-                Freepik
-              </a>{" "}
-              from{" "}
-              <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-              </a>
-            </div>
-          </div>
+          Icons made by{" "}
+          <a
+            href="https://www.flaticon.com/authors/pixel-perfect"
+            title="Pixel perfect"
+          >
+            Pixel perfect
+          </a>{" "}
+          from{" "}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
+          Icons made by{" "}
+          <a href="http://www.freepik.com/" title="Freepik">
+            Freepik
+          </a>{" "}
+          from{" "}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
         </div>
       </footer>
     </div>

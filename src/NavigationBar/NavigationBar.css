@@ -26,6 +26,7 @@
 #mainTitle {
   background: linear-gradient(to top, #e4f815 30%, transparent 30%);
   text-shadow: -2px 2px white;
+  color: #222831;
 }
 
 #navbar {

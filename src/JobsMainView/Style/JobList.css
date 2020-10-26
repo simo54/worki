@@ -1,3 +1,8 @@
+#containerLogo {
+  width: 100%;
+  height: auto;
+}
+
 #jobListCol {
   margin: 0 0 0 200px;
 }
