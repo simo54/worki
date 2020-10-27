@@ -6,22 +6,24 @@ import ListApplications from "./ApplicationsList";
 
 export default function RecruiterProfile() {
   const [error, setError] = useState(false);
-  console.log(error);
+  const [employerId, setEmployerId] = useState();
+  // console.log(error);
 
   useEffect(() => {
-    axios
-      .get("/employer/profile", { validateStatus: () => true })
-      .then((response) => {
-        console.log(response.status);
-        if (response.status === 401) {
-          // redirect to login
-          setError(true);
-          return;
-        }
-      });
+    // Access the token
+    // Check if the token is related to the profile from the session table
+    // If yes, we get the id user from that session table
+    // We then get the data thanks to the :id from the  server
+    // axios.get(`/employer/profile/${employerId}`).then((response) => {
+    //   console.log(response.data);
+    //   if (response.status === 401) {
+    //     // redirect to login
+    //     setError(true);
+    //     return;
+    //   }
+    // });
     // We need to fetch all jobs related to the company that logged in
     // axios.get().then().catch();
-
     // // We need to fetch also the total applications and count them inside our span
     // axios.get().then().catch();
   }, []);

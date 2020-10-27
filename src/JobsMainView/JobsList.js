@@ -11,7 +11,7 @@ export default function JobsList() {
 
   // Fetching the data from api
   useEffect(() => {
-    axios.get("/employer/jobs").then((results) => {
+    axios.get("http://localhost:5000/jobs").then((results) => {
       const jobs = results.data;
       setJobList(jobs);
     });

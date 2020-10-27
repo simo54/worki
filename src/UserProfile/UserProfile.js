@@ -1,7 +1,20 @@
 import React from "react";
 import "./Profile.css";
 
-function UserProfile() {
+export default function UserProfile() {
+  // const [user, setUser] = useState([]);
+  // const [error, setError] = useState(false);
+  // useEffect(() => {
+  //   axios.get("/books", { validateStatus: () => true }).then((response) => {
+  //     if (response.status === 401) {
+  //       // redirection to login
+  //       setError(true);
+  //     }
+  //     setBooks(response.data);
+  //   });
+  // }, []);
+  // return (
+
   return (
     <div>
       <div className="container" id="profileContainer">
@@ -130,5 +143,3 @@ function UserProfile() {
     </div>
   );
 }
-
-export default UserProfile;

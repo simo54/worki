@@ -10,26 +10,29 @@ import Footer from "./Footer/Footer";
 import EmployerProfile from "./EmployerProfile/EmployerProfile";
 import Howitworks from "./HowDoesItwork/HowDoesItWork";
 import GeoMap from "./LeafletMap/MapGeoTest";
+import IsAuthenticated from "./HOC-CheckLoginUser&Employers/IsAuthenticated";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <div>
         <Navigation />
         <Switch>
-          <Route path="/" exact component={Homepage} />
           <Route path="/jobs" component={JobList} />
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
-          <Route path="/user/profile" component={UserProfile} />
+          <Route path="/user/profile">
+            {IsAuthenticated(<UserProfile />, "user")}
+          </Route>
+          <Route path="/employer/profile">
+            {IsAuthenticated(<EmployerProfile />, "employer")}
+          </Route>
           <Route path="/employersignup" component={EmployerSignup} />
-          <Route path="/employer/profile" component={EmployerProfile} />
           <Route path="/geomap" component={GeoMap} />
+          <Route path="/" exact component={Homepage} />
         </Switch>
         <Footer />
       </div>
     </Router>
   );
 }
-
-export default App;

@@ -12,15 +12,17 @@ export default function Login() {
 
   const loginSubmission = (e) => {
     e.preventDefault();
-    axios.post(
-      "/login/user",
-      {
-        email,
-        password,
-      },
-      { withCredentials: true }
-    );
-    alert("loggedin!"); // must pressed ok otherwise will not finish the sending
+    console.log("Login from navbar");
+    axios
+      .post(
+        "http://localhost:5000/login/user",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => console.log("response happening", res));
   };
   return (
     <>

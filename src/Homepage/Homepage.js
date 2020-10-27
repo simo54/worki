@@ -17,20 +17,15 @@ import "./Style/Homepage.css";
 export default function Homepage() {
   const [value, setValue] = useState("");
   const [options, setOptions] = useState([]);
-  const [words, setWords] = useState([]);
 
   // Fetching data from endpoint, map them and get jobtitles
   useEffect(() => {
-    const titles = [];
-    new Array(5).fill().map((v, i) =>
-      axios(`/jobs/${i}`).then((res) => {
-        if (res.data.jobtitle !== undefined) {
-          // titles.push({ jobtitle: res.data.jobtitle });
-          titles.push(res.data.jobtitle);
-        }
-      })
-    );
-    setOptions(titles); //Setting array of jobtitles
+    axios.get(`http://localhost:5000/jobs/`).then((res) => {
+      console.log(res.data);
+      const arrayOfObjects = res.data;
+      const titles = arrayOfObjects.map((array) => array.jobtitle);
+      setOptions(titles); //Setting array of jobtitles
+    });
   }, []);
 
   return (
