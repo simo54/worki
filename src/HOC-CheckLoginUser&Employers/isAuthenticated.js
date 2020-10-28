@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-export default function IsAuthenticated(wrappedComponent, typeOfUser) {
+export default function IsAuthenticated(props) {
+  const { WrappedComponent, typeOfUser } = props;
   const [error, setError] = useState(false);
-
   const [userId, setUserId] = useState();
+
+  console.log(userId);
 
   useEffect(() => {
     if (typeOfUser) {
@@ -15,12 +17,23 @@ export default function IsAuthenticated(wrappedComponent, typeOfUser) {
           : "http://localhost:5000/employer/employerIsAuthenticated";
       axios
         .get(route, { withCredentials: true })
-        .then((res) => console.log(res))
-        // .then((res) => console.log("ID! : " + res.data[1]))
+        .then((res) => {
+          setUserId(res.data.user_id); // Sending the ID from authenticated user
+        })
         .catch((e) => {
           setError(true);
         });
     }
   }, [typeOfUser]);
-  return <div>{error ? <Redirect to="/" /> : wrappedComponent}</div>;
+
+  return (
+    <div>
+      {error ? (
+        <Redirect to="/" />
+      ) : userId ? (
+        <WrappedComponent dataId={userId} {...props} />
+      ) : null}
+      {/* {error ? <Redirect to="/" /> : <WrappedComponent dataId={"test"} />} */}
+    </div>
+  );
 }

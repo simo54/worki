@@ -12,7 +12,7 @@ import Howitworks from "./HowDoesItwork/HowDoesItWork";
 import GeoMap from "./LeafletMap/MapGeoTest";
 import IsAuthenticated from "./HOC-CheckLoginUser&Employers/IsAuthenticated";
 
-export default function App() {
+export default function App(props) {
   return (
     <Router>
       <div>
@@ -22,10 +22,18 @@ export default function App() {
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
           <Route path="/employer/profile">
-            {IsAuthenticated(<EmployerProfile />, "employer")}
+            <IsAuthenticated
+              WrappedComponent={EmployerProfile}
+              typeOfUser={"employer"}
+              {...props}
+            />
           </Route>
           <Route path="/user/profile">
-            {IsAuthenticated(<UserProfile />, "user")}
+            <IsAuthenticated
+              WrappedComponent={UserProfile}
+              typeOfUser={"user"}
+              {...props}
+            />
           </Route>
           <Route path="/employersignup" component={EmployerSignup} />
           <Route path="/geomap" component={GeoMap} />
