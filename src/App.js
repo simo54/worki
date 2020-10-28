@@ -21,11 +21,11 @@ export default function App() {
           <Route path="/jobs" component={JobList} />
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
-          <Route path="/user/profile">
-            {IsAuthenticated(<UserProfile />, "user")}
-          </Route>
           <Route path="/employer/profile">
             {IsAuthenticated(<EmployerProfile />, "employer")}
+          </Route>
+          <Route path="/user/profile">
+            {IsAuthenticated(<UserProfile />, "user")}
           </Route>
           <Route path="/employersignup" component={EmployerSignup} />
           <Route path="/geomap" component={GeoMap} />

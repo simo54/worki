@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import "./Style/LoginEmployer.css";
 
@@ -8,23 +9,24 @@ export default function LoginEmployer({ testLogin }) {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [checkstatus, setCheckStatus] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const loginSubmission = (e) => {
     e.preventDefault();
-    axios.post("/login/userEmployer", {
-      email,
-      password,
-    });
-    alert("loggedin!"); // must pressed ok otherwise will not finish the sending
+    axios
+      .post(
+        "http://localhost:5000/login/userEmployer",
+        { email, password },
+        { withCredentials: true }
+      )
+      .then((res) => setCheckStatus(true));
   };
   return (
     <>
       <Nav.Link onClick={handleShow} className="navLink align-items-center">
-        {/* <a onClick={handleShow} id="loginNav"> */}
         Login
-        {/* </a> */}
       </Nav.Link>
 
       <Modal show={show} onHide={handleClose}>

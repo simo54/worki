@@ -1,12 +1,13 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import PostAjob from "./FormJobPost";
-import ListApplications from "./ApplicationsList";
+// import ListApplications from "./ApplicationsList";
 
 export default function RecruiterProfile() {
   const [error, setError] = useState(false);
-  const [employerId, setEmployerId] = useState();
+  // const [employerId, setEmployerId] = useState();
+  const [jobsPost, setJobPost] = useState();
   // console.log(error);
 
   useEffect(() => {

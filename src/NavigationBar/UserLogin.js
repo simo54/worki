@@ -1,28 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import "./UserLogin.css";
+import { Redirect } from "react-router-dom";
 
 export default function Login() {
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [positiveStatus, setPositiveStatus] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // console.log(positiveStatus);
+  // useEffect(() => {
+  //   if (positiveStatus !== true) {
+  //     setPositiveStatus(false);
+  //   } else {
+  //     setPositiveStatus(true);
+  //   }
+  // }, []);
 
   const loginSubmission = (e) => {
     e.preventDefault();
-    console.log("Login from navbar");
     axios
       .post(
         "http://localhost:5000/login/user",
-        {
-          email,
-          password,
-        },
+        { email, password },
         { withCredentials: true }
       )
-      .then((res) => console.log("response happening", res));
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("OK");
+          setPositiveStatus(true);
+        }
+      });
   };
   return (
     <>

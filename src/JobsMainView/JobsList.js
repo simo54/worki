@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Map from "../LeafletMap/Map";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Button, Collapse } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Style/JobList.css";
 
 export default function JobsList() {
   const [jobsList, setJobList] = useState([]);
   const [jobDetails, setJobDetails] = useState();
+  const [open, setOpen] = useState(false);
 
   // Fetching the data from api
   useEffect(() => {
@@ -67,7 +68,21 @@ export default function JobsList() {
           </div>
         </div>
       </div>
-      <Map />
+      <div className="container">
+        <Button
+          onClick={() => setOpen(!open)}
+          aria-controls="collapse"
+          aria-expanded={open}
+        >
+          Interactive Map
+        </Button>
+        <Collapse in={open}>
+          <div id="collapse">
+            <Map />
+          </div>
+        </Collapse>
+      </div>
+
       <div className="container-fluid mt-3">
         <div className="row">
           <div id="jobListCol" className="col-4">

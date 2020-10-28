@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Profile.css";
 
 export default function UserProfile() {
-  // const [user, setUser] = useState([]);
-  // const [error, setError] = useState(false);
-  // useEffect(() => {
-  //   axios.get("/books", { validateStatus: () => true }).then((response) => {
-  //     if (response.status === 401) {
-  //       // redirection to login
-  //       setError(true);
-  //     }
-  //     setBooks(response.data);
-  //   });
-  // }, []);
-  // return (
+  const [user, setUser] = useState([]);
+  const [error, setError] = useState(false);
+  const [profile, setProfile] = useState();
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    // const id = req.
+    // axios.get(`http://localhost:5000/users/${id}`).then((res) => {
+    //   console.log(res.data);
+    // setProfile()
+    // });
+  }, []);
 
   return (
     <div>
@@ -30,6 +31,20 @@ export default function UserProfile() {
             </div>
             <div className="container">
               <h3>Skills</h3>
+              <div className="container d-flex justify-content-between flex-wrap">
+                {/* mapping of all new skills */}
+                <h4>
+                  <span class="badge badge-secondary personalBadge">
+                    Fixing Roof
+                  </span>
+                </h4>{" "}
+                <h4>
+                  <span class="badge badge-secondary">Swallow spaghetti</span>
+                </h4>{" "}
+                <h4>
+                  <span class="badge badge-secondary">Buing dinner for me</span>
+                </h4>
+              </div>
             </div>
             <div className="container">
               <h3>Certifications</h3>
@@ -37,11 +52,13 @@ export default function UserProfile() {
             <div className="container">
               <h3>Resume</h3>
               <form>
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Click to Upload</label>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlFile1">
+                    Click to Upload
+                  </label>
                   <input
                     type="file"
-                    class="form-control-file"
+                    className="form-control-file"
                     id="exampleFormControlFile1"
                   />
                 </div>
@@ -51,63 +68,74 @@ export default function UserProfile() {
           <div className="col">
             <form>
               <div className="form-group row">
-                <label for="staticEmail" className="col-sm-3 col-form-label">
+                <label
+                  htmlFor="staticEmail"
+                  className="col-sm-3 col-form-label"
+                >
                   <h5>Name</h5>
+                  {/* <h5>{Name}</h5> */}
                 </label>
                 <div className="col-sm-9 w-50 pl-0">
                   <input
                     type="text"
-                    readonly
+                    readOnly
                     className="form-control form-control-md w-50"
                     id="staticEmail"
-                    value=""
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="staticEmail" className="col-sm-3 col-form-label">
+                <label
+                  htmlFor="staticEmail"
+                  className="col-sm-3 col-form-label"
+                >
                   <h5>Last Name</h5>
+                  {/* <h5>{Name}</h5> */}
                 </label>
                 <div className="col-sm-9 w-50 pl-0">
                   <input
                     type="text"
-                    readonly
+                    readOnly
                     className="form-control form-control-md w-50"
                     id="staticEmail"
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="staticEmail" className="col-sm-3 col-form-label">
+                <label
+                  htmlFor="staticEmail"
+                  className="col-sm-3 col-form-label"
+                >
                   <h5>Email</h5>
                 </label>
                 <div className="col-sm-9 w-50 pl-0">
                   <input
                     type="text"
-                    readonly
+                    readOnly
                     className="form-control form-control-md w-50"
                     id="staticEmail"
-                    value=""
                   />
                 </div>
               </div>
               <div className="form-group row">
-                <label for="staticEmail" className="col-sm-3 col-form-label">
+                <label
+                  htmlFor="staticEmail"
+                  className="col-sm-3 col-form-label"
+                >
                   <h5>Mobile</h5>
                 </label>
                 <div className="col-sm-9 w-50 pl-0">
                   <input
                     type="text"
-                    readonly
+                    readOnly
                     className="form-control form-control-md w-50"
                     id="staticEmail"
-                    value=""
                   />
                 </div>
               </div>
-              <div class="form-group row">
+              <div className="form-group row">
                 <label
-                  for="example-date-input"
+                  htmlFor="example-date-input"
                   className="col-3 col-form-label"
                 >
                   <h5>Birthday</h5>
@@ -117,27 +145,25 @@ export default function UserProfile() {
                     className="form-control form-control-md w-50"
                     readOnly
                     type="date"
-                    value=""
                     id="example-date-input"
                   />
                 </div>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label
-                  for="exampleTextarea"
+                  htmlFor="exampleTextarea"
                   className="col-3 col-form-label pl-0"
                 >
-                  <h5>About Me</h5>
+                  <h5>Presentation</h5>
                 </label>
                 <textarea
                   className="form-control w-75"
                   id="exampleTextarea"
                   rows="8"
-                  value=""
                 ></textarea>
               </div>
             </form>
-          </div>{" "}
+          </div>
         </div>
       </div>
     </div>
