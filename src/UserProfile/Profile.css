@@ -12,6 +12,10 @@
   height: auto;
 }
 
+.hide {
+  display: none;
+}
+
 select {
   border-radius: 50px !important;
 }

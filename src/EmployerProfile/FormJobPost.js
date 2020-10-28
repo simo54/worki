@@ -81,7 +81,7 @@ export default function Example() {
             <div className="mt-3">
               <label className="mr-2 mandatory">Type of contract</label>
               <select onChange={(e) => setEmploymenttype(e.target.value)}>
-                <option disabled selected value="DEFAULT">
+                <option disabled value="DEFAULT">
                   -- select one --
                 </option>
                 <option>Permanent </option>

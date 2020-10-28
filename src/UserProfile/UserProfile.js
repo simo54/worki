@@ -99,7 +99,6 @@ export default function UserProfile({ dataId }) {
                       className="col-sm-3 col-form-label"
                     >
                       <h5>Last Name</h5>
-                      {/* <h5>{Name}</h5> */}
                     </label>
                     <div className="col-sm-9 w-50 pl-0">
                       <input
@@ -111,6 +110,27 @@ export default function UserProfile({ dataId }) {
                       />
                     </div>
                   </div>
+                  {profile.middlename ? (
+                    <>
+                      <div className="form-group row">
+                        <label
+                          htmlFor="staticEmail"
+                          className="col-sm-3 col-form-label"
+                        >
+                          <h5>Middle Name</h5>
+                        </label>
+                        <div className="col-sm-9 w-50 pl-0">
+                          <input
+                            type="text"
+                            readOnly
+                            className="form-control form-control-md w-50"
+                            value={profile.middlename}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+
                   <div className="form-group row">
                     <label
                       htmlFor="staticEmail"
@@ -162,6 +182,74 @@ export default function UserProfile({ dataId }) {
                       />
                     </div>
                   </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="staticEmail"
+                      className="col-sm-3 col-form-label"
+                    >
+                      <h5>Address</h5>
+                    </label>
+                    <div className="col-sm-9 w-50 pl-0">
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control form-control-md w-50"
+                        id="staticEmail"
+                        value={profile.address}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="staticEmail"
+                      className="col-sm-3 col-form-label"
+                    >
+                      <h5>City</h5>
+                    </label>
+                    <div className="col-sm-9 w-50 pl-0">
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control form-control-md w-50"
+                        id="staticEmail"
+                        value={profile.city}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="staticEmail"
+                      className="col-sm-3 col-form-label"
+                    >
+                      <h5>Zip</h5>
+                    </label>
+                    <div className="col-sm-9 w-50 pl-0">
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control form-control-md w-50"
+                        id="staticEmail"
+                        value={profile.zip}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="staticEmail"
+                      className="col-sm-3 col-form-label"
+                    >
+                      <h5>Country</h5>
+                    </label>
+                    <div className="col-sm-9 w-50 pl-0">
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control form-control-md w-50"
+                        id="staticEmail"
+                        value={profile.country}
+                      />
+                    </div>
+                  </div>
                   <div className="form-group">
                     <label
                       htmlFor="exampleTextarea"
@@ -173,7 +261,6 @@ export default function UserProfile({ dataId }) {
                       className="form-control w-75"
                       id="exampleTextarea"
                       rows="8"
-                      // value={profile.age}
                     ></textarea>
                   </div>
                 </form>

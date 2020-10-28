@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import "./UserLogin.css";
-import { Redirect } from "react-router-dom";
 
 export default function Login() {
   const [show, setShow] = useState(false);
@@ -11,15 +10,6 @@ export default function Login() {
   const [positiveStatus, setPositiveStatus] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // console.log(positiveStatus);
-  // useEffect(() => {
-  //   if (positiveStatus !== true) {
-  //     setPositiveStatus(false);
-  //   } else {
-  //     setPositiveStatus(true);
-  //   }
-  // }, []);
 
   const loginSubmission = (e) => {
     e.preventDefault();
