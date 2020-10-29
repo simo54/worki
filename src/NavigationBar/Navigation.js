@@ -4,8 +4,10 @@ import { Button, Navbar, Nav } from "react-bootstrap";
 import Login from "./UserLogin";
 import "./NavigationBar.css";
 
-export default function Navigation() {
+export default function Navigation({ userId }) {
   const [hideNav, setHideNav] = useState(false);
+
+  console.log(userId);
 
   const location = useLocation();
   // need to connect the useState to the child. We need to change the state with the login button on the effect module from  "./Login";

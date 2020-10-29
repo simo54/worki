@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import "./Style/Autocomplete.css";
 
 export default function AutoComplete({ value, onChange, dataSource }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
   const rootEl = useRef(null);
+  const history = useHistory();
 
   const KEY_CODE = {
     ENTER: 13,
@@ -23,6 +25,10 @@ export default function AutoComplete({ value, onChange, dataSource }) {
   });
 
   const candidates = dataSource.filter((item) => item.includes(value));
+
+  const redirectToJobsList = () => {
+    history.push("/jobs");
+  };
 
   return (
     <div
@@ -112,6 +118,7 @@ export default function AutoComplete({ value, onChange, dataSource }) {
               className="btn btn-outline-secondary"
               type="button"
               id={dropdownOpen ? "searchButtonAutocomplete" : "searchButton"}
+              onClick={redirectToJobsList}
             >
               <svg
                 width="1em"

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
+import Home from "../Homepage/Homepage";
 import "./UserLogin.css";
 
 export default function Login() {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [positiveStatus, setPositiveStatus] = useState(false);
+  const history = useHistory();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -20,9 +22,13 @@ export default function Login() {
         { withCredentials: true }
       )
       .then((res) => {
+        if (res.status !== 200) {
+          console.log("Bad credentials");
+          alert("please insert right credentials");
+        }
         if (res.status === 200) {
           console.log("OK");
-          setPositiveStatus(true);
+          history.push("/user/profile"); // Redirect on user profile if everything went good
         }
       });
   };
@@ -60,7 +66,7 @@ export default function Login() {
           <div>
             Not a member?
             <span>
-              <a href="http://localhost:3000/"> Click here!</a>
+              <a href={Home}> Click here!</a>
             </span>{" "}
           </div>
           <Button

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
 import PostAjob from "./FormJobPost";
 import axios from "axios";
 // import ListApplications from "./ApplicationsList";
 
 export default function RecruiterProfile({ dataId }) {
-  const [jobsPost, setJobPost] = useState();
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
@@ -14,7 +12,7 @@ export default function RecruiterProfile({ dataId }) {
       setProfile(res.data);
       console.log(res.data);
     });
-  }, []);
+  }, [dataId]);
 
   return (
     <div>
@@ -54,24 +52,7 @@ export default function RecruiterProfile({ dataId }) {
             <div className="joblists mb-3">
               <label>Job Listing</label>
               <ul className="list-group">
-                <a
-                  href="#"
-                  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                >
-                  Dapibus ac facilisis in
-                  <span className="badge badge-primary badge-pill">
-                    14 Applications
-                  </span>
-                </a>
-                <a
-                  href="#"
-                  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                >
-                  Dapibus ac facilisis in
-                  <span className="badge badge-primary badge-pill">
-                    14 Applications
-                  </span>
-                </a>
+                {/* {} */}
                 <a
                   href="#"
                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"

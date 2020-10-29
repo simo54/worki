@@ -7,8 +7,6 @@ export default function IsAuthenticated(props) {
   const [error, setError] = useState(false);
   const [userId, setUserId] = useState();
 
-  console.log(userId);
-
   useEffect(() => {
     if (typeOfUser) {
       const route =
@@ -33,7 +31,6 @@ export default function IsAuthenticated(props) {
       ) : userId ? (
         <WrappedComponent dataId={userId} {...props} />
       ) : null}
-      {/* {error ? <Redirect to="/" /> : <WrappedComponent dataId={"test"} />} */}
     </div>
   );
 }

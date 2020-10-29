@@ -272,11 +272,11 @@ export default function ForEmployer() {
                     onClick={checkAgreement}
                   />
                   <label className="form-check-label">
-                    I accept the{" "}
+                    I accept{" "}
                     <a href="http://localhost:3000/">
                       terms and conditions
                       <span className="mandatoryTerms"> *</span>
-                    </a>{" "}
+                    </a>
                     {warning === true ? (
                       <div className="text-danger">
                         Please read and accept terms and conditions
@@ -290,7 +290,7 @@ export default function ForEmployer() {
               </Button>
             </form>
           </div>
-          <div className="col-5">
+          <div className="col-5 d-inline">
             <h2 className="text-center">
               Looking for your next talent? You came in the right place!
             </h2>

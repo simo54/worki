@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Map from "../LeafletMap/Map";
 import axios from "axios";
 import { Button, Collapse } from "react-bootstrap";
+import Application from "./Application";
 import { Link } from "react-router-dom";
 import "./Style/JobList.css";
 
@@ -9,6 +10,7 @@ export default function JobsList() {
   const [jobsList, setJobList] = useState([]);
   const [jobDetails, setJobDetails] = useState();
   const [open, setOpen] = useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
 
   // Fetching the data from api
   useEffect(() => {
@@ -22,13 +24,15 @@ export default function JobsList() {
     setJobDetails(e);
   };
 
+  const apply = (e) => {};
+
   return (
     <div className="container-fluid">
-      <div className="justify-content-center w-50">
+      <div>
         <div id="inputContainer">
           <div className="input-group">
             <input
-              className="form-control"
+              className="form-control w-25"
               type="search"
               placeholder="Try to search Baker..."
               // id={dropdownOpen ? "searchBarAutocomplete" : "searchBar"}
@@ -68,19 +72,23 @@ export default function JobsList() {
           </div>
         </div>
       </div>
-      <div className="container">
-        <Button
-          onClick={() => setOpen(!open)}
-          aria-controls="collapse"
-          aria-expanded={open}
-        >
-          Interactive Map
-        </Button>
-        <Collapse in={open}>
-          <div id="collapse">
-            <Map />
-          </div>
-        </Collapse>
+      <div className="container-fluid text-center p-0">
+        <div className="container">
+          <Button
+            onClick={() => setOpen(!open)}
+            aria-controls="collapse"
+            aria-expanded={open}
+          >
+            Interactive Map
+          </Button>
+        </div>
+        <div className="container p-0">
+          <Collapse in={open}>
+            <div className="container-fluid p-0" id="collapse">
+              <Map />
+            </div>
+          </Collapse>
+        </div>
       </div>
 
       <div className="container-fluid mt-3">
@@ -164,9 +172,17 @@ export default function JobsList() {
                       <hr />
                       <p>{jobDetails[10]}</p>
                       <p>{jobDetails[11]}</p>
-                      <Link to="/">
-                        <Button>Apply</Button>
-                      </Link>
+                      <Button
+                        variant="primary"
+                        onClick={() => setModalShow(true)}
+                      >
+                        Apply!
+                      </Button>
+
+                      <Application
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                      />
                     </div>
                   </div>
                 </div>

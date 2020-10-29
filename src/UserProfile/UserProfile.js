@@ -3,17 +3,14 @@ import axios from "axios";
 import "./Profile.css";
 
 export default function UserProfile({ dataId }) {
-  const [user, setUser] = useState([]);
-  const [error, setError] = useState(false);
   const [profile, setProfile] = useState({});
-  const [skills, setSkills] = useState([]);
 
   useEffect(() => {
     const id = dataId;
     axios.get(`http://localhost:5000/user/${id}`).then((res) => {
       setProfile(res.data);
     });
-  }, []);
+  }, [dataId]);
 
   return (
     <div>
@@ -124,7 +121,7 @@ export default function UserProfile({ dataId }) {
                             type="text"
                             readOnly
                             className="form-control form-control-md w-50"
-                            value={profile.middlename}
+                            // value={profile.middlename}
                           />
                         </div>
                       </div>
@@ -195,7 +192,7 @@ export default function UserProfile({ dataId }) {
                         readOnly
                         className="form-control form-control-md w-50"
                         id="staticEmail"
-                        value={profile.address}
+                        value={profile.address ? profile.address : ""}
                       />
                     </div>
                   </div>
@@ -212,7 +209,7 @@ export default function UserProfile({ dataId }) {
                         readOnly
                         className="form-control form-control-md w-50"
                         id="staticEmail"
-                        value={profile.city}
+                        value={profile.city ? profile.city : ""}
                       />
                     </div>
                   </div>

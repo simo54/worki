@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Style/LoginEmployer.css";
 
@@ -24,8 +23,11 @@ export default function LoginEmployer({ testLogin }) {
       .then((res) => setCheckStatus(true));
   };
   return (
-    <>
-      <Nav.Link onClick={handleShow} className="navLink align-items-center">
+    <div className="d-inline">
+      <Nav.Link
+        onClick={handleShow}
+        className="navLink align-items-center d-inline p-0 mr-1 ml-1"
+      >
         Login
       </Nav.Link>
 
@@ -70,6 +72,6 @@ export default function LoginEmployer({ testLogin }) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }

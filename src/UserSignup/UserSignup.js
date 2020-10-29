@@ -158,12 +158,12 @@ export default function Signup() {
                 required
                 type="email"
                 className="form-control"
-                placeholder=""
+                placeholder="Your city..."
                 onChange={(e) => setCity(e.target.value)}
               />
             </div>
             <div className="">
-              <label>Password</label>
+              <label className="mandatory">Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -208,7 +208,8 @@ export default function Signup() {
           <img src={svg} alt="svg" />
           <div className="container d-inline">
             <h6 className="text-center">
-              Already a user? Please <ButtonLogin /> !
+              Already a user? Please
+              <ButtonLogin />!
             </h6>
           </div>
         </div>

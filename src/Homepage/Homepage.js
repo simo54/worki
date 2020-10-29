@@ -21,7 +21,6 @@ export default function Homepage() {
   // Fetching data from endpoint, map them and get jobtitles
   useEffect(() => {
     axios.get(`http://localhost:5000/jobs/`).then((res) => {
-      console.log(res.data);
       const arrayOfObjects = res.data;
       const titles = arrayOfObjects.map((array) => array.jobtitle);
       setOptions(titles); //Setting array of jobtitles
