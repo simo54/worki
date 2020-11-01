@@ -66,12 +66,12 @@ export default function Login() {
           <div>
             Not a member?
             <span>
-              <a href={Home}> Click here!</a>
-            </span>{" "}
+              <a href="/usersignup"> Click here!</a>
+            </span>
           </div>
           <Button
             variant="primary"
-            className=""
+            className="ml-3"
             onClick={(e) => {
               handleClose();
               loginSubmission(e);

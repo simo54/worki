@@ -1,7 +1,11 @@
-input{
-    border-radius: 50px !important;
-  }
+input {
+  border-radius: 50px !important;
+}
 
-textarea{
-    border-radius: 25px !important;
+.modal-open {
+  overflow: inherit !important;
+}
+
+textarea {
+  border-radius: 25px !important;
 }

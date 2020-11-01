@@ -119,6 +119,11 @@ body {
   text-align: center;
 }
 
+.modal-open {
+  overflow: inherit !important;
+  /* overflow: scroll !important; */
+}
+
 .roundNumber {
   width: 100px;
   height: 100px;

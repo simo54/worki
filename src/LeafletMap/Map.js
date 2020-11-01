@@ -18,9 +18,7 @@ export default function MapLeaf() {
 
   // Fetching the data from api
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/jobs")
-      .then((results) => console.log(results.data));
+    axios.get("http://localhost:5000/jobs");
   }, []);
 
   const transformValue = (e) => {

@@ -12,7 +12,7 @@ export default function IsAuthenticated(props) {
       const route =
         typeOfUser === "user"
           ? "http://localhost:5000/user/userIsAuthenticated"
-          : "http://localhost:5000/employer/employerIsAuthenticated";
+          : null;
       axios
         .get(route, { withCredentials: true })
         .then((res) => {

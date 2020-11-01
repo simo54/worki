@@ -10,9 +10,9 @@ export default function IsAuthenticated(props) {
   useEffect(() => {
     if (typeOfUser) {
       const route =
-        typeOfUser === "user"
-          ? "http://localhost:5000/user/userIsAuthenticated"
-          : "http://localhost:5000/employer/employerIsAuthenticated";
+        typeOfUser === "employer"
+          ? "http://localhost:5000/employer/employerIsAuthenticated"
+          : null;
       axios
         .get(route, { withCredentials: true })
         .then((res) => {
@@ -28,7 +28,7 @@ export default function IsAuthenticated(props) {
     <div>
       {/* If user or employer are not signed in, redirect to signup page */}
       {error ? (
-        <Redirect to="/usersignup" />
+        <Redirect to="/employersignup" />
       ) : userId ? (
         <WrappedComponent dataId={userId} {...props} />
       ) : null}

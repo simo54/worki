@@ -1,12 +1,25 @@
+body {
+  padding-left: 0 !important;
+}
+
+.modal {
+  padding-left: 0px !important;
+}
+
+.modal-open {
+  overflow: auto;
+  padding-left: 0 !important;
+}
+
 .mandatory:after {
   content: " *";
   color: red;
 }
 
-input{
+input {
   border-radius: 50px !important;
 }
 
-select{
+select {
   border-radius: 50px !important;
 }

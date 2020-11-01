@@ -3,14 +3,16 @@ import Map from "../LeafletMap/Map";
 import axios from "axios";
 import { Button, Collapse } from "react-bootstrap";
 import Application from "./Application";
-import { Link } from "react-router-dom";
 import "./Style/JobList.css";
 
-export default function JobsList() {
+export default function JobsList({ dataId }) {
   const [jobsList, setJobList] = useState([]);
   const [jobDetails, setJobDetails] = useState();
   const [open, setOpen] = useState(false);
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  console.log("joblist.js: " + dataId);
+
+  console.log(jobDetails);
 
   // Fetching the data from api
   useEffect(() => {
@@ -23,8 +25,6 @@ export default function JobsList() {
   const clickViewJob = (e) => {
     setJobDetails(e);
   };
-
-  const apply = (e) => {};
 
   return (
     <div className="container-fluid">
@@ -45,11 +45,7 @@ export default function JobsList() {
               // }}
             />
             <span className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                // id={dropdownOpen ? "searchButtonAutocomplete" : "searchButton"}
-              >
+              <button className="btn btn-outline-secondary" type="button">
                 <svg
                   width="1em"
                   height="1em"
@@ -107,29 +103,34 @@ export default function JobsList() {
                           <p className="card-text">{element.zip}</p>
                           <p className="card-text">
                             <small className="text-muted">
-                              Published on {element.datejobpost}
+                              Published on{" "}
+                              <strong>{element.datejobpost}</strong>
+                            </small>
+                          </p>
+                          <p className="card-text">
+                            <small className="text-muted">
+                              Job ID: <strong>{element.jobref}</strong>
                             </small>
                           </p>
                           <button
                             className="btn btn-primary"
                             data-id={element.id}
+                            jobreference={element.jobref}
                             onClick={(e) => {
-                              clickViewJob(
-                                [
-                                  element.id,
-                                  element.jobtitle,
-                                  element.employmenttype,
-                                  element.introduction,
-                                  element.role,
-                                  element.requirements,
-                                  element.address,
-                                  element.zip,
-                                  element.city,
-                                  element.country,
-                                  element.contactdetails,
-                                ],
-                                e
-                              );
+                              clickViewJob([
+                                element.id,
+                                element.jobtitle,
+                                element.employmenttype,
+                                element.introduction,
+                                element.role,
+                                element.requirements,
+                                element.address,
+                                element.zip,
+                                element.city,
+                                element.country,
+                                element.contactdetails,
+                                element.jobref,
+                              ]);
                             }}
                           >
                             View Details and Apply
@@ -171,15 +172,18 @@ export default function JobsList() {
                       <p>{jobDetails[9]}</p>
                       <hr />
                       <p>{jobDetails[10]}</p>
-                      <p>{jobDetails[11]}</p>
+                      <p>Job Reference: {jobDetails[11]}</p>
                       <Button
                         variant="primary"
                         onClick={() => setModalShow(true)}
+                        on
                       >
                         Apply!
                       </Button>
 
                       <Application
+                        data={dataId}
+                        jobref={jobDetails[11]}
                         show={modalShow}
                         onHide={() => setModalShow(false)}
                       />

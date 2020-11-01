@@ -4,13 +4,13 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Style/LoginEmployer.css";
 
-export default function LoginEmployer({ testLogin }) {
+export default function LoginEmployer() {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [checkstatus, setCheckStatus] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const history = useHistory();
 
   const loginSubmission = (e) => {
     e.preventDefault();
@@ -20,7 +20,16 @@ export default function LoginEmployer({ testLogin }) {
         { email, password },
         { withCredentials: true }
       )
-      .then((res) => setCheckStatus(true));
+      .then((res) => {
+        if (res.status !== 200) {
+          console.log("Bad credentials");
+          alert("please insert right credentials");
+        }
+        if (res.status === 200) {
+          console.log("OK");
+          history.push("/employer/profile"); // Redirect on user profile if everything went good
+        }
+      });
   };
   return (
     <div className="d-inline">

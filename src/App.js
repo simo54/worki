@@ -11,22 +11,47 @@ import EmployerProfile from "./EmployerProfile/EmployerProfile";
 import Howitworks from "./HowDoesItwork/HowDoesItWork";
 import GeoMap from "./LeafletMap/MapGeoTest";
 import IsAuthenticated from "./HOC-CheckLoginUser&Employers/IsAuthenticated";
+import IsAuthenticatedEmployer from "./HOC-CheckLoginUser&Employers/isAuthenticatedEmployer";
+import IsAuthenticatedUser from "./HOC-CheckLoginUser&Employers/isAuthenticatedUser";
 
 export default function App(props) {
   return (
     <Router>
       <div>
         <Navigation />
+        {/* <IsAuthenticated
+          WrappedComponent={Navigation}
+          typeOfUser={"user"}
+          {...props}
+        /> */}
         <Switch>
-          <Route path="/jobs" component={JobList} />
+          <Route path="/jobs">
+            <IsAuthenticatedUser
+              WrappedComponent={JobList}
+              typeOfUser={"user"}
+              {...props}
+            />
+            {/* <IsAuthenticatedUser
+              WrappedComponent={JobList}
+              typeOfUser={"user"}
+              {...props}
+            /> */}
+          </Route>
+
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
+
           <Route path="/employer/profile">
             <IsAuthenticated
               WrappedComponent={EmployerProfile}
               typeOfUser={"employer"}
               {...props}
             />
+            {/* <IsAuthenticatedEmployer
+              WrappedComponent={EmployerProfile}
+              typeOfUser={"employer"}
+              {...props}
+            /> */}
           </Route>
           <Route path="/user/profile">
             <IsAuthenticated
@@ -34,6 +59,11 @@ export default function App(props) {
               typeOfUser={"user"}
               {...props}
             />
+            {/* <IsAuthenticatedUser
+              WrappedComponent={UserProfile}
+              typeOfUser={"user"}
+              {...props}
+            /> */}
           </Route>
           <Route path="/employersignup" component={EmployerSignup} />
           <Route path="/geomap" component={GeoMap} />

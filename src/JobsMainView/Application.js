@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import "./Style/Application.css";
 
+// export default function MyVerticallyCenteredModal(props) {
 export default function MyVerticallyCenteredModal(props) {
   const [firstname, setFirstName] = useState();
   const [lastname, setLastName] = useState();
@@ -14,6 +15,18 @@ export default function MyVerticallyCenteredModal(props) {
   const [country, setCountry] = useState();
   const [coverletter, setCoverLetter] = useState();
   const [resume, setResume] = useState();
+  const [userid] = useState(props.data);
+  const [jobref] = useState(props.jobref);
+
+  console.log("application.js: " + userid);
+
+  useEffect(() => {
+    const id = userid;
+    // axios.get("http://localhost:5000/user").then((results) => {
+    //   const jobs = results.data;
+    //   setJobList(jobs);
+    // });
+  }, []);
 
   const application = (e) => {
     e.preventDefault();
@@ -28,6 +41,8 @@ export default function MyVerticallyCenteredModal(props) {
       country,
       coverletter,
       resume,
+      userid,
+      jobref,
     });
   };
 
@@ -49,6 +64,7 @@ export default function MyVerticallyCenteredModal(props) {
               type="text"
               className="form-control"
               placeholder=""
+              value="ciao"
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>

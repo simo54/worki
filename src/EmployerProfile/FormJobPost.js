@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
 import PrefixDropdown from "../UserSignup/PhonePrefix";
 import "./Style/FormJobPost.css";
 
-export default function Example() {
+export default function JobPost(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [toggle, setToggle] = useState(false);
@@ -12,15 +12,29 @@ export default function Example() {
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
 
-  const [jobtitle, setJobtitle] = useState(false);
-  const [employmenttype, setEmploymenttype] = useState(false);
-  const [introduction, setIntroduction] = useState(false);
-  const [role, setRole] = useState(false);
-  const [requirements, setRequirements] = useState(false);
-  const [zip, setZip] = useState(false);
-  const [city, setCity] = useState(false);
-  const [country, setCountry] = useState(false);
-  const [contactdetails, setContactdetails] = useState(false);
+  // Taking the id from the actual user
+  const [jobtitle, setJobtitle] = useState();
+  const [employmenttype, setEmploymenttype] = useState();
+  const [role, setRole] = useState();
+  const [requirements, setRequirements] = useState();
+  const [zip, setZip] = useState();
+  const [city, setCity] = useState();
+  const [country, setCountry] = useState();
+  const [contactdetails, setContactdetails] = useState();
+  const [jobref, setJobId] = useState();
+
+  // console.log(jobid);
+
+  useEffect(() => {
+    let result = "";
+    let characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let charactersLength = characters.length;
+    for (let i = 0; i < 10; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    setJobId(result);
+  }, []);
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -30,24 +44,26 @@ export default function Example() {
     setToggle(!toggle);
   };
 
-  const signup = () => {
+  const submitJob = () => {
+    const companyid = props.data;
+    console.log(companyid);
     if (agreement === false) {
       setWarning(true);
       return;
     }
-    axios.post("/jobs/create", {
+    axios.post("http://localhost:5000/jobs/create", {
       jobtitle,
       employmenttype,
-      introduction,
       role,
       requirements,
       zip,
       city,
       country,
       contactdetails,
+      // introduction,
+      companyid,
+      jobref,
     });
-
-    alert("jobcreated!"); // must pressed ok otherwise will not finish the sending
   };
 
   return (
@@ -66,8 +82,8 @@ export default function Example() {
         <Modal.Header closeButton>
           <Modal.Title>Jobs details</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <form className="form-group">
+        <form className="form-group" onSubmit={submitJob}>
+          <Modal.Body>
             <div className="mt-4">
               <label className="mandatory">Job Title</label>
               <input
@@ -107,7 +123,8 @@ export default function Example() {
                 id="exampleFormControlTextarea1"
                 rows="3"
                 placeholder="If you need more space you can expand this box..."
-              ></textarea>
+                onChange={(e) => setRole(e.target.value)}
+              />
             </div>
             <div class="form-check mt-3">
               <input
@@ -178,25 +195,25 @@ export default function Example() {
                 </label>
               </div>
             </div>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <a
-            href="http://localhost:3000/"
-            role="button"
-            class="btn btn-secondary popover-test"
-            title="Popover title"
-            data-content="Popover body content is set in this attribute."
-          >
-            button
-          </a>
-          <Button variant="primary" onClick={signup}>
-            Submit
-          </Button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <a
+              href="http://localhost:3000/"
+              role="button"
+              class="btn btn-secondary popover-test"
+              title="Popover title"
+              data-content="Popover body content is set in this attribute."
+            >
+              button
+            </a>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Modal.Footer>
+        </form>
       </Modal>
     </>
   );

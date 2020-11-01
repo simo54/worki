@@ -8,6 +8,15 @@ export default function AutoComplete({ value, onChange, dataSource }) {
   const rootEl = useRef(null);
   const history = useHistory();
 
+  // Fetching data from endpoint, map them and get jobtitles, this was taken from homepage and originally this was displayed in an input tag at the homepage
+  // useEffect(() => {
+  //   axios.get(`http://localhost:5000/jobs/`).then((res) => {
+  //     const arrayOfObjects = res.data;
+  //     const titles = arrayOfObjects.map((array) => array.jobtitle);
+  //     setOptions(titles); //Setting array of jobtitles
+  //   });
+  // }, []);
+
   const KEY_CODE = {
     ENTER: 13,
     UP: 38,

@@ -206,12 +206,6 @@ export default function Signup() {
             Looking for your next job? Signup and check it out!
           </h2>
           <img src={svg} alt="svg" />
-          <div className="container d-inline">
-            <h6 className="text-center">
-              Already a user? Please
-              <ButtonLogin />!
-            </h6>
-          </div>
         </div>
       </div>
     </div>

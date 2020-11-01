@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import video from "./Editor-1.m4v";
+import React, { useState } from "react";
+// import video from "./Editor-1.m4v";
 import myIcon from "./icons/undraw_job_offers_kw5d.svg";
 import svgfirstrow from "./icons/Job hunt-pana.svg";
 import signupscvg from "./icons/Add User-pana.svg";
 import searchsvg from "./icons/Usability testing-pana.svg";
 import applysvg from "./icons/Resume folder-pana.svg";
 import imgEmployer from "./icons/women-1209678_640.jpg";
-import AutoComplete from "./Autocode";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Style/Homepage.css";
@@ -17,15 +15,6 @@ import "./Style/Homepage.css";
 export default function Homepage() {
   const [value, setValue] = useState("");
   const [options, setOptions] = useState([]);
-
-  // Fetching data from endpoint, map them and get jobtitles
-  useEffect(() => {
-    axios.get(`http://localhost:5000/jobs/`).then((res) => {
-      const arrayOfObjects = res.data;
-      const titles = arrayOfObjects.map((array) => array.jobtitle);
-      setOptions(titles); //Setting array of jobtitles
-    });
-  }, []);
 
   return (
     <div className="bodyContainer">
@@ -58,14 +47,16 @@ export default function Homepage() {
               >
                 <h2>Start your Job Hunt!</h2>
               </div>
-              <AutoComplete
+
+              {/* <AutoComplete
                 value={value}
                 onChange={(value) => setValue(value.toLowerCase())}
                 dataSource={options.map((element) => element.toLowerCase())}
-              />
+              /> */}
               <div id="textUnderSearch" className="mt-3">
-                Or visit our job page
-                <Link to="jobs"> here</Link>
+                <Link to="usersignup">
+                  <Button className="btn-lg">Signup and lets start</Button>
+                </Link>
               </div>
             </div>
           </div>
