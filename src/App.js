@@ -10,7 +10,7 @@ import Footer from "./Footer/Footer";
 import EmployerProfile from "./EmployerProfile/EmployerProfile";
 import Howitworks from "./HowDoesItwork/HowDoesItWork";
 import GeoMap from "./LeafletMap/MapGeoTest";
-import IsAuthenticated from "./HOC-CheckLoginUser&Employers/IsAuthenticated";
+import IsAuthenticated from "./Authentication/IsAuthenticated";
 
 export default function App(props) {
   return (
