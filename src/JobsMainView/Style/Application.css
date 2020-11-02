@@ -5,4 +5,11 @@ body {
 
 .fade {
   padding-right: 0 !important;
+  overflow-y: hidden !important;
+}
+
+.modal-open {
+  overflow-y: hidden !important;
+  overflow: inherit !important;
+  height: 100vh !important;
 }

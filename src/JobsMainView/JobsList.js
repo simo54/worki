@@ -8,11 +8,8 @@ import "./Style/JobList.css";
 export default function JobsList({ dataId }) {
   const [jobsList, setJobList] = useState([]);
   const [jobDetails, setJobDetails] = useState();
-  const [open, setOpen] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   console.log("joblist.js: " + dataId);
-
-  console.log(jobDetails);
 
   // Fetching the data from api
   useEffect(() => {
@@ -69,21 +66,10 @@ export default function JobsList({ dataId }) {
         </div>
       </div>
       <div className="container-fluid text-center p-0">
-        <div className="container">
-          <Button
-            onClick={() => setOpen(!open)}
-            aria-controls="collapse"
-            aria-expanded={open}
-          >
-            Interactive Map
-          </Button>
-        </div>
         <div className="container p-0">
-          <Collapse in={open}>
-            <div className="container-fluid p-0" id="collapse">
-              <Map />
-            </div>
-          </Collapse>
+          <div className="container-fluid p-0" id="collapse">
+            <Map />
+          </div>
         </div>
       </div>
 
@@ -137,17 +123,17 @@ export default function JobsList({ dataId }) {
                           </button>
                         </div>
                       </div>
-                      <div className="col-md-4">
+                      {/* <div className="col-md-4">
                         <div id="containerLogo" className="align-middle">
                           <img
                             // src="./logo2.jpg"
-                            href="./logo2.png"
+                            href="https://logos-download.com/26555-eos-2-logo-download.html"
                             alt="something"
                             // width="10"
                             // height="200"
                           />
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 ))

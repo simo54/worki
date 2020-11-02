@@ -13,9 +13,6 @@ import "./Style/Homepage.css";
 // palette is https://colorhunt.co/palette/218884
 
 export default function Homepage() {
-  const [value, setValue] = useState("");
-  const [options, setOptions] = useState([]);
-
   return (
     <div className="bodyContainer">
       <div id="imgOnMobile">

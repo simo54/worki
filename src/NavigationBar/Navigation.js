@@ -6,7 +6,6 @@ import "./NavigationBar.css";
 
 export default function Navigation() {
   const location = useLocation();
-  console.log(location);
   // need to connect the useState to the child. We need to change the state with the login button on the effect module from  "./Login";
   // const userLoggedIn = () => {
   //   console.log("test");
@@ -51,6 +50,7 @@ export default function Navigation() {
               }
             >
               <Login />
+
               <Link to="/usersignup">
                 <Button id="signupButton" className="btn btn-success mr-5">
                   Sign up!

@@ -61,6 +61,7 @@ export default function RecruiterProfile({ dataId }) {
             </div>
             {/* Right column for job posts available and other things */}
             <div className="col-6">
+              <PostAjob data={dataId} />
               <div className="joblists mb-3">
                 <label>Job Listing</label>
                 <ul className="list-group">
@@ -78,7 +79,6 @@ export default function RecruiterProfile({ dataId }) {
                 </ul>
               </div>
               {/* Passing props to child component */}
-              <PostAjob data={dataId} />
               <form>
                 {profile.companyname ? (
                   <div className="form-group row">

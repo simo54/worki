@@ -18,6 +18,10 @@ input {
   border-radius: 50px !important;
 }
 
+.modal-open {
+  overflow: inherit !important;
+}
+
 select {
   border-radius: 50px !important;
 }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import UpdateInfo from "./UpdatePersonalInfo";
 import axios from "axios";
 import "./Profile.css";
 
 export default function UserProfile({ dataId }) {
   const [profile, setProfile] = useState();
-  const history = useHistory();
 
   useEffect(() => {
     const id = dataId;
@@ -14,22 +14,14 @@ export default function UserProfile({ dataId }) {
       setProfile(res.data);
     });
   }, [dataId]);
-  console.log(profile);
-
-  const timeout = () => {
-    setTimeout(() => {
-      history.push("/");
-    }, 3000);
-  };
 
   return (
     <>
       <div>
         <div className="container" id="profileContainer">
-          <div className="border-bottom mb-5">
-            <h2 className="mb-3">
-              Hi! {profile ? `${profile.firstname}` : null}{" "}
-            </h2>
+          <div className="d-flex justify-content-between align-items-center border-bottom mb-5">
+            <h2>Hi {profile ? `${profile.firstname}` : null}! </h2>
+            <UpdateInfo data={dataId} />
           </div>
           <div className="row">
             <div className="col-lg visualCol">
@@ -85,6 +77,7 @@ export default function UserProfile({ dataId }) {
                 </Link>
               </div>
             </div>
+            {/* Right Col Personal Info */}
             <div className="col">
               {profile ? (
                 <>
@@ -107,9 +100,7 @@ export default function UserProfile({ dataId }) {
                         />
                       </div>
                     </div>
-      
-                  
-                    
+
                     */}
                     <div className="form-row">
                       <div className="form-group col-md-6">
@@ -130,6 +121,7 @@ export default function UserProfile({ dataId }) {
                         </label>
                         <input
                           type="text"
+                          readOnly
                           className="form-control"
                           value={profile.lastname}
                         />
@@ -157,6 +149,7 @@ export default function UserProfile({ dataId }) {
                         </label>
                         <input
                           type="text"
+                          readOnly
                           className="form-control"
                           id="inputAddress"
                           value={profile.email}
@@ -168,6 +161,7 @@ export default function UserProfile({ dataId }) {
                         </label>
                         <input
                           type="text"
+                          readOnly
                           className="form-control"
                           id="inputAddress2"
                           value={profile.mobile}
@@ -180,6 +174,7 @@ export default function UserProfile({ dataId }) {
                       </label>
                       <input
                         type="text"
+                        readOnly
                         className="form-control"
                         id="inputAddress"
                         value={profile.address}
@@ -192,6 +187,7 @@ export default function UserProfile({ dataId }) {
                         </label>
                         <input
                           type="text"
+                          readOnly
                           className="form-control"
                           id="inputCity"
                           value={profile.city}
@@ -203,6 +199,7 @@ export default function UserProfile({ dataId }) {
                         </label>
                         <input
                           type="text"
+                          readOnly
                           className="form-control"
                           value={profile.country}
                         />
@@ -213,6 +210,7 @@ export default function UserProfile({ dataId }) {
                         </label>
                         <input
                           type="text"
+                          readOnly
                           className="form-control"
                           value={profile.zip}
                         />
@@ -222,7 +220,11 @@ export default function UserProfile({ dataId }) {
                         <label>
                           <h5>Presentation</h5>
                         </label>
-                        <textarea className="form-control" rows="8"></textarea>
+                        <textarea
+                          className="form-control"
+                          readOnly
+                          rows="8"
+                        ></textarea>
                       </div>
                     </div>
                   </form>

@@ -121,7 +121,6 @@ body {
 
 .modal-open {
   overflow: inherit !important;
-  /* overflow: scroll !important; */
 }
 
 .roundNumber {

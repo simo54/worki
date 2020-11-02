@@ -15,10 +15,16 @@ export default function MapLeaf() {
   const [jobslist, setJoblist] = useState(null);
   const [cities, setCities] = useState([51.1642292, 10.4541194]);
   const [toggler, setToggler] = useState(false);
+  const [locations, setLocations] = useState([]);
+  console.log(locations);
 
   // Fetching the data from api
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs");
+    axios.get("http://localhost:5000/jobs").then((res) => {
+      const arrayOfObjects = res.data;
+      const locations = arrayOfObjects.map((array) => array.zip);
+      setLocations(locations); //Setting array of jobtitles
+    });
   }, []);
 
   const transformValue = (e) => {
@@ -36,7 +42,6 @@ export default function MapLeaf() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          {/* Mapping from the "fetch", in my case I should import axios and get the data from the fetch */}
           {parkdata.features.map((park) => (
             <Marker
               key={park.properties.PARK_ID}

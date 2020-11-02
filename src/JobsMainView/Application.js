@@ -17,15 +17,14 @@ export default function MyVerticallyCenteredModal(props) {
   const [resume, setResume] = useState();
   const [userid] = useState(props.data);
   const [jobref] = useState(props.jobref);
-
-  console.log("application.js: " + userid);
+  const [infoFromProfile, setInfoFromProfile] = useState();
 
   useEffect(() => {
     const id = userid;
-    // axios.get("http://localhost:5000/user").then((results) => {
-    //   const jobs = results.data;
-    //   setJobList(jobs);
-    // });
+    axios.get(`http://localhost:5000/user/${id}`).then((results) => {
+      const info = results.data;
+      setInfoFromProfile(info);
+    });
   }, []);
 
   const application = (e) => {
@@ -55,16 +54,20 @@ export default function MyVerticallyCenteredModal(props) {
       backdrop="static"
     >
       <Modal.Body>
-        <h4>Centered Modal</h4>
+        <h4>Application</h4>
         <form className="form-group">
           <div className="mt-4">
             <label className="mandatory">First Name</label>
             <input
               required
               type="text"
-              className="form-control"
-              placeholder=""
-              value="ciao"
+              className={
+                infoFromProfile && infoFromProfile.firstname
+                  ? "form-control is-valid"
+                  : "form-control is-invalid"
+              }
+              placeholder="Insert here your Firstname"
+              value={infoFromProfile ? infoFromProfile.firstname : null}
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
@@ -73,28 +76,42 @@ export default function MyVerticallyCenteredModal(props) {
             <input
               required
               type="text"
-              className="form-control"
-              placeholder=""
+              className={
+                infoFromProfile && infoFromProfile.lastname
+                  ? "form-control is-valid"
+                  : "form-control is-invalid"
+              }
+              placeholder="Your Last Name..."
+              value={infoFromProfile ? infoFromProfile.lastname : null}
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-          <div className="mt-4">
-            <label className="mandatory">Middle Name</label>
-            <input
-              required
-              type="text"
-              className="form-control"
-              placeholder=""
-              onChange={(e) => setMiddlename(e.target.value)}
-            />
-          </div>
+          {/* Hide middlename section if user has no middlename */}
+          {infoFromProfile && infoFromProfile.middlename ? (
+            <div className="mt-4">
+              <label className="mandatory">Middle Name</label>
+              <input
+                required
+                type="text"
+                className="form-control"
+                placeholder="Your Middle Name..."
+                value={infoFromProfile ? infoFromProfile.middlename : null}
+                onChange={(e) => setMiddlename(e.target.value)}
+              />
+            </div>
+          ) : null}
           <div className="mt-4">
             <label className="mandatory">Email</label>
             <input
               required
               type="text"
-              className="form-control"
-              placeholder=""
+              className={
+                infoFromProfile && infoFromProfile.email
+                  ? "form-control is-valid"
+                  : "form-control is-invalid"
+              }
+              placeholder="Insert your email"
+              value={infoFromProfile ? infoFromProfile.email : null}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -103,8 +120,13 @@ export default function MyVerticallyCenteredModal(props) {
             <input
               required
               type="text"
-              className="form-control"
-              placeholder=""
+              className={
+                infoFromProfile && infoFromProfile.mobile
+                  ? "form-control is-valid"
+                  : "form-control is-invalid"
+              }
+              placeholder="Insert your mobile phone"
+              value={infoFromProfile ? infoFromProfile.mobile : null}
               onChange={(e) => setMobile(e.target.value)}
             />
           </div>
@@ -113,8 +135,13 @@ export default function MyVerticallyCenteredModal(props) {
             <input
               required
               type="text"
-              className="form-control"
-              placeholder=""
+              className={
+                infoFromProfile && infoFromProfile.city
+                  ? "form-control is-valid"
+                  : "form-control is-invalid"
+              }
+              placeholder="Insert your current city"
+              value={infoFromProfile ? infoFromProfile.city : null}
               onChange={(e) => setCity(e.target.value)}
             />
           </div>
@@ -123,8 +150,13 @@ export default function MyVerticallyCenteredModal(props) {
             <input
               required
               type="text"
-              className="form-control"
-              placeholder=""
+              className={
+                infoFromProfile && infoFromProfile.zip
+                  ? "form-control is-valid"
+                  : "form-control is-invalid"
+              }
+              placeholder="Insert the Zip code"
+              value={infoFromProfile ? infoFromProfile.zip : null}
               onChange={(e) => setZip(e.target.value)}
             />
           </div>
@@ -133,8 +165,13 @@ export default function MyVerticallyCenteredModal(props) {
             <input
               required
               type="text"
-              className="form-control"
+              className={
+                infoFromProfile && infoFromProfile.country
+                  ? "form-control is-valid"
+                  : "form-control is-invalid"
+              }
               placeholder=""
+              value={infoFromProfile ? infoFromProfile.country : null}
               onChange={(e) => setCountry(e.target.value)}
             />
           </div>
@@ -155,6 +192,7 @@ export default function MyVerticallyCenteredModal(props) {
                 type="file"
                 className="form-control-file"
                 id="exampleFormControlFile1"
+                value={infoFromProfile ? infoFromProfile.resume : null}
                 onChange={(e) => setResume(e.target.value)}
               />
             </div>

@@ -11,8 +11,6 @@ import EmployerProfile from "./EmployerProfile/EmployerProfile";
 import Howitworks from "./HowDoesItwork/HowDoesItWork";
 import GeoMap from "./LeafletMap/MapGeoTest";
 import IsAuthenticated from "./HOC-CheckLoginUser&Employers/IsAuthenticated";
-import IsAuthenticatedEmployer from "./HOC-CheckLoginUser&Employers/isAuthenticatedEmployer";
-import IsAuthenticatedUser from "./HOC-CheckLoginUser&Employers/isAuthenticatedUser";
 
 export default function App(props) {
   return (
@@ -26,7 +24,7 @@ export default function App(props) {
         /> */}
         <Switch>
           <Route path="/jobs">
-            <IsAuthenticatedUser
+            <IsAuthenticated
               WrappedComponent={JobList}
               typeOfUser={"user"}
               {...props}
