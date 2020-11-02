@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Map from "../LeafletMap/Map";
 import axios from "axios";
-import { Button, Collapse } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Application from "./Application";
+import apiUrl from "../config";
 import "./Style/JobList.css";
 
 export default function JobsList({ dataId }) {
@@ -13,7 +14,7 @@ export default function JobsList({ dataId }) {
 
   // Fetching the data from api
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((results) => {
+    axios.get(`${apiUrl}jobs`).then((results) => {
       const jobs = results.data;
       setJobList(jobs);
     });

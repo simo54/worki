@@ -1,27 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
+import apiUrl from "../config";
 import "./Style/Application.css";
 
 // export default function MyVerticallyCenteredModal(props) {
 export default function MyVerticallyCenteredModal(props) {
-  const [firstname, setFirstName] = useState();
-  const [lastname, setLastName] = useState();
-  const [middlename, setMiddlename] = useState();
-  const [email, setEmail] = useState();
-  const [mobile, setMobile] = useState();
-  const [city, setCity] = useState();
-  const [zip, setZip] = useState();
-  const [country, setCountry] = useState();
-  const [coverletter, setCoverLetter] = useState();
-  const [resume, setResume] = useState();
   const [userid] = useState(props.data);
   const [jobref] = useState(props.jobref);
-  const [infoFromProfile, setInfoFromProfile] = useState();
+  const [infoFromProfile, setInfoFromProfile] = useState({});
 
   useEffect(() => {
     const id = userid;
-    axios.get(`http://localhost:5000/user/${id}`).then((results) => {
+    axios.get(`${apiUrl}user/${id}`).then((results) => {
       const info = results.data;
       setInfoFromProfile(info);
     });
@@ -29,19 +20,19 @@ export default function MyVerticallyCenteredModal(props) {
 
   const application = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/user/newjobapplication", {
-      firstname,
-      lastname,
-      middlename,
-      email,
-      mobile,
-      city,
-      zip,
-      country,
-      coverletter,
-      resume,
-      userid,
-      jobref,
+    axios.post(`${apiUrl}user/newjobapplication`, {
+      // infoFromProfile.firstname,
+      //       profile.lastname,
+      //       profile.middlename,
+      //       profile.email,
+      //       profile.mobile,
+      //       profile.city,
+      //       profile.zip,
+      //       profile.country,
+      //       profile.coverletter,
+      //       profile.resume,
+      //       userid,
+      //       jobref,
     });
   };
 
@@ -67,8 +58,7 @@ export default function MyVerticallyCenteredModal(props) {
                   : "form-control is-invalid"
               }
               placeholder="Insert here your Firstname"
-              value={infoFromProfile ? infoFromProfile.firstname : null}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={infoFromProfile.firstname}
             />
           </div>
           <div className="mt-4">
@@ -82,8 +72,7 @@ export default function MyVerticallyCenteredModal(props) {
                   : "form-control is-invalid"
               }
               placeholder="Your Last Name..."
-              value={infoFromProfile ? infoFromProfile.lastname : null}
-              onChange={(e) => setLastName(e.target.value)}
+              value={infoFromProfile.lastname}
             />
           </div>
           {/* Hide middlename section if user has no middlename */}
@@ -95,8 +84,7 @@ export default function MyVerticallyCenteredModal(props) {
                 type="text"
                 className="form-control"
                 placeholder="Your Middle Name..."
-                value={infoFromProfile ? infoFromProfile.middlename : null}
-                onChange={(e) => setMiddlename(e.target.value)}
+                value={infoFromProfile.middlename}
               />
             </div>
           ) : null}
@@ -111,8 +99,7 @@ export default function MyVerticallyCenteredModal(props) {
                   : "form-control is-invalid"
               }
               placeholder="Insert your email"
-              value={infoFromProfile ? infoFromProfile.email : null}
-              onChange={(e) => setEmail(e.target.value)}
+              value={infoFromProfile.email}
             />
           </div>
           <div className="mt-4">
@@ -126,8 +113,7 @@ export default function MyVerticallyCenteredModal(props) {
                   : "form-control is-invalid"
               }
               placeholder="Insert your mobile phone"
-              value={infoFromProfile ? infoFromProfile.mobile : null}
-              onChange={(e) => setMobile(e.target.value)}
+              value={infoFromProfile.mobile}
             />
           </div>
           <div className="mt-4">
@@ -141,8 +127,7 @@ export default function MyVerticallyCenteredModal(props) {
                   : "form-control is-invalid"
               }
               placeholder="Insert your current city"
-              value={infoFromProfile ? infoFromProfile.city : null}
-              onChange={(e) => setCity(e.target.value)}
+              value={infoFromProfile.city}
             />
           </div>
           <div className="mt-4">
@@ -156,8 +141,7 @@ export default function MyVerticallyCenteredModal(props) {
                   : "form-control is-invalid"
               }
               placeholder="Insert the Zip code"
-              value={infoFromProfile ? infoFromProfile.zip : null}
-              onChange={(e) => setZip(e.target.value)}
+              value={infoFromProfile.zip}
             />
           </div>
           <div className="mt-4">
@@ -166,13 +150,12 @@ export default function MyVerticallyCenteredModal(props) {
               required
               type="text"
               className={
-                infoFromProfile && infoFromProfile.country
+                infoFromProfile.country
                   ? "form-control is-valid"
                   : "form-control is-invalid"
               }
               placeholder=""
-              value={infoFromProfile ? infoFromProfile.country : null}
-              onChange={(e) => setCountry(e.target.value)}
+              value={infoFromProfile.country}
             />
           </div>
           <div className="mt-4">
@@ -182,7 +165,6 @@ export default function MyVerticallyCenteredModal(props) {
               className="form-control"
               rows="3"
               placeholder=""
-              onChange={(e) => setCoverLetter(e.target.value)}
             />
           </div>
           <div className="mt-4">
@@ -192,8 +174,7 @@ export default function MyVerticallyCenteredModal(props) {
                 type="file"
                 className="form-control-file"
                 id="exampleFormControlFile1"
-                value={infoFromProfile ? infoFromProfile.resume : null}
-                onChange={(e) => setResume(e.target.value)}
+                value={infoFromProfile.resume}
               />
             </div>
           </div>
