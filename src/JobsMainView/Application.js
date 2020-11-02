@@ -28,10 +28,9 @@ export default function MyVerticallyCenteredModal(props) {
   }, []);
 
   const application = (e) => {
-    e.preventDefault();
-    axios.post("http://localhost:5000/user/newjobapplication", {
+    console.log(
       firstname,
-      lastname,
+      infoFromProfile.lastname,
       middlename,
       email,
       mobile,
@@ -41,8 +40,22 @@ export default function MyVerticallyCenteredModal(props) {
       coverletter,
       resume,
       userid,
-      jobref,
-    });
+      jobref
+    );
+    // axios.post("http://localhost:5000/user/newjobapplication", {
+    //   firstname,
+    //   lastname,
+    //   middlename,
+    //   email,
+    //   mobile,
+    //   city,
+    //   zip,
+    //   country,
+    //   coverletter,
+    //   resume,
+    //   userid,
+    //   jobref,
+    // });
   };
 
   return (
@@ -55,149 +68,152 @@ export default function MyVerticallyCenteredModal(props) {
     >
       <Modal.Body>
         <h4>Application</h4>
-        <form className="form-group">
-          <div className="mt-4">
-            <label className="mandatory">First Name</label>
-            <input
-              required
-              type="text"
-              className={
-                infoFromProfile && infoFromProfile.firstname
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              placeholder="Insert here your Firstname"
-              value={infoFromProfile ? infoFromProfile.firstname : null}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className="mandatory">Last Name</label>
-            <input
-              required
-              type="text"
-              className={
-                infoFromProfile && infoFromProfile.lastname
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              placeholder="Your Last Name..."
-              value={infoFromProfile ? infoFromProfile.lastname : null}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          {/* Hide middlename section if user has no middlename */}
-          {infoFromProfile && infoFromProfile.middlename ? (
+        {infoFromProfile ? (
+          <form className="form-group">
             <div className="mt-4">
-              <label className="mandatory">Middle Name</label>
+              <label className="mandatory">First Name</label>
               <input
                 required
                 type="text"
-                className="form-control"
-                placeholder="Your Middle Name..."
-                value={infoFromProfile ? infoFromProfile.middlename : null}
-                onChange={(e) => setMiddlename(e.target.value)}
+                className={
+                  infoFromProfile && infoFromProfile.firstname
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
+                placeholder="Insert here your Firstname"
+                value={infoFromProfile.firstname}
+                onSubmit={(e) => setFirstName(e.target.value)}
               />
             </div>
-          ) : null}
-          <div className="mt-4">
-            <label className="mandatory">Email</label>
-            <input
-              required
-              type="text"
-              className={
-                infoFromProfile && infoFromProfile.email
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              placeholder="Insert your email"
-              value={infoFromProfile ? infoFromProfile.email : null}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className="mandatory">Mobile</label>
-            <input
-              required
-              type="text"
-              className={
-                infoFromProfile && infoFromProfile.mobile
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              placeholder="Insert your mobile phone"
-              value={infoFromProfile ? infoFromProfile.mobile : null}
-              onChange={(e) => setMobile(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className="mandatory">City</label>
-            <input
-              required
-              type="text"
-              className={
-                infoFromProfile && infoFromProfile.city
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              placeholder="Insert your current city"
-              value={infoFromProfile ? infoFromProfile.city : null}
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className="mandatory">Zip</label>
-            <input
-              required
-              type="text"
-              className={
-                infoFromProfile && infoFromProfile.zip
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              placeholder="Insert the Zip code"
-              value={infoFromProfile ? infoFromProfile.zip : null}
-              onChange={(e) => setZip(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className="mandatory">Country</label>
-            <input
-              required
-              type="text"
-              className={
-                infoFromProfile && infoFromProfile.country
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              placeholder=""
-              value={infoFromProfile ? infoFromProfile.country : null}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className="mandatory">Cover Letter</label>
-            <textarea
-              required
-              className="form-control"
-              rows="3"
-              placeholder=""
-              onChange={(e) => setCoverLetter(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <div class="form-group">
-              <label className="mandatory">Resume</label>
+            <div className="mt-4">
+              <label className="mandatory">Last Name</label>
               <input
-                type="file"
-                className="form-control-file"
-                id="exampleFormControlFile1"
-                value={infoFromProfile ? infoFromProfile.resume : null}
-                onChange={(e) => setResume(e.target.value)}
+                required
+                type="text"
+                className={
+                  infoFromProfile && infoFromProfile.lastname
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
+                placeholder="Your Last Name..."
+                value={infoFromProfile ? infoFromProfile.lastname : null}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
-          </div>
-        </form>
+            {/* Hide middlename section if user has no middlename */}
+            {infoFromProfile && infoFromProfile.middlename ? (
+              <div className="mt-4">
+                <label className="mandatory">Middle Name</label>
+                <input
+                  required
+                  type="text"
+                  className="form-control"
+                  placeholder="Your Middle Name..."
+                  value={infoFromProfile ? infoFromProfile.middlename : null}
+                  onChange={(e) => setMiddlename(e.target.value)}
+                />
+              </div>
+            ) : null}
+            <div className="mt-4">
+              <label className="mandatory">Email</label>
+              <input
+                required
+                type="text"
+                className={
+                  infoFromProfile && infoFromProfile.email
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
+                placeholder="Insert your email"
+                value={infoFromProfile ? infoFromProfile.email : null}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="mt-4">
+              <label className="mandatory">Mobile</label>
+              <input
+                required
+                type="text"
+                className={
+                  infoFromProfile && infoFromProfile.mobile
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
+                placeholder="Insert your mobile phone"
+                value={infoFromProfile ? infoFromProfile.mobile : null}
+                onChange={(e) => setMobile(e.target.value)}
+              />
+            </div>
+            <div className="mt-4">
+              <label className="mandatory">City</label>
+              <input
+                required
+                type="text"
+                className={
+                  infoFromProfile && infoFromProfile.city
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
+                placeholder="Insert your current city"
+                value={infoFromProfile ? infoFromProfile.city : null}
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </div>
+            <div className="mt-4">
+              <label className="mandatory">Zip</label>
+              <input
+                required
+                type="text"
+                className={
+                  infoFromProfile && infoFromProfile.zip
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
+                placeholder="Insert the Zip code"
+                value={infoFromProfile ? infoFromProfile.zip : null}
+                onChange={(e) => setZip(e.target.value)}
+              />
+            </div>
+            <div className="mt-4">
+              <label className="mandatory">Country</label>
+              <input
+                required
+                type="text"
+                className={
+                  infoFromProfile && infoFromProfile.country
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
+                placeholder=""
+                value={infoFromProfile ? infoFromProfile.country : null}
+                onChange={(e) => setCountry(e.target.value)}
+              />
+            </div>
+            <div className="mt-4">
+              <label className="mandatory">Cover Letter</label>
+              <textarea
+                required
+                className="form-control"
+                rows="3"
+                placeholder=""
+                value=""
+                onChange={(e) => setCoverLetter(e.target.value)}
+              />
+            </div>
+            <div className="mt-4">
+              <div class="form-group">
+                <label className="mandatory">Resume</label>
+                <input
+                  type="file"
+                  className="form-control-file"
+                  id="exampleFormControlFile1"
+                  value={infoFromProfile ? infoFromProfile.resume : null}
+                  onChange={(e) => setResume(e.target.value)}
+                />
+              </div>
+            </div>
+          </form>
+        ) : null}
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close Application</Button>

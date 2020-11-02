@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import "./UserSignup.css";
 
-export default function PhonePrefix() {
-  const [prefix, setPrefix] = useState("");
+export default function PhonePrefix(props) {
+  const handleChange = (e) => {
+    props.onChange(e.target.value);
+  };
 
-  function login(prefix) {
-    setPrefix(prefix);
-  }
   return (
     <div id="containerPrefix">
       <select
         id="demo_overview"
         className="form-control"
         data-role="select-dropdown"
-        onChange={(e) => login(e.target.value)}
-        value={prefix}
+        value={props.value}
+        onChange={handleChange}
       >
         <option disabled value="DEFAULT">
           choose prefix

@@ -35,6 +35,11 @@ export default function ForEmployer() {
   const [companysize, setCompanysize] = useState("");
   const [password, setPassword] = useState("");
 
+  // Getting the props prefix value from PhonePrefix.js
+  const handleChange = (prefix) => {
+    setPrefixNumber(prefix);
+  };
+
   const checkBox = () => {
     setToggle(!toggle);
   };
@@ -59,6 +64,7 @@ export default function ForEmployer() {
       lastname,
       middlename,
       email,
+      prefixNumber,
       mobile,
       address,
       city,
@@ -180,9 +186,7 @@ export default function ForEmployer() {
                 <div className="form-row">
                   <div className="form-group col-md-4">
                     <label className="mandatory">Prefix</label>
-                    <PrefixDropdown
-                      login={(prefix) => setPrefixNumber(prefix)}
-                    />
+                    <PrefixDropdown onChange={handleChange} />
                   </div>
                   <div className="form-group col-md-8">
                     <label className="mandatory">Mobile</label>

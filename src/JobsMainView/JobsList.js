@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Map from "../LeafletMap/Map";
 import axios from "axios";
-import { Button, Collapse } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Application from "./Application";
+import Autocomplete from "./Autocode";
 import "./Style/JobList.css";
 
 export default function JobsList({ dataId }) {
   const [jobsList, setJobList] = useState([]);
   const [jobDetails, setJobDetails] = useState();
   const [modalShow, setModalShow] = useState(false);
-  console.log("joblist.js: " + dataId);
+  const [titles, setOptions] = useState(null);
 
   // Fetching the data from api
   useEffect(() => {
     axios.get("http://localhost:5000/jobs").then((results) => {
       const jobs = results.data;
+      const titles = jobs.map((array) => array.jobtitle); // Fetching data from endpoint, map them and get jobtitles, this was taken from homepage and originally this was displayed in an input tag at the homepage
+      setOptions(titles); //Setting array of jobtitles
       setJobList(jobs);
     });
   }, []);
@@ -26,44 +29,8 @@ export default function JobsList({ dataId }) {
   return (
     <div className="container-fluid">
       <div>
-        <div id="inputContainer">
-          <div className="input-group">
-            <input
-              className="form-control w-25"
-              type="search"
-              placeholder="Try to search Baker..."
-              // id={dropdownOpen ? "searchBarAutocomplete" : "searchBar"}
-              // value={value}
-              // onFocus={() => setDropdownOpen(true)}
-              // onChange={(event) => {
-              //   onChange(event.target.value);
-              //   setDropdownOpen(true);
-              //   setActiveItem(null);
-              // }}
-            />
-            <span className="input-group-append">
-              <button className="btn btn-outline-secondary" type="button">
-                <svg
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 16 16"
-                  className="bi bi-search"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
-                  />
-                </svg>
-              </button>
-            </span>
-          </div>
-        </div>
+        {/* <AutoSearch dataSource={jobsList} /> */}
+        <Autocomplete suggestions={titles} />
       </div>
       <div className="container-fluid text-center p-0">
         <div className="container p-0">

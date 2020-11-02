@@ -9,16 +9,19 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [profile, setProfile] = useState();
-  const [applicantsNumber, setApplicantsNumber] = useState(5);
-  console.log("applicationlistjobref " + jobref);
-  console.log(profile);
+  const [applicantsNumber, setApplicantsNumber] = useState();
 
   // Fetch all people that applied for the job clicked
   useEffect(() => {
     const id = jobref;
     axios
       .get(`http://localhost:5000/employer/applications/${id}`)
-      .then((res) => setProfile(res.data));
+      .then((res) => {
+        console.log(res.data);
+        console.log(res.data.length);
+        setProfile(res.data);
+        setApplicantsNumber(res.data.length);
+      });
   }, []);
 
   return (

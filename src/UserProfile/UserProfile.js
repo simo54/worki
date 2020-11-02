@@ -82,26 +82,6 @@ export default function UserProfile({ dataId }) {
               {profile ? (
                 <>
                   <form>
-                    {/* 
-                    <div className="form-group row">
-                      <label
-                        htmlFor="example-date-input"
-                        className="col-3 col-form-label"
-                      >
-                        <h5>Birthday</h5>
-                      </label>
-                      <div className="col-9 w-50 pl-0">
-                        <input
-                          className="form-control form-control-md w-50"
-                          readOnly
-                          type="date"
-                          id="example-date-input"
-                          value={profile.age}
-                        />
-                      </div>
-                    </div>
-
-                    */}
                     <div className="form-row">
                       <div className="form-group col-md-6">
                         <label>
@@ -215,16 +195,11 @@ export default function UserProfile({ dataId }) {
                           value={profile.zip}
                         />
                       </div>
-
                       <div className="form-group col-md-12">
                         <label>
                           <h5>Presentation</h5>
                         </label>
-                        <textarea
-                          className="form-control"
-                          readOnly
-                          rows="8"
-                        ></textarea>
+                        <textarea className="form-control" readOnly rows="8" />
                       </div>
                     </div>
                   </form>

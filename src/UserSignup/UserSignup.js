@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import PrefixDropdown from "./PhonePrefix";
-import ButtonLogin from "../NavigationBar/UserLogin";
 import svg from "./Supermarket workers-rafiki.svg";
 import axios from "axios";
 import "./UserSignup.css";
@@ -15,17 +14,24 @@ export default function Signup() {
   const [middlename, setMiddlename] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
-  // const [prefixNumber, setPrefixNumber] = useState("");
+  const [prefixNumber, setPrefixNumber] = useState("");
   const [mobile, setMobile] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
 
+  // Getting the props prefix value from PhonePrefix.js
+  const handleChange = (prefix) => {
+    setPrefixNumber(prefix);
+  };
+
+  // Checking agreement
   const checkAgreement = () => {
     setAgreement(!agreement);
   };
 
+  // Signup function
   const signup = (e) => {
     e.preventDefault();
     if (agreement === false) {
@@ -38,6 +44,7 @@ export default function Signup() {
       middlename,
       email,
       age,
+      prefixNumber,
       mobile,
       city,
       zip,
@@ -114,7 +121,7 @@ export default function Signup() {
             <div className="form-row p-0 m-0">
               <div className="form-group col-md-4  m-0">
                 <label className="mandatory">Prefix</label>
-                <PrefixDropdown />
+                <PrefixDropdown onChange={handleChange} />
               </div>
               <div className="form-group col-md-8  m-0">
                 <label className="mandatory">Mobile</label>
