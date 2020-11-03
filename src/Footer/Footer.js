@@ -27,10 +27,10 @@ export default function Footer() {
               <h5 className="mb-4 font-weight-bold text-uppercase">Press</h5>
               <ul className="list-group">
                 <li className="list-group-item bg-transparent border-0 p-0 mb-2">
-                  <a href="http://localhost:3000/">About</a>
+                  <a href="http://localhost:3000/">Partners</a>
                 </li>
                 <li className="list-group-item bg-transparent border-0 p-0 mb-2">
-                  <a href="http://localhost:3000/">For investors</a>
+                  <a href="http://localhost:3000/">Careers</a>
                 </li>
               </ul>
             </div>
