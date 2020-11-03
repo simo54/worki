@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Nav } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import apiUrl from "../config";
 import "./Style/LoginEmployer.css";
 
 export default function LoginEmployer() {
@@ -16,7 +17,7 @@ export default function LoginEmployer() {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/login/userEmployer",
+        `${apiUrl}login/userEmployer`,
         { email, password },
         { withCredentials: true }
       )

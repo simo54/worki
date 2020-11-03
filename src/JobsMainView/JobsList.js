@@ -25,47 +25,48 @@ export default function JobsList({ dataId }) {
     setJobDetails(e);
   };
 
+  function search() {
+    // let i, txtValue, items;
+    // let input = document.getElementById("inputSearch");
+    // let filter = input.value.toUpperCase();
+    // let div = document.getElementsByClassName("cardToSearch");
+    // let h5 = document.getElementsByTagName("h5");
+    // // Loop through all list items
+    // for (i = 0; i < berries.length; i++) {
+    //   items = h5[i]; // Take as reference the h5 of each card
+    //   txtValue = items.textContent || items.innerText; // Will take reference the input from the Input Onkeyup
+    //   if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //     div[i].style.display = ""; // Show matches
+    //   } else {
+    //     div[i].style.display = "none"; // Hide no-matches
+    //   }
+    // }
+  }
+
   return (
     <div className="container">
       <div className="container d-flex">
-        {/* <input
-          className="form-control"
-          type="search"
-          placeholder="Try to search Baker..."
-        />
-        <span className="input-group-append">
-          <button className="btn" type="button">
-            <svg
-              width="1em"
-              height="1em"
-              viewBox="0 0 16 16"
-              className="bi bi-search"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
-              />
-              <path
-                fillRule="evenodd"
-                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
-              />
-            </svg>
-          </button>
-        </span> */}
-        <AutoSuggest
+        {/* <AutoSuggest
           value={value}
           onChange={(value) => setValue(value)}
           dataSource={["beijing", "xian", "nanjing", "shanghai", "shenzhen"]}
-        />
+        /> */}
       </div>
-      <div className="container text-center p-0">
-        <div className="container p-0">
+      <div className="container d-flex justify-content-center mt-4">
+        {/* <div className="container p-0">
           <div className="container-fluid p-0" id="collapse">
             <Map />
           </div>
-        </div>
+        </div> */}
+        <input
+          type="text"
+          onKeyUp={search}
+          placeholder="Search here..."
+          className="form-control w-25"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm"
+          id="inputSearch"
+        />
       </div>
 
       <div className="container mt-4">

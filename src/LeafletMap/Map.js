@@ -4,6 +4,7 @@ import { Icon } from "leaflet";
 import axios from "axios";
 import * as parkdata from "./Skateboard_Parks.json";
 import findme from "./3180209.svg";
+import apiUrl from "../config";
 import "./Map.css";
 
 const locationIcon = new Icon({
@@ -19,7 +20,7 @@ export default function MapLeaf() {
 
   // Fetching the data from api
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((res) => {
+    axios.get(`${apiUrl}jobs`).then((res) => {
       const arrayOfObjects = res.data;
       const locations = arrayOfObjects.map((array) => array.zip);
       setLocations(locations); //Setting array of jobtitles

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
 import PrefixDropdown from "../UserSignup/PhonePrefix";
+import apiUrl from "../config";
 import "./Style/FormJobPost.css";
 
 export default function JobPost(props) {
@@ -25,6 +26,7 @@ export default function JobPost(props) {
   const [mobileNoPrefix, setMobileNoPrefix] = useState();
   const [jobref, setJobId] = useState();
 
+  // Creating a job reference using a for loops in order to assign a certain and unique value to be easily found in our backend
   useEffect(() => {
     let result = "";
     let characters =
@@ -59,7 +61,7 @@ export default function JobPost(props) {
     const employmenttype = `${employmentContract} ` + ` ${workingHours}`;
     console.log(employmenttype);
     axios
-      .post("http://localhost:5000/jobs/create", {
+      .post(`${apiUrl}jobs/create`, {
         jobtitle,
         employmenttype,
         role,

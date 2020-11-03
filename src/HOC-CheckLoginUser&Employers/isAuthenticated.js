@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import apiUrl from "../config";
 
 export default function IsAuthenticated(props) {
   const { WrappedComponent, typeOfUser } = props;
@@ -11,8 +12,8 @@ export default function IsAuthenticated(props) {
     if (typeOfUser) {
       const route =
         typeOfUser === "user"
-          ? "http://localhost:5000/user/userIsAuthenticated"
-          : "http://localhost:5000/employer/employerIsAuthenticated";
+          ? `${apiUrl}user/userIsAuthenticated`
+          : `${apiUrl}employer/employerIsAuthenticated`;
       axios
         .get(route, { withCredentials: true })
         .then((res) => {
