@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import PrefixDropdown from "../UserSignup/PhonePrefix";
 import svg from "./icons/Business deal-rafiki.svg";
 import EmployerLogin from "./LoginEmployer";
 import axios from "axios";
+import apiUrl from "../config";
 import "./Style/ForEmployer.css";
 
 export default function ForEmployer() {
@@ -15,25 +16,31 @@ export default function ForEmployer() {
   const location = useLocation();
 
   // Fixing issues when switching between pages (without this will let you see the page on half)
-  if (location.pathname === "/employersignup") {
-    window.scrollTo(0, 0);
-  }
+  useEffect(() => {
+    if (location.pathname === "/employersignup") {
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   // UseState of signup details
-  const [companyname, setCompanyname] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [middlename, setMiddlename] = useState("");
-  const [logo, setLogo] = useState("");
-  const [email, setEmail] = useState("");
-  const [prefixNumber, setPrefixNumber] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
-  const [country, setCountry] = useState("");
-  const [companysize, setCompanysize] = useState("");
-  const [password, setPassword] = useState("");
+  const [companyname, setCompanyname] = useState();
+  const [firstname, setFirstname] = useState();
+  const [lastname, setLastname] = useState();
+  const [middlename, setMiddlename] = useState();
+  const [logo, setLogo] = useState();
+  const [email, setEmail] = useState();
+  const [prefixNumber, setPrefixNumber] = useState();
+  const [mobileNoPrefix, setMobile] = useState();
+  const [address, setAddress] = useState();
+  const [city, setCity] = useState();
+  const [zip, setZip] = useState();
+  const [country, setCountry] = useState();
+  const [companysize, setCompanysize] = useState();
+  const [password, setPassword] = useState();
+
+  const handleChange = (newValue) => {
+    setPrefixNumber(newValue);
+  };
 
   const checkBox = () => {
     setToggle(!toggle);
@@ -52,23 +59,34 @@ export default function ForEmployer() {
       setWarning(true);
       return;
     }
-    axios.post("/employer/create", {
-      companyname,
-      logo,
-      firstname,
-      lastname,
-      middlename,
-      email,
-      mobile,
-      address,
-      city,
-      zip,
-      country,
-      companysize,
-      password,
-    });
-
-    alert("usercreated!"); // must pressed ok otherwise will not finish the sending
+    const mobile = `+${prefixNumber}${mobileNoPrefix}`;
+    axios
+      .post(`${apiUrl}employer/create`, {
+        companyname,
+        logo,
+        firstname,
+        lastname,
+        middlename,
+        email,
+        mobile,
+        address,
+        city,
+        zip,
+        country,
+        companysize,
+        password,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status !== 200) {
+          alert("Please check the info provided");
+        }
+        if (res.status === 200) {
+          alert(
+            `✔✔✔ Thanks for the signup! ✔✔✔\n\nPlease Click on Login button on the right-bottom side once this window is closed!`
+          );
+        }
+      });
   };
 
   return (
@@ -85,7 +103,6 @@ export default function ForEmployer() {
                 name="example1"
                 onClick={checkBox}
               />
-              {/* for="customCheck" */}
               <label className="custom-control-label" htmlFor="customCheck">
                 {" "}
                 <p>Are you a freelancer or a phisical person?</p>
@@ -144,7 +161,7 @@ export default function ForEmployer() {
                   id="customLogoCheck"
                   onClick={checkBoxLogo}
                 />
-                {/* for="customCheck" */}
+
                 <label
                   className="custom-control-label mt-4"
                   htmlFor="customLogoCheck"
@@ -154,9 +171,7 @@ export default function ForEmployer() {
               </div>
               {toggleLogo ? (
                 <div className="form-group">
-                  <label for="exampleFormControlFile1">
-                    Choose the file you want to upload
-                  </label>
+                  <label>Choose the file you want to upload</label>
                   <input
                     type="file"
                     className="form-control-file"
@@ -180,9 +195,7 @@ export default function ForEmployer() {
                 <div className="form-row">
                   <div className="form-group col-md-4">
                     <label className="mandatory">Prefix</label>
-                    <PrefixDropdown
-                      login={(prefix) => setPrefixNumber(prefix)}
-                    />
+                    <PrefixDropdown onChange={handleChange} />
                   </div>
                   <div className="form-group col-md-8">
                     <label className="mandatory">Mobile</label>

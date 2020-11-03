@@ -46,37 +46,39 @@ export default function Footer() {
           </div>
         </div>
         <div id="credits" className="d-flex justify-content-center pb-0 mt-5">
-          <a href="https://stories.freepik.com/job">
+          <a href="https://stories.freepik.com/job" className="mr-2">
             Illustration by Freepik Stories
           </a>
-          Icons made by{" "}
+          Icons made by
           <a
             href="https://www.flaticon.com/authors/pixel-buddha"
             title="Pixel Buddha"
+            className="mr-2"
           >
             Pixel Buddha
-          </a>{" "}
-          from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
+          </a>
+          from
+          <a href="https://www.flaticon.com/" title="Flaticon" className="mr-2">
             www.flaticon.com
           </a>
           Icons made by{" "}
           <a
             href="https://www.flaticon.com/authors/pixel-perfect"
             title="Pixel perfect"
+            className="mr-2"
           >
             Pixel perfect
           </a>{" "}
           from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
+          <a href="https://www.flaticon.com/" title="Flaticon" className="mr-2">
             www.flaticon.com
           </a>
           Icons made by{" "}
-          <a href="http://www.freepik.com/" title="Freepik">
+          <a href="http://www.freepik.com/" title="Freepik" className="mr-2">
             Freepik
           </a>{" "}
           from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
+          <a href="https://www.flaticon.com/" title="Flaticon" className="mr-2">
             www.flaticon.com
           </a>
         </div>

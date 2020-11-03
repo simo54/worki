@@ -16,7 +16,6 @@ export default function MapLeaf() {
   const [cities, setCities] = useState([51.1642292, 10.4541194]);
   const [toggler, setToggler] = useState(false);
   const [locations, setLocations] = useState([]);
-  console.log(locations);
 
   // Fetching the data from api
   useEffect(() => {
@@ -75,14 +74,12 @@ export default function MapLeaf() {
         </Map>
       </div>
       {/* TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST */}
-      <div className="w-25">
+      <div className="w-50 mt-4">
         <select
-          id="demo_overview"
           className="form-control"
           data-role="select-dropdown"
           defaultValue={"DEFAULT"}
           onChange={(e) => transformValue(e)}
-          // value
         >
           <option disabled value="DEFAULT">
             choose prefix

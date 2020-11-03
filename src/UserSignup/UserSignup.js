@@ -1,26 +1,30 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import PrefixDropdown from "./PhonePrefix";
-import ButtonLogin from "../NavigationBar/UserLogin";
 import svg from "./Supermarket workers-rafiki.svg";
 import axios from "axios";
+import apiUrl from "../config";
 import "./UserSignup.css";
 
 export default function Signup() {
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
+  const [firstname, setFirstname] = useState();
+  const [lastname, setLastname] = useState();
+  const [middlename, setMiddlename] = useState();
+  const [email, setEmail] = useState();
+  const [prefixNumber, setPrefixNumber] = useState();
+  const [mobileNoPrefix, setMobile] = useState();
+  const [city, setCity] = useState();
+  const [zip, setZip] = useState();
+  const [country, setCountry] = useState();
+  const [password, setPassword] = useState();
+  const history = useHistory();
 
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [middlename, setMiddlename] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  // const [prefixNumber, setPrefixNumber] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
-  const [country, setCountry] = useState("");
-  const [password, setPassword] = useState("");
+  const handleChange = (newValue) => {
+    setPrefixNumber(newValue);
+  };
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -32,26 +36,32 @@ export default function Signup() {
       setWarning(true);
       return;
     }
-    axios.post("/user/create", {
-      firstname,
-      lastname,
-      middlename,
-      email,
-      age,
-      mobile,
-      city,
-      zip,
-      country,
-      password,
-    });
-
-    alert("usercreated!"); // must pressed ok otherwise will not finish the sending
+    const mobile = `+${prefixNumber}${mobileNoPrefix}`;
+    axios
+      .post(`${apiUrl}user/create`, {
+        firstname,
+        lastname,
+        middlename,
+        email,
+        mobile,
+        city,
+        zip,
+        country,
+        password,
+      })
+      .then((res) => {
+        if (res.status !== 200) {
+          alert("Please check the info provided");
+        }
+        if (res.status === 200) {
+          alert(
+            `🎉🎉🎉🎉 WHOOP WHOOP YOU MADE IT 🎉🎉🎉🎉\n\nPlease Click on Login button on the right side once this window is closed!`
+          );
+          history.push("/"); // Redirect on user profile if everything went good
+        }
+      })
+      .catch((e) => console.log(e));
   };
-
-  // axios
-  //   .post("http://localhost:4000/user/create", userData)
-  //   .then((response) => console.log(response.data));
-  // console.log("end of signup");
 
   return (
     <div className="container mt-5">
@@ -89,32 +99,21 @@ export default function Signup() {
               />
             </div>
 
-            <div className="form-row p-0 m-0">
-              <div className="form-group col-md-4  m-0">
-                <label>Age</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder=""
-                  onChange={(e) => setAge(e.target.value)}
-                />
-              </div>
-              <div className="form-group col-md-8  m-0">
-                <label className="mandatory">Email</label>
-                <input
-                  required
-                  type="email"
-                  className="form-control"
-                  placeholder="Your email..."
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+            <div className="form-group">
+              <label className="mandatory">Email</label>
+              <input
+                required
+                type="email"
+                className="form-control"
+                placeholder="Your email..."
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
 
             <div className="form-row p-0 m-0">
               <div className="form-group col-md-4  m-0">
                 <label className="mandatory">Prefix</label>
-                <PrefixDropdown />
+                <PrefixDropdown onChange={handleChange} />
               </div>
               <div className="form-group col-md-8  m-0">
                 <label className="mandatory">Mobile</label>
@@ -136,7 +135,7 @@ export default function Signup() {
                   type="email"
                   className="form-control"
                   id="inputMobile"
-                  placeholder="Insert your phone number..."
+                  placeholder="Insert your zip code..."
                   onChange={(e) => setZip(e.target.value)}
                 />
               </div>
@@ -147,7 +146,7 @@ export default function Signup() {
                   type="email"
                   className="form-control"
                   id="inputMobile"
-                  placeholder="Insert your phone number..."
+                  placeholder="Insert your country..."
                   onChange={(e) => setCountry(e.target.value)}
                 />
               </div>
@@ -158,7 +157,7 @@ export default function Signup() {
                 required
                 type="email"
                 className="form-control"
-                placeholder="Your city..."
+                placeholder="Insert your city..."
                 onChange={(e) => setCity(e.target.value)}
               />
             </div>
@@ -168,7 +167,7 @@ export default function Signup() {
                 type="password"
                 className="form-control"
                 id=""
-                placeholder="Your Password"
+                placeholder="Write a secure password! "
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
@@ -202,7 +201,7 @@ export default function Signup() {
           </form>
         </div>
         <div className="col inline">
-          <h2 className="text-center">
+          <h2 id="test" className="text-center">
             Looking for your next job? Signup and check it out!
           </h2>
           <img src={svg} alt="svg" />

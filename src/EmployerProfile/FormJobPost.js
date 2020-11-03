@@ -14,16 +14,16 @@ export default function JobPost(props) {
 
   // Taking the id from the actual user
   const [jobtitle, setJobtitle] = useState();
-  const [employmenttype, setEmploymenttype] = useState();
+  const [employmentContract, setEmploymentContract] = useState();
   const [role, setRole] = useState();
   const [requirements, setRequirements] = useState();
+  const [workingHours, setWorkingHours] = useState();
   const [zip, setZip] = useState();
-  const [city, setCity] = useState();
   const [country, setCountry] = useState();
-  const [contactdetails, setContactdetails] = useState();
+  const [email, setEmail] = useState();
+  const [prefix, setPrefix] = useState();
+  const [mobileNoPrefix, setMobileNoPrefix] = useState();
   const [jobref, setJobId] = useState();
-
-  // console.log(jobid);
 
   useEffect(() => {
     let result = "";
@@ -35,6 +35,10 @@ export default function JobPost(props) {
     }
     setJobId(result);
   }, []);
+
+  const handleChange = (newValue) => {
+    setPrefix(newValue);
+  };
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -51,25 +55,36 @@ export default function JobPost(props) {
       setWarning(true);
       return;
     }
-    axios.post("http://localhost:5000/jobs/create", {
-      jobtitle,
-      employmenttype,
-      role,
-      requirements,
-      zip,
-      city,
-      country,
-      contactdetails,
-      // introduction,
-      companyid,
-      jobref,
-    });
+    const contactdetails = `+${prefix}${mobileNoPrefix}` + ` ${email}`;
+    const employmenttype = `${employmentContract} ` + ` ${workingHours}`;
+    console.log(employmenttype);
+    axios
+      .post("http://localhost:5000/jobs/create", {
+        jobtitle,
+        employmenttype,
+        role,
+        requirements,
+        zip,
+        country,
+        contactdetails,
+        companyid,
+        jobref,
+      })
+      .then((res) => {
+        if (res.status !== 200) {
+          alert("Mmm there was an error, please try again");
+        }
+        if (res.status === 200) {
+          alert(`🎉🎉🎉🎉 WHOOP WHOOP THE JOB IS AVAILABLE AT /jobs 🎉🎉🎉🎉`);
+        }
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Post a job
+        Post a job and receive applications!
       </Button>
 
       <Modal
@@ -79,12 +94,10 @@ export default function JobPost(props) {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Jobs details</Modal.Title>
-        </Modal.Header>
         <form className="form-group" onSubmit={submitJob}>
           <Modal.Body>
-            <div className="mt-4">
+            <h2>Jobs details</h2>
+            <div>
               <label className="mandatory">Job Title</label>
               <input
                 required
@@ -94,9 +107,9 @@ export default function JobPost(props) {
                 onChange={(e) => setJobtitle(e.target.value)}
               />
             </div>
-            <div className="mt-3">
-              <label className="mr-2 mandatory">Type of contract</label>
-              <select onChange={(e) => setEmploymenttype(e.target.value)}>
+            <div className="mt-2">
+              <label className="mandatory">Type of contract</label>
+              <select onChange={(e) => setEmploymentContract(e.target.value)}>
                 <option disabled value="DEFAULT">
                   -- select one --
                 </option>
@@ -105,9 +118,9 @@ export default function JobPost(props) {
                 <option>Casual</option>
               </select>
             </div>
-            <div className="mt-3">
-              <label className="mr-2 mandatory">Working Hours</label>
-              <select>
+            <div className="mt-2">
+              <label className="mandatory">Working Hours</label>
+              <select onChange={(e) => setWorkingHours(e.target.value)}>
                 <option disabled selected value="DEFAULT">
                   -- select one --
                 </option>
@@ -116,17 +129,47 @@ export default function JobPost(props) {
                 <option>Flexible</option>
               </select>
             </div>
-            <div className="mt-3">
+            <div>
+              <label className="mr-2 mandatory">Zip</label>
+              <input
+                required
+                type="text"
+                className="form-control"
+                placeholder="Please input here the city of the job position"
+                onChange={(e) => setZip(e.target.value)}
+              />
+            </div>
+            <div className="mt-2">
+              <label className="mr-2 mandatory">Country</label>
+              <input
+                required
+                type="text"
+                className="form-control"
+                placeholder="Please input here the city of the job position"
+                onChange={(e) => setCountry(e.target.value)}
+              />
+            </div>
+            <div className="mt-2">
               <label className="mandatory">Position details</label>
               <textarea
+                required
                 className="form-control"
-                id="exampleFormControlTextarea1"
                 rows="3"
                 placeholder="If you need more space you can expand this box..."
                 onChange={(e) => setRole(e.target.value)}
               />
             </div>
-            <div class="form-check mt-3">
+            <div className="mt-2">
+              <label className="mandatory">Requirements</label>
+              <textarea
+                required
+                className="form-control"
+                rows="3"
+                placeholder="If you need more space you can expand this box..."
+                onChange={(e) => setRequirements(e.target.value)}
+              />
+            </div>
+            <div class="form-check mt-2">
               <input
                 type="checkbox"
                 className="form-check-input"
@@ -134,7 +177,6 @@ export default function JobPost(props) {
                 onClick={checkBox}
               />
               <label class="form-check-label">
-                {" "}
                 <p>
                   Do you want to provide contact details for any possible
                   question?
@@ -143,36 +185,36 @@ export default function JobPost(props) {
             </div>
             {toggle ? (
               <>
-                <div className="mt-3">
+                <div className="mt-2">
                   <label className="">Email</label>
                   <input
                     required
                     type="email"
                     className="form-control"
-                    id=""
                     placeholder=""
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <div className="form-row mt-3">
+                <div className="form-row mt-2">
                   <div className="form-group col-md-4">
                     <label className="">Prefix</label>
-                    <PrefixDropdown />
+                    <PrefixDropdown onChange={handleChange} />
                   </div>
                   <div className="form-group col-md-8">
                     <label className="">Mobile</label>
                     <input
                       required
-                      type="email"
+                      type="text"
                       className="form-control"
                       id="inputMobile"
                       placeholder="Insert your phone number..."
+                      onChange={(e) => setMobileNoPrefix(e.target.value)}
                     />
                   </div>
-                </div>{" "}
+                </div>
               </>
             ) : null}
-
-            <div className="mt-3">
+            <div className="mt-2">
               <div className="form-check">
                 <input
                   className="form-check-input"
@@ -183,12 +225,12 @@ export default function JobPost(props) {
                 />
                 <label className="form-check-label">
                   I accept the{" "}
-                  <a href="http://localhost:3000/">
+                  <a href="#">
                     terms and conditions
                     <span className="mandatoryTerms"> *</span>
-                  </a>{" "}
+                  </a>
                   {warning === true ? (
-                    <div className="">
+                    <div className="text-danger">
                       Please read and accept terms and conditions
                     </div>
                   ) : null}
@@ -200,17 +242,8 @@ export default function JobPost(props) {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <a
-              href="http://localhost:3000/"
-              role="button"
-              class="btn btn-secondary popover-test"
-              title="Popover title"
-              data-content="Popover body content is set in this attribute."
-            >
-              button
-            </a>
             <Button variant="primary" type="submit">
-              Submit
+              Create New Job
             </Button>
           </Modal.Footer>
         </form>

@@ -1,5 +1,4 @@
 const apiUrl = "http://localhost:5000/";
-
-console.log(apiUrl);
+// const apiUrl = "https://workiserver.herokuapp.com/";
 
 export default apiUrl;
