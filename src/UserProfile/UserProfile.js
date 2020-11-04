@@ -123,9 +123,11 @@ export default function UserProfile({ dataId }) {
                           className="form-control-file"
                         />
                       </div>
-                      <div className="mt-3 mb-5">
-                        <Button onClick={send}>Upload</Button>
-                      </div>
+                      {file ? (
+                        <div className="mt-3 mb-5">
+                          <Button onClick={send}>Upload</Button>
+                        </div>
+                      ) : null}
                     </form>
                   </div>
                 ) : (

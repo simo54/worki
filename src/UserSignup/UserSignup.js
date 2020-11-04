@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PrefixDropdown from "./PhonePrefix";
 import svg from "./Supermarket workers-rafiki.svg";
 import axios from "axios";
@@ -21,6 +22,14 @@ export default function Signup() {
   const [country, setCountry] = useState();
   const [password, setPassword] = useState();
   const history = useHistory();
+  const location = useLocation();
+
+  // Fixing issues when switching between pages (without this will let you see the page on half)
+  useEffect(() => {
+    if (location.pathname === "/usersignup") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   // Getting the props prefix value from PhonePrefix.js
   const handleChange = (prefix) => {

@@ -33,7 +33,7 @@ export default function MyVerticallyCenteredModal(props) {
     const resume = profile.resume;
     axios.post(`${apiUrl}user/newjobapplication`, {
       firstname,
-      lastname: infoFromProfile.lastname,
+      lastname,
       middlename,
       email,
       mobile,
@@ -102,8 +102,6 @@ export default function MyVerticallyCenteredModal(props) {
               </div>
             ) : null}
           </form>
-          {/* Hide middlename section if user has no middlename */}
-
           <form className="form-row">
             <div className="col-md-4 mt-4">
               <label className="mandatory">Email</label>
@@ -196,47 +194,8 @@ export default function MyVerticallyCenteredModal(props) {
                 value={infoFromProfile.resume}
               />
             </div>
-            <div className="mt-4">
-              <label className="mandatory">Country</label>
-              <input
-                required
-                type="text"
-                className={
-                  infoFromProfile && infoFromProfile.country
-                    ? "form-control is-valid"
-                    : "form-control is-invalid"
-                }
-                placeholder=""
-                value={infoFromProfile ? infoFromProfile.country : null}
-                // onChange={(e) => setCountry(e.target.value)}
-              />
-            </div>
-            <div className="mt-4">
-              <label className="mandatory">Cover Letter</label>
-              <textarea
-                required
-                className="form-control"
-                rows="3"
-                placeholder=""
-                value=""
-                onChange={(e) => setCoverLetter(e.target.value)}
-              />
-            </div>
-            <div className="mt-4">
-              <div class="form-group">
-                <label className="mandatory">Resume</label>
-                <input
-                  type="file"
-                  className="form-control-file"
-                  id="exampleFormControlFile1"
-                  value={infoFromProfile ? infoFromProfile.resume : null}
-                  // onChange={(e) => setResume(e.target.value)}
-                />
-              </div>
-            </div>
           </div>
         </form>
-        ) : null}
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close Application</Button>
