@@ -9,7 +9,6 @@ export default function UpdatePersonalInfo(props) {
   const [lastname, setLastname] = useState("");
   const [middlename, setMiddlename] = useState("");
   const [email, setEmail] = useState("");
-  // const [prefixNumber, setPrefixNumber] = useState("");
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -95,176 +94,160 @@ export default function UpdatePersonalInfo(props) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        scrollable={true}
       >
         <Modal.Header closeButton>
-          <Modal.Title>
-            Settings
-            {/* <small>You can change your personal info here</small> */}
-          </Modal.Title>
+          <Modal.Title>Settings</Modal.Title>
         </Modal.Header>
-        <Modal.Body></Modal.Body>
-        <div className="col">
-          <form className="form-group">
-            <div className="form-row">
-              <div className="form-group col-md-6">
-                <label>
-                  <h5>First Name</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="staticEmail"
-                  onChange={(e) => setFirstname(e.target.value)}
-                />
+        <Modal.Body>
+          <div className="col">
+            <form className="form-group">
+              <div className="form-row">
+                <div className="form-group col-md-6">
+                  <label>
+                    <h5>First Name</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="staticEmail"
+                    onChange={(e) => setFirstname(e.target.value)}
+                  />
+                </div>
+                <div className="form-group col-md-6">
+                  <label>
+                    <h5>Last Name</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setLastname(e.target.value)}
+                  />
+                </div>
+                <div className="form-group col-md-6">
+                  <label>
+                    <h5>Middle Name</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setMiddlename(e.target.value)}
+                  />
+                </div>
               </div>
-              <div className="form-group col-md-6">
-                <label>
-                  <h5>Last Name</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  onChange={(e) => setLastname(e.target.value)}
-                />
+              <div className="form-row">
+                <div className="form-group col-md-8">
+                  <label>
+                    <h5>Email</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inputAddress"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form-group col-md-4">
+                  <label>
+                    <h5>Mobile</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inputAddress2"
+                    onChange={(e) => setMobile(e.target.value)}
+                  />
+                </div>
               </div>
-              <div className="form-group col-md-6">
+              <div className="form-group">
                 <label>
-                  <h5>Middle Name</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  onChange={(e) => setMiddlename(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-8">
-                <label>
-                  <h5>Email</h5>
+                  <h5>Address</h5>
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   id="inputAddress"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
-              <div className="form-group col-md-4">
-                <label>
-                  <h5>Mobile</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputAddress2"
-                  onChange={(e) => setMobile(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <label>
-                <h5>Address</h5>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="inputAddress"
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <label>
-                  <h5>City</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputCity"
-                  onChange={(e) => setCity(e.target.value)}
-                />
-              </div>
-              <div className="form-group col-md-4">
-                <label>
-                  <h5>Country</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  onChange={(e) => setCountry(e.target.value)}
-                />
-              </div>
-              <div className="form-group col-md-3">
-                <label>
-                  <h5>Zip</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  onChange={(e) => setZip(e.target.value)}
-                />
-              </div>
-              <div className="form-group col-md-12">
-                <label>
-                  <h5>Presentation</h5>
-                </label>
-                <textarea
-                  className="form-control"
-                  rows="5"
-                  onChange={(e) => setLastname(e.target.value)}
-                ></textarea>
-              </div>
-            </div>
-            <form encType="multipart/form-data">
-              <h5>Do you want to upload a new picture?</h5>
-              <div className="d-flex justify-content-around">
-                <input
-                  id="check1"
-                  onChange={(e) => {
-                    const { value } = e.target;
-                    setNamePicture(value);
-                  }}
-                  className="form-control-file w-25"
-                />
-                <input
-                  type="file"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    setFilePicture(file);
-                  }}
-                  className="form-control-file"
-                />
-              </div>
-            </form>
-            <form encType="multipart/form-data">
-              <h5>Change Resume</h5>
-              <div className="d-flex justify-content-around ">
-                <input
-                  id="check"
-                  onChange={(e) => {
-                    const { value } = e.target;
-                    setNameResume(value);
-                  }}
-                  className="form-control-file w-25 hide"
-                />
-                <input
-                  type="file"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    setFileResume(file);
-                  }}
-                  className="form-control-file"
-                />
-              </div>
-              {/* {fileResume ? (
-                <div className="mt-3 mb-5">
-                  <Button onClick={send}>Upload</Button>
+              <div className="form-row">
+                <div className="form-group col-md-5">
+                  <label>
+                    <h5>City</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inputCity"
+                    onChange={(e) => setCity(e.target.value)}
+                  />
                 </div>
-              ) : null} */}
+                <div className="form-group col-md-4">
+                  <label>
+                    <h5>Country</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setCountry(e.target.value)}
+                  />
+                </div>
+                <div className="form-group col-md-3">
+                  <label>
+                    <h5>Zip</h5>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setZip(e.target.value)}
+                  />
+                </div>
+              </div>
+              <form encType="multipart/form-data">
+                <h5>Do you want to upload a new picture?</h5>
+                <div className="d-flex justify-content-around">
+                  <input
+                    id="check1"
+                    onChange={(e) => {
+                      const { value } = e.target;
+                      setNamePicture(value);
+                    }}
+                    className="form-control-file w-25"
+                  />
+                  <input
+                    type="file"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      setFilePicture(file);
+                    }}
+                    className="form-control-file"
+                  />
+                </div>
+              </form>
+              <form encType="multipart/form-data">
+                <h5>Change Resume</h5>
+                <div className="d-flex justify-content-around ">
+                  <input
+                    id="check"
+                    onChange={(e) => {
+                      const { value } = e.target;
+                      setNameResume(value);
+                    }}
+                    className="form-control-file w-25 hide"
+                  />
+                  <input
+                    type="file"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      setFileResume(file);
+                    }}
+                    className="form-control-file"
+                  />
+                </div>
+              </form>
             </form>
-          </form>
-        </div>
+          </div>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
             Close

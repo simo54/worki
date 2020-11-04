@@ -51,10 +51,12 @@ export default function UpdatePersonalInfo(props) {
     axios.put(`${apiUrl}employer/${id}/updateinfo`, myParam);
 
     // Updating profile picture
-    axios
-      .put(`${apiUrl}employer/${id}/logo`, dataLogo)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    if (fileLogo) {
+      axios
+        .put(`${apiUrl}employer/${id}/logo`, dataLogo)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
 
     // Reloading page in order to see updated profile
     window.location.reload();
@@ -85,6 +87,7 @@ export default function UpdatePersonalInfo(props) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        scrollable={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>

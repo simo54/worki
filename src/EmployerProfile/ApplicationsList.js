@@ -15,11 +15,14 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
 
   // Fetch all people that applied for the job clicked
   useEffect(() => {
-    const id = jobref;
-    axios.get(`${apiUrl}employer/applications/${id}`).then((res) => {
-      setApplicants(res.data);
-      setApplicantsNumber(res.data.length);
-    });
+    async function lazyLoad() {
+      const id = jobref;
+      axios.get(`${apiUrl}employer/applications/${id}`).then((res) => {
+        setApplicants(res.data);
+        setApplicantsNumber(res.data.length);
+      });
+    }
+    lazyLoad();
   }, [jobref]);
 
   return (
@@ -42,6 +45,7 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        scrollable={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>Applicants for {jobtitle}</Modal.Title>
@@ -66,6 +70,7 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
                       jobref={element.jobref}
                       email={element.email}
                       country={element.country}
+                      coverletter={element.coverletter}
                     />
                   </li>
                 ))

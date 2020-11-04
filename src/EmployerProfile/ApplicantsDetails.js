@@ -4,11 +4,11 @@ import apiUrl from "../config";
 import { Button, Modal } from "react-bootstrap";
 
 export default function ApplicantsDetails(props) {
+  console.log(props);
   const [applicantDetails] = useState(props);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(applicantDetails);
 
   const download = (id, jobref) => {
     axios
@@ -27,10 +27,12 @@ export default function ApplicantsDetails(props) {
       </a>
 
       <Modal
+        size="lg"
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        scrollable={true}
       >
         <Modal.Body>
           {applicantDetails ? (
@@ -78,7 +80,7 @@ export default function ApplicantsDetails(props) {
                   </li>
                   <li className="applications list-group-item p-2">
                     <h6>CoverLetter:</h6>
-                    <h3>{applicantDetails.coverletter}</h3>
+                    <p>{applicantDetails.coverletter}</p>
                   </li>
                 </ul>
               </div>

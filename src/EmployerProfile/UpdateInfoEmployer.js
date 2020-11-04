@@ -67,6 +67,7 @@ export default function UpdatePersonalInfo(props) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        scrollable={true}
       >
         <Modal.Header closeButton>
           <Modal.Title>

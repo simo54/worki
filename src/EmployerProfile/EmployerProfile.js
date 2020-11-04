@@ -15,26 +15,43 @@ export default function RecruiterProfile({ dataId }) {
   const [fileLogo, setFileLogo] = useState();
   const [logo, setLogo] = useState();
 
+  // useEffect(() => {
+  //   const id = dataId;
+  //   axios.get(`${apiUrl}employer/${id}`).then((res) => {
+  //     setProfile(res.data);
+  //   });
+  //   axios.get(`${apiUrl}jobs/company/${id}`).then((res) => {
+  //     setJobs(res.data);
+  //   });
+  //   axios.get(`${apiUrl}employer/${id}/getlogo`).then((res) => {
+  //     const url = res.config.url;
+  //     setLogo(url);
+  //   });
+  // }, [dataId]);
+
   useEffect(() => {
-    const id = dataId;
-    axios.get(`${apiUrl}employer/${id}`).then((res) => {
-      setProfile(res.data);
-    });
-    axios.get(`${apiUrl}jobs/company/${id}`).then((res) => {
-      setJobs(res.data);
-    });
-    axios.get(`${apiUrl}employer/${id}/getlogo`).then((res) => {
-      const url = res.config.url;
-      setLogo(url);
-    });
+    async function lazyLoad() {
+      const id = dataId;
+      await axios.get(`${apiUrl}employer/${id}`).then((res) => {
+        setProfile(res.data);
+      });
+      await axios.get(`${apiUrl}jobs/company/${id}`).then((res) => {
+        setJobs(res.data);
+      });
+      await axios.get(`${apiUrl}employer/${id}/getlogo`).then((res) => {
+        const url = res.config.url;
+        setLogo(url);
+      });
+    }
+    lazyLoad();
   }, [dataId]);
 
-  const sendLogo = (event) => {
+  const sendLogo = async (event) => {
     const id = dataId;
     const dataLogo = new FormData();
     dataLogo.append("name", nameLogo);
     dataLogo.append("file", fileLogo);
-    axios
+    await axios
       .put(`${apiUrl}employer/${id}/logo`, dataLogo)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));

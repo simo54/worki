@@ -95,6 +95,7 @@ export default function JobPost(props) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        scrollable={true}
       >
         <form className="form-group" onSubmit={submitJob}>
           <Modal.Body>

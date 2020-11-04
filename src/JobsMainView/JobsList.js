@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 import Application from "./Application";
 import apiUrl from "../config";
+import svg from "./Search engines-rafiki (1).svg";
 import "./Style/JobList.css";
 
 export default function JobsList({ dataId }) {
@@ -144,7 +145,12 @@ export default function JobsList({ dataId }) {
                   </div>
                 </div>
               </div>
-            ) : null}
+            ) : (
+              <div>
+                <h1 className="text-center">Select a job and apply!</h1>
+                <img src={svg} />
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -30,7 +30,6 @@ export default function MyVerticallyCenteredModal(props) {
     const zip = profile.zip;
     const country = profile.country;
     const coverletter = coverLetter;
-    console.log(coverLetter);
     const resume = profile.resume;
     axios.post(`${apiUrl}user/newjobapplication`, {
       firstname,
@@ -57,6 +56,7 @@ export default function MyVerticallyCenteredModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       backdrop="static"
+      scrollable={true}
     >
       <Modal.Body>
         <h4>Application</h4>
