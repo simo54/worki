@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import apiUrl from "../config";
 import "./UserLogin.css";
 
 export default function Login() {
@@ -16,7 +17,7 @@ export default function Login() {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/login/user",
+        `${apiUrl}login/user`,
         { email, password },
         { withCredentials: true }
       )

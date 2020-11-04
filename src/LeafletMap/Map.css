@@ -3,10 +3,35 @@
   height: 40vh;
 }
 
+#map {
+  opacity: 1;
+}
+
 input {
   border-radius: 50px !important;
 }
 
 select {
   border-radius: 50px !important;
+}
+
+.body-section {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.text-overlay .titleWrapper {
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }

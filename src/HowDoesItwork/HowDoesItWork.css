@@ -1,15 +1,16 @@
 #titleHowDoesItWork {
   padding: 300px !important;
-  top: 0;
-  left: 0;
-  margin: 0 auto;
   background-image: url(./business-1477601.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  color: rgb(158, 15, 15);
-  text-shadow: -6px 1px;
+  color: rgb(231, 231, 17);
 }
 
-#firstRowHowDoesItWork {
+#secondRow {
   padding: 50px;
+}
+
+#thirdRow {
+  padding: 50px;
+  background-color: #f99a78;
 }

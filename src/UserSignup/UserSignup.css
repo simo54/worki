@@ -2,6 +2,12 @@ body {
   padding-left: 0 !important;
 }
 
+#buttonSignup {
+  background-color: #12aaf9;
+  border: none;
+  border-radius: 10px !important;
+}
+
 .modal {
   padding-left: 0px !important;
 }

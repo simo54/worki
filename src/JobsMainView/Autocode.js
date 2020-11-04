@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import apiUrl from "../config";
@@ -69,15 +70,36 @@ export default function Auto() {
 
 // import React, { useEffect, useState, useRef } from "react";
 // import { useHistory } from "react-router-dom";
+=======
+// import React, { useEffect, useState, useRef } from "react";
+// import { useHistory } from "react-router-dom";
+// import axios from "axios";
+// import apiUrl from "../config";
+>>>>>>> dev
 // import "./Style/Autocomplete.css";
 
 // export default function AutoComplete({ value, onChange, dataSource }) {
 //   const [dropdownOpen, setDropdownOpen] = useState(false);
 //   const [activeItem, setActiveItem] = useState(null);
+<<<<<<< HEAD
 
 //   const rootEl = useRef(null);
 //   const history = useHistory();
 
+=======
+//   const rootEl = useRef(null);
+//   const history = useHistory();
+
+//   // Fetching data from endpoint, map them and get jobtitles, this was taken from homepage and originally this was displayed in an input tag at the homepage
+//   useEffect(() => {
+//     axios.get(`${apiUrl}jobs/`).then((res) => {
+//       const arrayOfObjects = res.data;
+//       const titles = arrayOfObjects.map((array) => array.jobtitle);
+//       // setOptions(titles); //Setting array of jobtitles
+//     });
+//   }, []);
+
+>>>>>>> dev
 //   const KEY_CODE = {
 //     ENTER: 13,
 //     UP: 38,
@@ -237,7 +259,10 @@ export default function Auto() {
 //                   {item}
 //                 </a>
 //               </div>
+<<<<<<< HEAD
 //               {/* <h1>{item}</h1> */}
+=======
+>>>>>>> dev
 //             </div>
 //           ))}
 //         </div>
@@ -245,3 +270,143 @@ export default function Auto() {
 //     </div>
 //   );
 // }
+<<<<<<< HEAD
+=======
+
+import React, { useState, useEffect, useRef } from "react";
+
+const KEY_CODE = {
+  ENTER: 13,
+  UP: 38,
+  DOWN: 40,
+};
+
+export default function AutoComplete({ value, onChange, dataSource = [] }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState(null);
+  const rootEl = useRef(null);
+
+  useEffect(() => {
+    const onClick = (event) => {
+      if (rootEl.current && !rootEl.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  });
+
+  const candidates = dataSource.filter((item) => item.includes(value));
+
+  return (
+    <div
+      className="auto-complete"
+      ref={rootEl}
+      onKeyDown={(event) => {
+        switch (event.keyCode) {
+          case KEY_CODE.UP:
+            if (!dropdownOpen) {
+              setDropdownOpen(true);
+              return;
+            }
+
+            if (!candidates.length) {
+              setActiveItem(null);
+              return;
+            }
+
+            if (!activeItem) {
+              setActiveItem({
+                value: candidates[0],
+                idx: 0,
+              });
+
+              return;
+            }
+
+            if (activeItem.idx > 0) {
+              setActiveItem({
+                value: candidates[activeItem.idx - 1],
+                idx: activeItem.idx - 1,
+              });
+
+              return;
+            }
+
+            break;
+          case KEY_CODE.DOWN:
+            if (!dropdownOpen) {
+              setDropdownOpen(true);
+              return;
+            }
+
+            if (!candidates.length) {
+              setActiveItem(null);
+              return;
+            }
+
+            if (!activeItem) {
+              setActiveItem({
+                value: candidates[0],
+                idx: 0,
+              });
+
+              return;
+            }
+
+            if (activeItem.idx < candidates.length - 1) {
+              setActiveItem({
+                value: candidates[activeItem.idx + 1],
+                idx: activeItem.idx + 1,
+              });
+
+              return;
+            }
+
+            break;
+          case KEY_CODE.ENTER:
+            if (dropdownOpen && activeItem) {
+              onChange(activeItem.value);
+              setDropdownOpen(false);
+              setActiveItem(null);
+              return;
+            }
+
+            break;
+        }
+      }}
+    >
+      <input
+        value={value}
+        onFocus={() => setDropdownOpen(true)}
+        onChange={(event) => {
+          onChange(event.target.value);
+          setDropdownOpen(true);
+          setActiveItem(null);
+        }}
+      />
+
+      {dropdownOpen && candidates.length > 0 && (
+        <div className="auto-complete-dropdown">
+          {candidates.map((item, idx) => (
+            <div
+              className={
+                activeItem && activeItem.value === item ? "item active" : "item"
+              }
+              onMouseEnter={() => setActiveItem({ value: item, idx })}
+              onClick={() => {
+                onChange(item);
+                setDropdownOpen(false);
+                setActiveItem(null);
+              }}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+>>>>>>> dev

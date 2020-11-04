@@ -28,15 +28,14 @@ body {
 }
 
 #containerSearchTitle h2 {
-  color: whitesmoke;
-  text-shadow: -2px 2px black;
-  /* background-image: linear-gradient(45deg, #12aaf9, #ff9494); */
+  color: #222831;
+  text-shadow: 3px 0px white;
   transform: skewY(-2deg);
 }
 
 #connectColRow {
   font-size: 2.5rem;
-  background-color: #ff9494;
+  background-color: #f99a78;
 }
 
 .connectedNumbers {
@@ -75,8 +74,14 @@ body {
   width: 100%;
 }
 
+#employerButtonDiv #employerButton {
+  background-color: #12aaf9;
+  border: none;
+  border-radius: 10px !important;
+}
+
 #firstvisualColRow {
-  background-color: #ffd394;
+  background-color: #ffcf78;
   color: #383838;
 }
 
@@ -117,6 +122,18 @@ body {
 .listHowWorks {
   font-size: 2rem;
   text-align: center;
+}
+
+#mainButton {
+  color: #222831;
+  background-color: #f5faf8;
+  opacity: 0.5;
+  border: none;
+}
+
+#mainButton:hover {
+  opacity: 1;
+  background-color: #e5f916;
 }
 
 .modal-open {
@@ -169,7 +186,6 @@ body {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  color: black;
   text-align: center;
   width: 50%;
   margin: 0;
@@ -296,21 +312,3 @@ body {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
 }
-
-/* @include media-breakpoint-up(sm) {
-  html {
-    font-size: 1.2rem;
-  }
-}
-
-@include media-breakpoint-up(md) {
-  html {
-    font-size: 1.4rem;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  html {
-    font-size: 1.6rem;
-  }
-} */

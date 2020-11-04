@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Map from "../LeafletMap/Map";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import Application from "./Application";
-import Autocomplete from "./Autocode";
+import apiUrl from "../config";
 import "./Style/JobList.css";
 
 export default function JobsList({ dataId }) {
   const [jobsList, setJobList] = useState([]);
   const [jobDetails, setJobDetails] = useState();
   const [modalShow, setModalShow] = useState(false);
-  const [titles, setOptions] = useState(null);
 
   // Fetching the data from api
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((results) => {
+    axios.get(`${apiUrl}jobs`).then((results) => {
       const jobs = results.data;
       const titles = jobs.map((array) => array.jobtitle); // Fetching data from endpoint, map them and get jobtitles, this was taken from homepage and originally this was displayed in an input tag at the homepage
-      setOptions(titles); //Setting array of jobtitles
+      // setOptions(titles); //Setting array of jobtitles
       setJobList(jobs);
     });
   }, []);
@@ -26,91 +24,93 @@ export default function JobsList({ dataId }) {
     setJobDetails(e);
   };
 
-  return (
-    <div className="container-fluid">
-      <div>
-        {/* <AutoSearch dataSource={jobsList} /> */}
-        <Autocomplete suggestions={titles} />
-      </div>
-      <div className="container-fluid text-center p-0">
-        <div className="container p-0">
-          <div className="container-fluid p-0" id="collapse">
-            <Map />
-          </div>
-        </div>
-      </div>
+  const search = () => {
+    console.log("check");
+    let i, txtValue, items;
+    let input = document.getElementById("inputSearch");
+    let filter = input.value.toUpperCase();
+    let div = document.getElementsByClassName("searchPositions");
+    let h5 = document.getElementsByTagName("h4");
+    // Loop through all list items
+    for (i = 0; i < jobsList.length; i++) {
+      items = h5[i]; // Take as reference the h5 of each card
+      txtValue = items.textContent || items.innerText; // Will take reference the input from the Input Onkeyup
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        div[i].style.display = ""; // Show matches
+      } else {
+        div[i].style.display = "none"; // Hide no-matches
+      }
+    }
+  };
 
-      <div className="container-fluid mt-3">
+  return (
+    <div className="container">
+      <div className="container d-flex justify-content-center mt-4">
+        <input
+          type="text"
+          onKeyUp={search}
+          placeholder="Search here..."
+          className="form-control w-50"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm"
+          id="inputSearch"
+        />
+      </div>
+      <div className="container mt-4">
         <div className="row">
-          <div id="jobListCol" className="col-4">
+          <div className="col-4">
             {jobsList && jobsList.length
               ? jobsList.map((element, index) => (
-                  <div className="card mb-2" key={index}>
-                    <div className="row no-gutters">
-                      <div className="col-md-8">
-                        <div className="card-body">
-                          <h5 className="card-title">{element.jobtitle}</h5>
-                          <p className="card-text">{element.role}</p>
-                          <p className="card-text">{element.country}</p>
-                          <p className="card-text">{element.city}</p>
-                          <p className="card-text">{element.zip}</p>
-                          <p className="card-text">
-                            <small className="text-muted">
-                              Published on{" "}
-                              <strong>{element.datejobpost}</strong>
-                            </small>
-                          </p>
-                          <p className="card-text">
-                            <small className="text-muted">
-                              Job ID: <strong>{element.jobref}</strong>
-                            </small>
-                          </p>
-                          <button
-                            className="btn btn-primary"
-                            data-id={element.id}
-                            jobreference={element.jobref}
-                            onClick={(e) => {
-                              clickViewJob([
-                                element.id,
-                                element.jobtitle,
-                                element.employmenttype,
-                                element.introduction,
-                                element.role,
-                                element.requirements,
-                                element.address,
-                                element.zip,
-                                element.city,
-                                element.country,
-                                element.contactdetails,
-                                element.jobref,
-                              ]);
-                            }}
-                          >
-                            View Details and Apply
-                          </button>
-                        </div>
-                      </div>
-                      {/* <div className="col-md-4">
-                        <div id="containerLogo" className="align-middle">
-                          <img
-                            // src="./logo2.jpg"
-                            href="https://logos-download.com/26555-eos-2-logo-download.html"
-                            alt="something"
-                            // width="10"
-                            // height="200"
-                          />
-                        </div>
-                      </div> */}
+                  <div className="card mb-2 searchPositions" key={index}>
+                    <div className="card-body">
+                      <h4 className="card-title">{element.jobtitle}</h4>
+                      <p className="card-text">{element.role}</p>
+                      <p className="card-text">{element.country}</p>
+                      <p className="card-text">{element.city}</p>
+                      <p className="card-text">{element.zip}</p>
+                      <p className="card-text">
+                        <small className="text-muted">
+                          Published on <strong>{element.datejobpost}</strong>
+                        </small>
+                      </p>
+                      <p className="card-text">
+                        <small className="text-muted">
+                          Job ID: <strong>{element.jobref}</strong>
+                        </small>
+                      </p>
+                      <button
+                        className="btn btn-info"
+                        data-id={element.id}
+                        jobreference={element.jobref}
+                        onClick={(e) => {
+                          clickViewJob([
+                            element.id,
+                            element.jobtitle,
+                            element.employmenttype,
+                            element.introduction,
+                            element.role,
+                            element.requirements,
+                            element.address,
+                            element.zip,
+                            element.city,
+                            element.country,
+                            element.contactdetails,
+                            element.jobref,
+                          ]);
+                        }}
+                      >
+                        View Details and Apply
+                      </button>
                     </div>
                   </div>
                 ))
               : null}
           </div>
-          <div id="jobselectedCol" className="col-6 m-0">
+          <div id="jobselectedCol" className="col-8">
             {jobDetails && jobDetails.length ? (
               <div className="card" fixed="top">
                 <div id="bigCard" className="card-body">
-                  <div className="row no-gutters">
+                  <div className="row">
                     <div className="col">
                       <h5 className="card-title">{jobDetails[1]}</h5>
                       <p className="card-text">{jobDetails[2]}</p>
@@ -125,15 +125,15 @@ export default function JobsList({ dataId }) {
                       <p>{jobDetails[9]}</p>
                       <hr />
                       <p>{jobDetails[10]}</p>
-                      <p>Job Reference: {jobDetails[11]}</p>
+                      <p>
+                        Job Reference: <strong>{jobDetails[11]}</strong>
+                      </p>
                       <Button
                         variant="primary"
                         onClick={() => setModalShow(true)}
-                        on
                       >
                         Apply!
                       </Button>
-
                       <Application
                         data={dataId}
                         jobref={jobDetails[11]}

@@ -1,39 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import PrefixDropdown from "../UserSignup/PhonePrefix";
 import svg from "./icons/Business deal-rafiki.svg";
 import EmployerLogin from "./LoginEmployer";
 import axios from "axios";
+import apiUrl from "../config";
 import "./Style/ForEmployer.css";
 
 export default function ForEmployer() {
   const [toggle, setToggle] = useState(false);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
-  const [toggleLogo, setToggleLogo] = useState(false);
   const location = useLocation();
 
   // Fixing issues when switching between pages (without this will let you see the page on half)
-  if (location.pathname === "/employersignup") {
-    window.scrollTo(0, 0);
-  }
+  useEffect(() => {
+    if (location.pathname === "/employersignup") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   // UseState of signup details
-  const [companyname, setCompanyname] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [middlename, setMiddlename] = useState("");
-  const [logo, setLogo] = useState("");
-  const [email, setEmail] = useState("");
-  const [prefixNumber, setPrefixNumber] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
-  const [country, setCountry] = useState("");
-  const [companysize, setCompanysize] = useState("");
-  const [password, setPassword] = useState("");
+  const [companyname, setCompanyname] = useState();
+  const [firstname, setFirstname] = useState();
+  const [lastname, setLastname] = useState();
+  const [middlename, setMiddlename] = useState();
+  // const [logo, setLogo] = useState();
+  const [email, setEmail] = useState();
+  const [prefixNumber, setPrefixNumber] = useState();
+  const [mobileNoPrefix, setMobile] = useState();
+  const [address, setAddress] = useState();
+  const [city, setCity] = useState();
+  const [zip, setZip] = useState();
+  const [country, setCountry] = useState();
+  const [companysize, setCompanysize] = useState();
+  const [password, setPassword] = useState();
 
   // Getting the props prefix value from PhonePrefix.js
   const handleChange = (prefix) => {
@@ -44,9 +46,9 @@ export default function ForEmployer() {
     setToggle(!toggle);
   };
 
-  const checkBoxLogo = () => {
-    setToggleLogo(!toggleLogo);
-  };
+  // const checkBoxLogo = () => {
+  //   setToggleLogo(!toggleLogo);
+  // };
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -57,33 +59,43 @@ export default function ForEmployer() {
       setWarning(true);
       return;
     }
-    axios.post("/employer/create", {
-      companyname,
-      logo,
-      firstname,
-      lastname,
-      middlename,
-      email,
-      prefixNumber,
-      mobile,
-      address,
-      city,
-      zip,
-      country,
-      companysize,
-      password,
-    });
-
-    alert("usercreated!"); // must pressed ok otherwise will not finish the sending
+    const mobile = `+${prefixNumber}${mobileNoPrefix}`;
+    axios
+      .post(`${apiUrl}employer/create`, {
+        companyname,
+        // logo,
+        firstname,
+        lastname,
+        middlename,
+        email,
+        mobile,
+        address,
+        city,
+        zip,
+        country,
+        companysize,
+        password,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status !== 200) {
+          alert("Please check the info provided");
+        }
+        if (res.status === 200) {
+          alert(
+            `✔✔✔ Thanks for the signup! ✔✔✔\n\nPlease Click on Login button on the right-bottom side once this window is closed!`
+          );
+        }
+      });
   };
 
   return (
     <div>
       <div className="container">
-        <div className="row mt-5">
+        <div className="row mt-4">
           <div className="col-7">
             <h4>Sig up for Free!</h4>
-            <div className="custom-control custom-checkbox mt-4">
+            <div className="custom-control custom-checkbox">
               <input
                 type="checkbox"
                 className="custom-control-input"
@@ -91,7 +103,6 @@ export default function ForEmployer() {
                 name="example1"
                 onClick={checkBox}
               />
-              {/* for="customCheck" */}
               <label className="custom-control-label" htmlFor="customCheck">
                 {" "}
                 <p>Are you a freelancer or a phisical person?</p>
@@ -99,7 +110,7 @@ export default function ForEmployer() {
             </div>
             <form className="form-group">
               {toggle === false ? (
-                <div className="mt-4">
+                <div className="mt-1">
                   <label className="mandatory">Company Name</label>
                   <input
                     required
@@ -112,7 +123,7 @@ export default function ForEmployer() {
               ) : null}
               {toggle ? (
                 <>
-                  <div className="mt-3">
+                  <div className="mt-2">
                     <label className="mandatory">First Name</label>
                     <input
                       required
@@ -122,7 +133,7 @@ export default function ForEmployer() {
                       onChange={(e) => setFirstname(e.target.value)}
                     />
                   </div>
-                  <div className="mt-3">
+                  <div className="mt-2">
                     <label className="mandatory">Last Name</label>
                     <input
                       required
@@ -132,7 +143,7 @@ export default function ForEmployer() {
                       onChange={(e) => setLastname(e.target.value)}
                     />
                   </div>
-                  <div className="mt-3">
+                  <div className="mt-2">
                     <label>Middle Names</label>
                     <input
                       type="text"
@@ -143,14 +154,14 @@ export default function ForEmployer() {
                   </div>{" "}
                 </>
               ) : null}
-              <div className="custom-control custom-checkbox">
+              {/* <div className="custom-control custom-checkbox">
                 <input
                   type="checkbox"
                   className="custom-control-input"
                   id="customLogoCheck"
                   onClick={checkBoxLogo}
                 />
-                {/* for="customCheck" */}
+
                 <label
                   className="custom-control-label mt-4"
                   htmlFor="customLogoCheck"
@@ -160,9 +171,7 @@ export default function ForEmployer() {
               </div>
               {toggleLogo ? (
                 <div className="form-group">
-                  <label for="exampleFormControlFile1">
-                    Choose the file you want to upload
-                  </label>
+                  <label>Choose the file you want to upload</label>
                   <input
                     type="file"
                     className="form-control-file"
@@ -170,9 +179,8 @@ export default function ForEmployer() {
                     onChange={(e) => setLogo(e.target.value)}
                   />
                 </div>
-              ) : null}
-
-              <div className="mt-3">
+              ) : null} */}
+              <div className="mt-2">
                 <label className="mandatory">Email</label>
                 <input
                   required
@@ -182,7 +190,7 @@ export default function ForEmployer() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="mt-3">
+              <div className="mt-2">
                 <div className="form-row">
                   <div className="form-group col-md-4">
                     <label className="mandatory">Prefix</label>
@@ -194,7 +202,6 @@ export default function ForEmployer() {
                       required
                       type="email"
                       className="form-control"
-                      id="inputMobile"
                       placeholder="Insert your phone number..."
                       onChange={(e) => setMobile(e.target.value)}
                     />
@@ -210,14 +217,13 @@ export default function ForEmployer() {
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
-              <div className="form-row mt-3">
+              <div className="form-row mt-2">
                 <div className="form-group col-lg-6">
                   <label className="mandatory">City</label>
                   <input
                     type="text"
                     className="form-control"
                     onChange={(e) => setCity(e.target.value)}
-                    id="inputCity"
                     placeholder="Your city..."
                   />
                 </div>
@@ -227,7 +233,6 @@ export default function ForEmployer() {
                     type="text"
                     className="form-control"
                     onChange={(e) => setZip(e.target.value)}
-                    id="inputZip"
                     placeholder="Zipcode"
                   />
                 </div>
@@ -237,7 +242,6 @@ export default function ForEmployer() {
                     type="text"
                     className="form-control"
                     onChange={(e) => setCountry(e.target.value)}
-                    id="inputCity"
                     placeholder="Your country..."
                   />
                 </div>
@@ -277,7 +281,7 @@ export default function ForEmployer() {
                   />
                   <label className="form-check-label">
                     I accept{" "}
-                    <a href="http://localhost:3000/">
+                    <a href="https://www.ecosia.org/?c=en">
                       terms and conditions
                       <span className="mandatoryTerms"> *</span>
                     </a>
@@ -296,7 +300,7 @@ export default function ForEmployer() {
           </div>
           <div className="col-5 d-inline">
             <h2 className="text-center">
-              Looking for your next talent? You came in the right place!
+              Looking for your next talent? This way please!
             </h2>
             <img src={svg} alt="svg" />
             <h6 className="text-center">

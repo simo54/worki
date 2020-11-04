@@ -17,39 +17,25 @@ export default function App(props) {
     <Router>
       <div>
         <Navigation />
-        {/* <IsAuthenticated
-          WrappedComponent={Navigation}
-          typeOfUser={"user"}
-          {...props}
-        /> */}
         <Switch>
-          <Route path="/jobs">
-            <IsAuthenticated
-              WrappedComponent={JobList}
-              typeOfUser={"user"}
-              {...props}
-            />
-            {/* <IsAuthenticatedUser
-              WrappedComponent={JobList}
-              typeOfUser={"user"}
-              {...props}
-            /> */}
-          </Route>
-
+          <Route
+            path="/jobs"
+            component={(props) => (
+              <IsAuthenticated
+                WrappedComponent={JobList}
+                {...props}
+                typeOfUser={"user"}
+              />
+            )}
+          ></Route>
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
-
           <Route path="/employer/profile">
             <IsAuthenticated
               WrappedComponent={EmployerProfile}
               typeOfUser={"employer"}
               {...props}
             />
-            {/* <IsAuthenticatedEmployer
-              WrappedComponent={EmployerProfile}
-              typeOfUser={"employer"}
-              {...props}
-            /> */}
           </Route>
           <Route path="/user/profile">
             <IsAuthenticated
@@ -57,11 +43,6 @@ export default function App(props) {
               typeOfUser={"user"}
               {...props}
             />
-            {/* <IsAuthenticatedUser
-              WrappedComponent={UserProfile}
-              typeOfUser={"user"}
-              {...props}
-            /> */}
           </Route>
           <Route path="/employersignup" component={EmployerSignup} />
           <Route path="/geomap" component={GeoMap} />

@@ -2,18 +2,17 @@ import React from "react";
 import "./UserSignup.css";
 
 export default function PhonePrefix(props) {
-  const handleChange = (e) => {
-    props.onChange(e.target.value);
+  const handleChange = (prefix) => {
+    props.onChange(prefix);
   };
-
   return (
-    <div id="containerPrefix">
+    <div>
       <select
         id="demo_overview"
         className="form-control"
         data-role="select-dropdown"
+        onChange={(e) => handleChange(e.target.value)}
         value={props.value}
-        onChange={handleChange}
       >
         <option disabled value="DEFAULT">
           choose prefix
