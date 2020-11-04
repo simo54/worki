@@ -148,7 +148,7 @@ export default function UserProfile({ dataId }) {
                 <form>
                   <div className="form-row">
                     <div className="form-group col-md-6">
-                      <label className="col-sm-3 col-form-label text-right">
+                      <label className="col-sm-3 col-form-label">
                         <h5>First Name</h5>
                       </label>
                       <input
@@ -160,7 +160,7 @@ export default function UserProfile({ dataId }) {
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <label className="col-sm-3 col-form-label text-right">
+                      <label className="col-sm-3 col-form-label">
                         <h5>Last Name</h5>
                       </label>
                       <input
@@ -173,7 +173,7 @@ export default function UserProfile({ dataId }) {
                     {profile.middlename ? (
                       <>
                         <div className="form-group col-md-6">
-                          <label className="col-sm-3 col-form-label text-right">
+                          <label className="col-sm-3 col-form-label">
                             <h5>Middle Name</h5>
                           </label>
                           <input
@@ -188,7 +188,7 @@ export default function UserProfile({ dataId }) {
                   </div>
                   <div className="form-row">
                     <div className="form-group col-md-8">
-                      <label className="col-sm-3 col-form-label text-right">
+                      <label className="col-sm-3 col-form-label">
                         <h5>Email</h5>
                       </label>
                       <input
@@ -200,7 +200,7 @@ export default function UserProfile({ dataId }) {
                       />
                     </div>
                     <div className="form-group col-md-4">
-                      <label className="col-sm-3 col-form-label text-right">
+                      <label className="col-sm-3 col-form-label">
                         <h5>Mobile</h5>
                       </label>
                       <input
@@ -213,7 +213,7 @@ export default function UserProfile({ dataId }) {
                     </div>
                   </div>
                   <div className="form-group">
-                    <label className="col-sm-3 col-form-label text-right">
+                    <label className="col-sm-3 col-form-label">
                       <h5>Address</h5>
                     </label>
                     <input
@@ -228,7 +228,7 @@ export default function UserProfile({ dataId }) {
                   </div>
                   <div className="form-row">
                     <div className="form-group col-md-5">
-                      <label className="col-sm-3 col-form-label text-right">
+                      <label className="col-sm-3 col-form-label">
                         <h5>City</h5>
                       </label>
                       <input
@@ -240,7 +240,7 @@ export default function UserProfile({ dataId }) {
                       />
                     </div>
                     <div className="form-group col-md-4">
-                      <label className="col-sm-3 col-form-label text-right">
+                      <label className="col-sm-3 col-form-label">
                         <h5>Country</h5>
                       </label>
                       <input
@@ -251,7 +251,7 @@ export default function UserProfile({ dataId }) {
                       />
                     </div>
                     <div className="form-group col-md-3">
-                      <label className="col-sm-3 col-form-label text-right">
+                      <label className="col-sm-3 col-form-label">
                         <h5>Zip</h5>
                       </label>
                       <input

@@ -16,11 +16,21 @@ export default function UpdatePersonalInfo(props) {
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
   const [show, setShow] = useState(false);
+  const [namePicture, setNamePicture] = useState();
+  const [filePicture, setFilePicture] = useState();
+  const [nameResume, setNameResume] = useState();
+  const [fileResume, setFileResume] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const updateInfo = () => {
     const id = props.data;
+    const dataPicture = new FormData();
+    dataPicture.append("name", namePicture);
+    dataPicture.append("file", filePicture);
+    const dataResume = new FormData();
+    dataResume.append("name", nameResume);
+    dataResume.append("file", fileResume);
     const myParam = {
       firstname: firstname,
       lastname: lastname,
@@ -38,6 +48,26 @@ export default function UpdatePersonalInfo(props) {
         (myParam[key] === null || myParam[key] === "") && delete myParam[key]
     );
     axios.put(`${apiUrl}user/${id}/updateinfo`, myParam);
+
+    // Updating profile picture
+    if (filePicture) {
+      axios
+        .put(`${apiUrl}user/${id}/profilepicture`, dataPicture)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+
+    if (fileResume) {
+      axios
+        .put(`${apiUrl}user/${id}/resume`, dataResume)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+    alert(
+      "✔✔✔ Info modified! \nYou will see the changes once closed this window ✔✔✔"
+    );
+    // Reloading page in order to see updated profile
+    window.location.reload();
   };
 
   return (
@@ -186,6 +216,53 @@ export default function UpdatePersonalInfo(props) {
                 ></textarea>
               </div>
             </div>
+            <form encType="multipart/form-data">
+              <h5>Do you want to upload a new picture?</h5>
+              <div className="d-flex justify-content-around">
+                <input
+                  id="check1"
+                  onChange={(e) => {
+                    const { value } = e.target;
+                    setNamePicture(value);
+                  }}
+                  className="form-control-file w-25"
+                />
+                <input
+                  type="file"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    setFilePicture(file);
+                  }}
+                  className="form-control-file"
+                />
+              </div>
+            </form>
+            <form encType="multipart/form-data">
+              <h5>Change Resume</h5>
+              <div className="d-flex justify-content-around ">
+                <input
+                  id="check"
+                  onChange={(e) => {
+                    const { value } = e.target;
+                    setNameResume(value);
+                  }}
+                  className="form-control-file w-25 hide"
+                />
+                <input
+                  type="file"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    setFileResume(file);
+                  }}
+                  className="form-control-file"
+                />
+              </div>
+              {/* {fileResume ? (
+                <div className="mt-3 mb-5">
+                  <Button onClick={send}>Upload</Button>
+                </div>
+              ) : null} */}
+            </form>
           </form>
         </div>
         <Modal.Footer>
