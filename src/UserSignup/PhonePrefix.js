@@ -6,7 +6,7 @@ export default function PhonePrefix(props) {
     props.onChange(prefix);
   };
   return (
-    <div id="containerPrefix">
+    <div>
       <select
         id="demo_overview"
         className="form-control"

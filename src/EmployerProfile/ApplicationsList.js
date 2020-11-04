@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 import ApplicationDetails from "./ApplicantsDetails";
 import axios from "axios";
 import apiUrl from "../config";
@@ -11,7 +10,6 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
   const [show, setShow] = useState(false);
   const [applicants, setApplicants] = useState();
   const [applicantsNumber, setApplicantsNumber] = useState();
-  const history = useHistory();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -22,7 +20,7 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
       setApplicants(res.data);
       setApplicantsNumber(res.data.length);
     });
-  }, []);
+  }, [jobref]);
 
   return (
     <div>

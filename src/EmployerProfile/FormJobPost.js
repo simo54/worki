@@ -57,8 +57,8 @@ export default function JobPost(props) {
       setWarning(true);
       return;
     }
-    const contactdetails = `+${prefix}${mobileNoPrefix}` + ` ${email}`;
-    const employmenttype = `${employmentContract} ` + ` ${workingHours}`;
+    const contactdetails = `+${prefix + " " + mobileNoPrefix + "   " + email}`;
+    const employmenttype = `${employmentContract + "   " + workingHours}`;
     console.log(employmenttype);
     axios
       .post(`${apiUrl}jobs/create`, {

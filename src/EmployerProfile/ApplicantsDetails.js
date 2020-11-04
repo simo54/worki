@@ -8,7 +8,6 @@ export default function ApplicantsDetails(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const [resume, setResume] = useState(applicantDetails.resume);
 
   const download = (id, jobref) => {
     axios
@@ -22,7 +21,11 @@ export default function ApplicantsDetails(props) {
 
   return (
     <>
-      <a href="#" className="text-success" onClick={handleShow}>
+      <a
+        href="https://www.ecosia.org/?c=en"
+        className="text-success"
+        onClick={handleShow}
+      >
         Open Application
       </a>
 
@@ -36,43 +39,60 @@ export default function ApplicantsDetails(props) {
           {applicantDetails ? (
             <>
               <div className="container">
-                <div>
-                  {/* <h2>{applicantDetails.firstname}</h2> */}
-                  <h2>{applicantDetails.firstname}</h2>
-                </div>
-                <div>
-                  <h2>{applicantDetails.lastname}</h2>
-                </div>
-                {applicantDetails && applicantDetails.middlename ? (
-                  <div>
-                    <h2>{applicantDetails.middlename}</h2>
-                  </div>
-                ) : null}
-                <div>
-                  <h4>{applicantDetails.email}</h4>
-                </div>
-                <div>
-                  <h4>{applicantDetails.mobile}</h4>
-                </div>
-                <div>
-                  <h4>{applicantDetails.zip}</h4>
-                </div>
-                <div>
-                  <h4>{applicantDetails.city}</h4>
-                </div>
-                <div>
-                  <h4>{applicantDetails.country}</h4>
-                </div>
+                <small>
+                  Applied for <strong>{applicantDetails.jobref}</strong>
+                </small>
+                <ul id="boxApplications" className="list-group">
+                  <li className="applications list-group-item p-2">
+                    <h6>First Name:</h6>
+                    <h3>{applicantDetails.firstname}</h3>
+                  </li>
+                  <li className="applications list-group-item p-2">
+                    <h6>Last Name:</h6>
+                    <h3>{applicantDetails.lastname}</h3>
+                  </li>
+                  {applicantDetails && applicantDetails.middlename ? (
+                    <li className="applications list-group-item p-2">
+                      <h6>Middle Name:</h6>
+                      <h3>{applicantDetails.middlename}</h3>
+                    </li>
+                  ) : null}
+                  <li className="applications list-group-item p-2">
+                    <h6>Email:</h6>
+                    <h3>{applicantDetails.email}</h3>
+                  </li>
+                  <li className="applications list-group-item p-2">
+                    <h6>Mobile:</h6>
+                    <h3>{applicantDetails.mobile}</h3>
+                  </li>
+                  <li className="applications list-group-item p-2">
+                    <h6>Zip:</h6>
+                    <h3>{applicantDetails.zip}</h3>
+                  </li>
+                  {applicantDetails.city ? (
+                    <li className="applications list-group-item p-2">
+                      <h6>City:</h6>
+                      <h3>{applicantDetails.city}</h3>
+                    </li>
+                  ) : null}
+                  <li className="applications list-group-item p-2">
+                    <h6>Country:</h6>
+                    <h3>{applicantDetails.country}</h3>
+                  </li>
+                </ul>
               </div>
             </>
           ) : null}
-          <button
-            onClick={() =>
-              download(applicantDetails.userid, applicantDetails.jobref)
-            }
-          >
-            download
-          </button>
+          <div className="text-center mt-2">
+            <Button
+              className="btn-success"
+              onClick={() =>
+                download(applicantDetails.userid, applicantDetails.jobref)
+              }
+            >
+              Download CV
+            </Button>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

@@ -4,11 +4,13 @@ import { Redirect } from "react-router-dom";
 import apiUrl from "../config";
 
 export default function IsAuthenticated(props) {
-  const { WrappedComponent, typeOfUser } = props;
+  let { WrappedComponent, typeOfUser, location } = props;
   const [error, setError] = useState(false);
   const [userId, setUserId] = useState();
 
   useEffect(() => {
+    if (location && location.state && location.state.typeOfUser)
+      typeOfUser = location.state.typeOfUser;
     if (typeOfUser) {
       const route =
         typeOfUser === "user"

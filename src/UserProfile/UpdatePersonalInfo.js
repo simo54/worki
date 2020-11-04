@@ -5,10 +5,6 @@ import axios from "axios";
 import "./UpdateInfo.css";
 
 export default function UpdatePersonalInfo(props) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [middlename, setMiddlename] = useState("");
@@ -19,6 +15,9 @@ export default function UpdatePersonalInfo(props) {
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const updateInfo = () => {
     const id = props.data;
@@ -33,6 +32,7 @@ export default function UpdatePersonalInfo(props) {
       zip: zip,
       country: country,
     };
+    // Filtering empty values and keep only fields not null in order to not overwrite account details with empty value
     Object.keys(myParam).forEach(
       (key) =>
         (myParam[key] === null || myParam[key] === "") && delete myParam[key]

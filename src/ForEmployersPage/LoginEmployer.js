@@ -69,7 +69,7 @@ export default function LoginEmployer() {
         <Modal.Footer>
           <div>
             Not a member?
-            <Link to="/usersignup">Click here!</Link>
+            <Link to="/employersignup">Click here!</Link>
           </div>
           <Button
             variant="primary"

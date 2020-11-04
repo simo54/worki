@@ -28,5 +28,3 @@ You can use the following dummy user and password:
 We define User a phisical person that is not a company or a freelancer and that is looking for a job inside the website
 
 We define Employer an entity, a company or a freelancer person that is looking for candidates for their own vacancies.
-
-Every job ad has been invented and they have not been taken from any existing place.

@@ -12,7 +12,6 @@ export default function ForEmployer() {
   const [toggle, setToggle] = useState(false);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
-  const [toggleLogo, setToggleLogo] = useState(false);
   const location = useLocation();
 
   // Fixing issues when switching between pages (without this will let you see the page on half)
@@ -20,14 +19,14 @@ export default function ForEmployer() {
     if (location.pathname === "/employersignup") {
       window.scrollTo(0, 0);
     }
-  }, []);
+  }, [location.pathname]);
 
   // UseState of signup details
   const [companyname, setCompanyname] = useState();
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [middlename, setMiddlename] = useState();
-  const [logo, setLogo] = useState();
+  // const [logo, setLogo] = useState();
   const [email, setEmail] = useState();
   const [prefixNumber, setPrefixNumber] = useState();
   const [mobileNoPrefix, setMobile] = useState();
@@ -46,9 +45,9 @@ export default function ForEmployer() {
     setToggle(!toggle);
   };
 
-  const checkBoxLogo = () => {
-    setToggleLogo(!toggleLogo);
-  };
+  // const checkBoxLogo = () => {
+  //   setToggleLogo(!toggleLogo);
+  // };
 
   const checkAgreement = () => {
     setAgreement(!agreement);
@@ -63,7 +62,7 @@ export default function ForEmployer() {
     axios
       .post(`${apiUrl}employer/create`, {
         companyname,
-        logo,
+        // logo,
         firstname,
         lastname,
         middlename,
@@ -92,10 +91,10 @@ export default function ForEmployer() {
   return (
     <div>
       <div className="container">
-        <div className="row mt-5">
+        <div className="row mt-4">
           <div className="col-7">
             <h4>Sig up for Free!</h4>
-            <div className="custom-control custom-checkbox mt-4">
+            <div className="custom-control custom-checkbox">
               <input
                 type="checkbox"
                 className="custom-control-input"
@@ -110,7 +109,7 @@ export default function ForEmployer() {
             </div>
             <form className="form-group">
               {toggle === false ? (
-                <div className="mt-4">
+                <div className="mt-1">
                   <label className="mandatory">Company Name</label>
                   <input
                     required
@@ -123,7 +122,7 @@ export default function ForEmployer() {
               ) : null}
               {toggle ? (
                 <>
-                  <div className="mt-3">
+                  <div className="mt-2">
                     <label className="mandatory">First Name</label>
                     <input
                       required
@@ -133,7 +132,7 @@ export default function ForEmployer() {
                       onChange={(e) => setFirstname(e.target.value)}
                     />
                   </div>
-                  <div className="mt-3">
+                  <div className="mt-2">
                     <label className="mandatory">Last Name</label>
                     <input
                       required
@@ -143,7 +142,7 @@ export default function ForEmployer() {
                       onChange={(e) => setLastname(e.target.value)}
                     />
                   </div>
-                  <div className="mt-3">
+                  <div className="mt-2">
                     <label>Middle Names</label>
                     <input
                       type="text"
@@ -154,7 +153,7 @@ export default function ForEmployer() {
                   </div>{" "}
                 </>
               ) : null}
-              <div className="custom-control custom-checkbox">
+              {/* <div className="custom-control custom-checkbox">
                 <input
                   type="checkbox"
                   className="custom-control-input"
@@ -179,9 +178,8 @@ export default function ForEmployer() {
                     onChange={(e) => setLogo(e.target.value)}
                   />
                 </div>
-              ) : null}
-
-              <div className="mt-3">
+              ) : null} */}
+              <div className="mt-2">
                 <label className="mandatory">Email</label>
                 <input
                   required
@@ -191,7 +189,7 @@ export default function ForEmployer() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="mt-3">
+              <div className="mt-2">
                 <div className="form-row">
                   <div className="form-group col-md-4">
                     <label className="mandatory">Prefix</label>
@@ -203,7 +201,6 @@ export default function ForEmployer() {
                       required
                       type="email"
                       className="form-control"
-                      id="inputMobile"
                       placeholder="Insert your phone number..."
                       onChange={(e) => setMobile(e.target.value)}
                     />
@@ -219,14 +216,13 @@ export default function ForEmployer() {
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
-              <div className="form-row mt-3">
+              <div className="form-row mt-2">
                 <div className="form-group col-lg-6">
                   <label className="mandatory">City</label>
                   <input
                     type="text"
                     className="form-control"
                     onChange={(e) => setCity(e.target.value)}
-                    id="inputCity"
                     placeholder="Your city..."
                   />
                 </div>
@@ -236,7 +232,6 @@ export default function ForEmployer() {
                     type="text"
                     className="form-control"
                     onChange={(e) => setZip(e.target.value)}
-                    id="inputZip"
                     placeholder="Zipcode"
                   />
                 </div>
@@ -246,7 +241,6 @@ export default function ForEmployer() {
                     type="text"
                     className="form-control"
                     onChange={(e) => setCountry(e.target.value)}
-                    id="inputCity"
                     placeholder="Your country..."
                   />
                 </div>
@@ -286,7 +280,7 @@ export default function ForEmployer() {
                   />
                   <label className="form-check-label">
                     I accept{" "}
-                    <a href="http://localhost:3000/">
+                    <a href="https://www.ecosia.org/?c=en">
                       terms and conditions
                       <span className="mandatoryTerms"> *</span>
                     </a>
@@ -305,7 +299,7 @@ export default function ForEmployer() {
           </div>
           <div className="col-5 d-inline">
             <h2 className="text-center">
-              Looking for your next talent? You came in the right place!
+              Looking for your next talent? This way please!
             </h2>
             <img src={svg} alt="svg" />
             <h6 className="text-center">

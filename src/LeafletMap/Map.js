@@ -37,45 +37,57 @@ export default function MapLeaf() {
   return (
     <div>
       <div className="container mt-5 d-flex justify-content-center">
-        <Map center={cities} zoom={toggler ? 11 : 5}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-          {parkdata.features.map((park) => (
-            <Marker
-              key={park.properties.PARK_ID}
-              position={[
-                park.geometry.coordinates[1],
-                park.geometry.coordinates[0],
-              ]}
-              onclick={() => {
-                setJoblist(park);
-              }}
-              icon={locationIcon}
-            />
-          ))}
-
-          {jobslist && (
-            <Popup
-              position={[
-                jobslist.geometry.coordinates[1],
-                jobslist.geometry.coordinates[0],
-              ]}
-              onClose={() => {
-                setJoblist(null);
-              }}
-            >
-              <div>
-                <h2>{jobslist.properties.NAME}</h2>
-                <p>{jobslist.properties.DESCRIPTION}</p>
+        <div id="mapContainer">
+          <div className="body-section">
+            <div id="map">
+              <Map center={cities} zoom={toggler ? 11 : 5}>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {parkdata.features.map((park) => (
+                  <Marker
+                    key={park.properties.PARK_ID}
+                    position={[
+                      park.geometry.coordinates[1],
+                      park.geometry.coordinates[0],
+                    ]}
+                    onclick={() => {
+                      setJoblist(park);
+                    }}
+                    icon={locationIcon}
+                  />
+                ))}
+                {jobslist && (
+                  <Popup
+                    position={[
+                      jobslist.geometry.coordinates[1],
+                      jobslist.geometry.coordinates[0],
+                    ]}
+                    onClose={() => {
+                      setJoblist(null);
+                    }}
+                  >
+                    <div>
+                      <h2>{jobslist.properties.NAME}</h2>
+                      <p>{jobslist.properties.DESCRIPTION}</p>
+                    </div>
+                  </Popup>
+                )}
+              </Map>
+            </div>
+            <div className="text-overlay">
+              <div className="titleWrapper">
+                <div id="comingSoon" className="d-flex justify-content-center">
+                  <h4 className="display-3">Start your Job Hunt!</h4>
+                </div>
               </div>
-            </Popup>
-          )}
-        </Map>
+            </div>
+          </div>
+        </div>
       </div>
       {/* TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST */}
-      <div className="w-50 mt-4">
+      {/* <div className="w-50 mt-4">
         <select
           className="form-control"
           data-role="select-dropdown"
@@ -88,7 +100,7 @@ export default function MapLeaf() {
           <option value={[48.782343, 9.180819]}>Stuttgart</option>
           <option value={[52.516667, 13.4]}>Berlin</option>
         </select>
-      </div>
+      </div> */}
       {/* TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST */}
     </div>
   );

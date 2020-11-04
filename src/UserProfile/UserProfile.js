@@ -21,11 +21,11 @@ export default function UserProfile({ dataId }) {
     });
     axios.get(`${apiUrl}user/${id}/getprofilepicture`).then((res) => {
       const url = res.config.url;
-      console.log(url);
       setProfilePicture(url);
     });
   }, [dataId]);
 
+  // Uploading Resume on DB, this will be attached automatically once applied for a position
   const send = (event) => {
     const id = dataId;
     const data = new FormData();
@@ -35,8 +35,10 @@ export default function UserProfile({ dataId }) {
       .put(`${apiUrl}user/${id}/resume`, data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    window.location.reload();
   };
 
+  // Upload new photo
   const sendProfilePicture = (event) => {
     const id = dataId;
     const dataPicture = new FormData();
@@ -96,36 +98,43 @@ export default function UserProfile({ dataId }) {
                     </form>
                   </div>
                 )}
-                <div className="container p-0 mt-5">
-                  <form encType="multipart/form-data">
-                    <h3>Resume</h3>
-                    <div className="d-flex justify-content-around ">
-                      <input
-                        id="check"
-                        onChange={(e) => {
-                          const { value } = e.target;
-                          setName(value);
-                        }}
-                        className="form-control-file w-25 hide"
-                      />
-                      <input
-                        type="file"
-                        onChange={(e) => {
-                          const file = e.target.files[0];
-                          setFile(file);
-                        }}
-                        className="form-control-file"
-                      />
-                    </div>
-                    <div className="mt-3 mb-5">
-                      <Button onClick={send}>Upload</Button>
-                    </div>
-                  </form>
-                </div>
+                {profile.resume === null ? (
+                  <div className="container p-0 mt-5">
+                    <form encType="multipart/form-data">
+                      <h3>
+                        Please upload your resume before applying for any
+                        position!
+                      </h3>
+                      <div className="d-flex justify-content-around ">
+                        <input
+                          id="check"
+                          onChange={(e) => {
+                            const { value } = e.target;
+                            setName(value);
+                          }}
+                          className="form-control-file w-25 hide"
+                        />
+                        <input
+                          type="file"
+                          onChange={(e) => {
+                            const file = e.target.files[0];
+                            setFile(file);
+                          }}
+                          className="form-control-file"
+                        />
+                      </div>
+                      <div className="mt-3 mb-5">
+                        <Button onClick={send}>Upload</Button>
+                      </div>
+                    </form>
+                  </div>
+                ) : (
+                  <h3 className="text-center mt-5">✔ Resume Uploaded!</h3>
+                )}
               </>
             ) : null}
             <div className="container text-center mt-5">
-              <Link to={"/jobs"}>
+              <Link to="/jobs">
                 <Button>Check out available jobs!</Button>
               </Link>
             </div>
@@ -137,7 +146,7 @@ export default function UserProfile({ dataId }) {
                 <form>
                   <div className="form-row">
                     <div className="form-group col-md-6">
-                      <label>
+                      <label className="col-sm-3 col-form-label text-right">
                         <h5>First Name</h5>
                       </label>
                       <input
@@ -145,31 +154,31 @@ export default function UserProfile({ dataId }) {
                         readOnly
                         className="form-control"
                         id="staticEmail"
-                        value={profile.firstname}
+                        value={profile.firstname || ""}
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <label>
+                      <label className="col-sm-3 col-form-label text-right">
                         <h5>Last Name</h5>
                       </label>
                       <input
                         type="text"
                         readOnly
                         className="form-control"
-                        value={profile.lastname}
+                        value={profile.lastname || ""}
                       />
                     </div>
                     {profile.middlename ? (
                       <>
                         <div className="form-group col-md-6">
-                          <label>
+                          <label className="col-sm-3 col-form-label text-right">
                             <h5>Middle Name</h5>
                           </label>
                           <input
                             type="text"
                             readOnly
                             className="form-control"
-                            value={profile.middlename}
+                            value={profile.middlename || ""}
                           />
                         </div>
                       </>
@@ -177,7 +186,7 @@ export default function UserProfile({ dataId }) {
                   </div>
                   <div className="form-row">
                     <div className="form-group col-md-8">
-                      <label>
+                      <label className="col-sm-3 col-form-label text-right">
                         <h5>Email</h5>
                       </label>
                       <input
@@ -185,11 +194,11 @@ export default function UserProfile({ dataId }) {
                         readOnly
                         className="form-control"
                         id="inputAddress"
-                        value={profile.email}
+                        value={profile.email || ""}
                       />
                     </div>
                     <div className="form-group col-md-4">
-                      <label>
+                      <label className="col-sm-3 col-form-label text-right">
                         <h5>Mobile</h5>
                       </label>
                       <input
@@ -197,12 +206,12 @@ export default function UserProfile({ dataId }) {
                         readOnly
                         className="form-control"
                         id="inputAddress2"
-                        value={profile.mobile}
+                        value={profile.mobile || ""}
                       />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label>
+                    <label className="col-sm-3 col-form-label text-right">
                       <h5>Address</h5>
                     </label>
                     <input
@@ -210,12 +219,14 @@ export default function UserProfile({ dataId }) {
                       readOnly
                       className="form-control"
                       id="inputAddress"
-                      value={profile.address ? profile.address : undefined}
+                      value={
+                        profile.address ? profile.address : undefined || ""
+                      }
                     />
                   </div>
                   <div className="form-row">
                     <div className="form-group col-md-5">
-                      <label>
+                      <label className="col-sm-3 col-form-label text-right">
                         <h5>City</h5>
                       </label>
                       <input
@@ -223,29 +234,29 @@ export default function UserProfile({ dataId }) {
                         readOnly
                         className="form-control"
                         id="inputCity"
-                        value={profile.city}
+                        value={profile.city || ""}
                       />
                     </div>
                     <div className="form-group col-md-4">
-                      <label>
+                      <label className="col-sm-3 col-form-label text-right">
                         <h5>Country</h5>
                       </label>
                       <input
                         type="text"
                         readOnly
                         className="form-control"
-                        value={profile.country}
+                        value={profile.country || ""}
                       />
                     </div>
                     <div className="form-group col-md-3">
-                      <label>
+                      <label className="col-sm-3 col-form-label text-right">
                         <h5>Zip</h5>
                       </label>
                       <input
                         type="text"
                         readOnly
                         className="form-control"
-                        value={profile.zip}
+                        value={profile.zip || ""}
                       />
                     </div>
                     {/* <div className="form-group col-md-12">

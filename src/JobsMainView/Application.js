@@ -16,7 +16,7 @@ export default function MyVerticallyCenteredModal(props) {
       const info = results.data;
       setInfoFromProfile(info);
     });
-  }, []);
+  }, [userid]);
 
   const application = (e) => {
     e.preventDefault();
@@ -44,6 +44,9 @@ export default function MyVerticallyCenteredModal(props) {
       resume,
       jobref,
     });
+    alert(
+      "✨🎊🎉 WHOOP WHOOP Thanks for applying! ✨🎊🎉\nYou can close this windows and continue to browse our page! "
+    );
   };
 
   return (

@@ -14,6 +14,7 @@ export default function IsAuthenticated(props) {
         typeOfUser === "user"
           ? `${apiUrl}user/userIsAuthenticated`
           : `${apiUrl}employer/employerIsAuthenticated`;
+
       axios
         .get(route, { withCredentials: true })
         .then((res) => {
@@ -33,8 +34,6 @@ export default function IsAuthenticated(props) {
       ) : userId ? (
         <WrappedComponent dataId={userId} {...props} />
       ) : null}
-      {/* If user is signed in, pass the id */}
-      {/* {error ? null : <Application dataId={userId} {...props} />} */}
     </div>
   );
 }

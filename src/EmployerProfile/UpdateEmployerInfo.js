@@ -9,7 +9,6 @@ export default function UpdatePersonalInfo(props) {
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [middlename, setMiddlename] = useState();
-  //   const [logo, setLogo] = useState();
   const [email, setEmail] = useState();
   //   const [prefixNumber, setPrefixNumber] = useState();
   const [mobile, setMobile] = useState();
@@ -19,32 +18,46 @@ export default function UpdatePersonalInfo(props) {
   const [country, setCountry] = useState();
   // const [companysize, setCompanysize] = useState();
   const [aboutus, setAboutus] = useState();
+  const [nameLogo, setNameLogo] = useState();
+  const [fileLogo, setFileLogo] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const updateInfo = () => {
     const id = props.data;
     // const mobile = `${prefixNumber + mobileNoPrefix}`;
+    const dataLogo = new FormData();
+    dataLogo.append("name", nameLogo);
+    dataLogo.append("file", fileLogo);
     const myParam = {
       companyname: companyname,
       firstname: firstname,
       lastname: lastname,
       middlename: middlename,
-      //   logo: logo,
       email: email,
       mobile: mobile,
       address: address,
       city: city,
       zip: zip,
       country: country,
-      // companysize: companysize,
       aboutus: aboutus,
     };
+    // Filtering empty values and keep only fields not null in order to not overwrite account details with empty value
     Object.keys(myParam).forEach(
       (key) =>
         (myParam[key] === null || myParam[key] === "") && delete myParam[key]
     );
+    // Updating data
     axios.put(`${apiUrl}employer/${id}/updateinfo`, myParam);
+
+    // Updating profile picture
+    axios
+      .put(`${apiUrl}employer/${id}/logo`, dataLogo)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+    // Reloading page in order to see updated profile
+    window.location.reload();
   };
 
   return (
@@ -205,10 +218,31 @@ export default function UpdatePersonalInfo(props) {
                 <textarea
                   type="text"
                   className="form-control"
-                  rows="4"
+                  rows="2"
                   onChange={(e) => setAboutus(e.target.value)}
                 />
               </div>
+              <form encType="multipart/form-data">
+                <h3>Do you want to upload a logo of your company?</h3>
+                <div className="d-flex justify-content-around">
+                  <input
+                    id="check1"
+                    onChange={(e) => {
+                      const { value } = e.target;
+                      setNameLogo(value);
+                    }}
+                    className="form-control-file w-25"
+                  />
+                  <input
+                    type="file"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      setFileLogo(file);
+                    }}
+                    className="form-control-file"
+                  />
+                </div>
+              </form>
             </form>
           </div>
         </Modal.Body>

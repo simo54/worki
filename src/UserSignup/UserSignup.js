@@ -64,13 +64,13 @@ export default function Signup() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-4">
       <div className="row">
-        <div className="col">
-          <h2>Please provide your personal info</h2>
+        <div className="col-7">
+          <h4>Please provide your personal info</h4>
           <form className="form-group">
             <div className="mt-4">
-              <label className="mandatory">FirstName</label>
+              <label className="mandatory">First Name</label>
               <input
                 required
                 type="text"
@@ -79,8 +79,8 @@ export default function Signup() {
                 onChange={(e) => setFirstname(e.target.value)}
               />
             </div>
-            <div className="">
-              <label className="mandatory">LastName</label>
+            <div className="mt-2">
+              <label className="mandatory">Last Name</label>
               <input
                 required
                 type="text"
@@ -89,7 +89,7 @@ export default function Signup() {
                 onChange={(e) => setLastname(e.target.value)}
               />
             </div>
-            <div className="">
+            <div className="mt-2">
               <label>Middle Names</label>
               <input
                 type="text"
@@ -98,8 +98,7 @@ export default function Signup() {
                 onChange={(e) => setMiddlename(e.target.value)}
               />
             </div>
-
-            <div className="form-group">
+            <div className="mt-2">
               <label className="mandatory">Email</label>
               <input
                 required
@@ -109,49 +108,45 @@ export default function Signup() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
-            <div className="form-row p-0 m-0">
-              <div className="form-group col-md-4  m-0">
+            <div className="form-row pb-0 m-0 mt-2">
+              <div className="form-group col-4 m-0 p-0">
                 <label className="mandatory">Prefix</label>
                 <PrefixDropdown onChange={handleChange} />
               </div>
-              <div className="form-group col-md-8  m-0">
+              <div className="form-group col-8 m">
                 <label className="mandatory">Mobile</label>
                 <input
                   required
                   type="email"
                   className="form-control"
-                  id="inputMobile"
                   placeholder="Insert your phone number..."
                   onChange={(e) => setMobile(e.target.value)}
                 />
               </div>
             </div>
-            <div className="form-row  m-0">
-              <div className="form-group col-md-8  m-0">
+            <div className="form-row p-0 m-0">
+              <div className="form-group col-4 m-0 p-0 mb-0">
                 <label className="mandatory">Zip Code</label>
                 <input
                   required
                   type="email"
                   className="form-control"
-                  id="inputMobile"
                   placeholder="Insert your zip code..."
                   onChange={(e) => setZip(e.target.value)}
                 />
               </div>
-              <div className="form-group col-md-4 p-0 m-0">
+              <div className="form-group col-8 m-0 mb-0">
                 <label className="mandatory">Country</label>
                 <input
                   required
                   type="email"
                   className="form-control"
-                  id="inputMobile"
                   placeholder="Insert your country..."
                   onChange={(e) => setCountry(e.target.value)}
                 />
               </div>
             </div>
-            <div className="">
+            <div className="mt-2">
               <label className="mandatory">City</label>
               <input
                 required
@@ -161,12 +156,11 @@ export default function Signup() {
                 onChange={(e) => setCity(e.target.value)}
               />
             </div>
-            <div className="">
+            <div className="mt-2">
               <label className="mandatory">Password</label>
               <input
                 type="password"
                 className="form-control"
-                id=""
                 placeholder="Write a secure password! "
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -177,7 +171,6 @@ export default function Signup() {
                 <input
                   className="form-check-input"
                   type="checkbox"
-                  id="gridCheck"
                   required
                   onClick={checkAgreement}
                 />
@@ -195,13 +188,13 @@ export default function Signup() {
                 </label>
               </div>
             </div>
-            <Button className="mt-3 btn" onClick={signup}>
+            <Button id="buttonSignup" className="mt-3 btn" onClick={signup}>
               Signup!
             </Button>
           </form>
         </div>
-        <div className="col inline">
-          <h2 id="test" className="text-center">
+        <div className="col-5 d-inline">
+          <h2 className="text-center">
             Looking for your next job? Signup and check it out!
           </h2>
           <img src={svg} alt="svg" />
