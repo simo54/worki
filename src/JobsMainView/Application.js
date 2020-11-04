@@ -30,6 +30,7 @@ export default function MyVerticallyCenteredModal(props) {
     const zip = profile.zip;
     const country = profile.country;
     const coverletter = coverLetter;
+    console.log(coverLetter);
     const resume = profile.resume;
     axios.post(`${apiUrl}user/newjobapplication`, {
       firstname,
@@ -72,7 +73,7 @@ export default function MyVerticallyCenteredModal(props) {
                     : "form-control is-invalid"
                 }
                 placeholder="Insert here your Firstname"
-                value={infoFromProfile.firstname}
+                value={infoFromProfile.firstname || ""}
               />
             </div>
             <div className="col-md-4 mt-4">
@@ -86,7 +87,7 @@ export default function MyVerticallyCenteredModal(props) {
                     : "form-control is-invalid"
                 }
                 placeholder="Your Last Name..."
-                value={infoFromProfile.lastname}
+                value={infoFromProfile.lastname || ""}
               />
             </div>
             {infoFromProfile.middlename ? (
@@ -97,41 +98,43 @@ export default function MyVerticallyCenteredModal(props) {
                   type="text"
                   className="form-control"
                   placeholder="Your Middle Name..."
-                  value={infoFromProfile.middlename}
+                  value={infoFromProfile.middlename || ""}
                 />
               </div>
             ) : null}
           </form>
-          <form className="form-row">
-            <div className="col-md-4 mt-4">
-              <label className="mandatory">Email</label>
-              <input
-                required
-                type="text"
-                className={
-                  infoFromProfile && infoFromProfile.email
-                    ? "form-control is-valid"
-                    : "form-control is-invalid"
-                }
-                placeholder="Insert your email"
-                value={infoFromProfile.email}
-              />
-            </div>
-            <div className="col-md-8 mt-4">
-              <label className="mandatory">Mobile</label>
-              <input
-                required
-                type="text"
-                className={
-                  infoFromProfile && infoFromProfile.mobile
-                    ? "form-control is-valid"
-                    : "form-control is-invalid"
-                }
-                placeholder="Insert your mobile phone"
-                value={infoFromProfile.mobile}
-              />
-            </div>
-          </form>
+          <>
+            <form className="form-row">
+              <div className="col-md-4 mt-4">
+                <label className="mandatory">Email</label>
+                <input
+                  required
+                  type="text"
+                  className={
+                    infoFromProfile && infoFromProfile.email
+                      ? "form-control is-valid"
+                      : "form-control is-invalid"
+                  }
+                  placeholder="Insert your email"
+                  value={infoFromProfile.email || ""}
+                />
+              </div>
+              <div className="col-md-8 mt-4">
+                <label className="mandatory">Mobile</label>
+                <input
+                  required
+                  type="text"
+                  className={
+                    infoFromProfile && infoFromProfile.mobile
+                      ? "form-control is-valid"
+                      : "form-control is-invalid"
+                  }
+                  placeholder="Insert your mobile phone"
+                  value={infoFromProfile.mobile || ""}
+                />
+              </div>
+            </form>
+          </>
           <form className="form-row">
             <div className="col-md-4 mt-4">
               <label className="mandatory">City</label>
@@ -144,7 +147,7 @@ export default function MyVerticallyCenteredModal(props) {
                     : "form-control is-invalid"
                 }
                 placeholder="Insert your current city"
-                value={infoFromProfile.city}
+                value={infoFromProfile.city || ""}
               />
             </div>
             <div className="col-md-4 mt-4">
@@ -158,7 +161,7 @@ export default function MyVerticallyCenteredModal(props) {
                     : "form-control is-invalid"
                 }
                 placeholder="Insert the Zip code"
-                value={infoFromProfile.zip}
+                value={infoFromProfile.zip || ""}
               />
             </div>
             <div className="col-md-4 mt-4">
@@ -172,7 +175,7 @@ export default function MyVerticallyCenteredModal(props) {
                     : "form-control is-invalid"
                 }
                 placeholder=""
-                value={infoFromProfile.country}
+                value={infoFromProfile.country || ""}
               />
             </div>
           </form>
@@ -182,7 +185,6 @@ export default function MyVerticallyCenteredModal(props) {
               required
               className="form-control"
               rows="3"
-              placeholder=""
               onChange={(e) => setCoverLetter(e.target.value)}
             />
           </div>
@@ -191,7 +193,7 @@ export default function MyVerticallyCenteredModal(props) {
               <label className="mandatory">Resume</label>
               <input
                 className="form-control-file"
-                value={infoFromProfile.resume}
+                value={infoFromProfile.resume || ""}
               />
             </div>
           </div>

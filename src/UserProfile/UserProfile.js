@@ -51,6 +51,17 @@ export default function UserProfile({ dataId }) {
     window.location.reload();
   };
 
+  const getResume = () => {
+    const id = dataId;
+    axios
+      .get(`${apiUrl}user/${id}/getresume`)
+      .then((res) => {
+        const url = res.config.url;
+        window.open(url);
+      })
+      .catch((e) => console.log(e));
+  };
+
   return (
     <div>
       <div className="container" id="profileContainer">
@@ -131,7 +142,14 @@ export default function UserProfile({ dataId }) {
                     </form>
                   </div>
                 ) : (
-                  <h3 className="text-center mt-5">✔ Resume Uploaded!</h3>
+                  <div className="container inline">
+                    <h3 className="text-center mt-5">
+                      ✔ Resume Uploaded!{" "}
+                      <Button onClick={getResume} className="btn-success">
+                        View CV
+                      </Button>
+                    </h3>
+                  </div>
                 )}
               </>
             ) : null}

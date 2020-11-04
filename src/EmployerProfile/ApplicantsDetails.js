@@ -8,6 +8,7 @@ export default function ApplicantsDetails(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  console.log(applicantDetails);
 
   const download = (id, jobref) => {
     axios
@@ -21,11 +22,7 @@ export default function ApplicantsDetails(props) {
 
   return (
     <>
-      <a
-        href="https://www.ecosia.org/?c=en"
-        className="text-success"
-        onClick={handleShow}
-      >
+      <a href="#" className="text-success" onClick={handleShow}>
         Open Application
       </a>
 
@@ -78,6 +75,10 @@ export default function ApplicantsDetails(props) {
                   <li className="applications list-group-item p-2">
                     <h6>Country:</h6>
                     <h3>{applicantDetails.country}</h3>
+                  </li>
+                  <li className="applications list-group-item p-2">
+                    <h6>CoverLetter:</h6>
+                    <h3>{applicantDetails.coverletter}</h3>
                   </li>
                 </ul>
               </div>
