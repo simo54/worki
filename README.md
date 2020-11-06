@@ -8,6 +8,9 @@ Comments about the code, README.md, bug fixing and style fixing are going to be 
 
 Also be aware that to NOT submit any personal data (yours or others) on the website.
 
+Frontend: https://github.com/simo54/worki
+Backend: https://github.com/simo54/workiServer
+
 ====================== Readme under construction ======================
 
 
