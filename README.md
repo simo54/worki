@@ -1,32 +1,12 @@
 ====================== Readme under construction ======================
 
-# Worki
+Please note that the project is under review due the code freeze on 04th November as this was a 3 week "challenge/project".
 
-This is the final project of my coding bootcamp.
+Comments about the code, README.md, bug fixing and style fixing are going to be done in the next days/weeks.
 
-I wanted to create a simple job board career page where I could have the chance to use every tech skills acquired in these last 3 months.
+Also be aware that to NOT submit any personal data (yours or others) on the website.
 
-# Main functionalities
+====================== Readme under construction ======================
 
-==== WARNING ====
 
-If you are going to play around with the code or the website please DO NOT submit any sensible or private data (yours or third person) as it is not possible by me to manage personal information in a legal way.
 
-You can use the following dummy user and password:
-
-- User 1
-
-  - Email:
-  - Password
-
-- Employer 1
-  - Email:
-  - Password
-
-==== END OF WARNING ====
-
-# Few info
-
-We define User a phisical person that is not a company or a freelancer and that is looking for a job inside the website
-
-We define Employer an entity, a company or a freelancer person that is looking for candidates for their own vacancies.
