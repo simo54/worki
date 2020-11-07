@@ -1,21 +1,22 @@
+// Inside this component you can find the application details of the application list. The employer can access this component by pressing "Open Application" from the ApplicationsList
 import React, { useState } from "react";
 import axios from "axios";
 import apiUrl from "../config";
 import { Button, Modal } from "react-bootstrap";
 
 export default function ApplicantsDetails(props) {
-  console.log(props);
   const [applicantDetails] = useState(props);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // The following fetch the resume associated to user that applied for a particular job, once fetched we will get the url link so the employer can have the pdf in a new page
   const download = (id, jobref) => {
     axios
       .get(`${apiUrl}employer/applications/${id}/${jobref}/resume`)
       .then((res) => {
         const url = res.config.url;
-        window.open(url);
+        window.open(url); // Open a new window
       })
       .catch((e) => console.log(e));
   };

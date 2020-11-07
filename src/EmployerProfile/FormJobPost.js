@@ -1,3 +1,4 @@
+// This component is used for creating a job ad from the employer profile, once created will be displayed inside the /jobs component
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
@@ -38,28 +39,30 @@ export default function JobPost(props) {
     setJobId(result);
   }, []);
 
+  // Function that provides the prefix value
   const handleChange = (newValue) => {
     setPrefix(newValue);
   };
 
+  // Function that is fired if employer does not thick on "accept terms and conditions" when publishing a job
   const checkAgreement = () => {
     setAgreement(!agreement);
   };
 
+  // Function for displaying contact details, if employer wants to provide them
   const checkBox = () => {
     setToggle(!toggle);
   };
 
+  // Function that post a new job. This will first check if agreement has been accepted, then we will unify the contact details and the employment type
   const submitJob = () => {
     const companyid = props.data;
-    console.log(companyid);
     if (agreement === false) {
       setWarning(true);
       return;
     }
     const contactdetails = `+${prefix + " " + mobileNoPrefix + "   " + email}`;
     const employmenttype = `${employmentContract + "   " + workingHours}`;
-    console.log(employmenttype);
     axios
       .post(`${apiUrl}jobs/create`, {
         jobtitle,
@@ -77,7 +80,8 @@ export default function JobPost(props) {
           alert("Mmm there was an error, please try again");
         }
         if (res.status === 200) {
-          alert(`🎉🎉🎉🎉 WHOOP WHOOP THE JOB IS AVAILABLE AT /jobs 🎉🎉🎉🎉`);
+          alert(`🎉🎉🎉🎉 WHOOP WHOOP THE JOB IS AVAILABLE AT /jobs, we will now refresh this page! 🎉🎉🎉🎉`);
+          window.location.reload();
         }
       })
       .catch((e) => console.log(e));

@@ -1,3 +1,5 @@
+// This Modal component will gather all the users that applied for a single job position
+
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import ApplicationDetails from "./ApplicantsDetails";
@@ -5,7 +7,6 @@ import axios from "axios";
 import apiUrl from "../config";
 import "./Style/ApplicationList.css";
 
-// We are taking this "model" in order to display the list of people that applied to a certain job
 export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
   const [show, setShow] = useState(false);
   const [applicants, setApplicants] = useState();
@@ -13,16 +14,16 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // Fetch all people that applied for the job clicked
+  // Fetch all people that applied for the job
   useEffect(() => {
-    async function lazyLoad() {
+    async function load() {
       const id = jobref;
       axios.get(`${apiUrl}employer/applications/${id}`).then((res) => {
-        setApplicants(res.data);
-        setApplicantsNumber(res.data.length);
+        setApplicants(res.data); // Getting the data from applicants
+        setApplicantsNumber(res.data.length); // Getting the lenght for style only (see line 40)
       });
     }
-    lazyLoad();
+    load();
   }, [jobref]);
 
   return (
@@ -35,8 +36,9 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
         <span>{jobtitle} </span>
         <span>{employmenttype}</span>
         <span>{jobref} </span>
+        {/* This badge will display a number that will automatically updated when a new user apply for a certain job */}
         <span className="badge badge-primary badge-pill">
-          {applicantsNumber}
+          {applicantsNumber} 
         </span>
       </a>
 
