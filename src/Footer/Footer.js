@@ -1,3 +1,4 @@
+// Footer component that will be displayed in every page, linkable images are redirecting only to our page
 import React from "react";
 import "./Style/Footer.css";
 

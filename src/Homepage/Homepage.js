@@ -1,3 +1,4 @@
+// Main component of the project. In this page we will have few links that redirect to login pages, signup pages and one additional component (how it worki)
 import React from "react";
 import myIcon from "./icons/undraw_job_offers_kw5d.svg";
 import svgfirstrow from "./icons/Job hunt-pana.svg";
@@ -12,7 +13,6 @@ import "./Style/Homepage.css";
 
 export default function Homepage() {
   const location = useLocation();
-
   // Fixing issues when switching between pages (without this will let you see the page on half)
   if (location.pathname === "/") {
     window.scrollTo(0, 0);
@@ -28,10 +28,7 @@ export default function Homepage() {
 
       <div id="videoContainer">
         <div className="video-section">
-          {/* <video id="video-elem" preload="true" autoPlay loop>
-            <source src={video} type="video/mp4"></source>
-            Video not supported
-          </video> */}
+          {/* Using bootstrap to have a responsive video Iframe, video has been taken from vimeo with reload, autoplay and loop properties */}
           <div className="embed-responsive embed-responsive-16by9">
             <iframe
               title="introVideo"
@@ -80,11 +77,15 @@ export default function Homepage() {
             </p>
           </div>
           <div id="imgIntroRow" className="col">
+
+{/* WORK IN PROGRESS */}
             {/* Loading the svg for small devices */}
             <div className="container p-0">
               <img src={svgfirstrow} alt="icon" width="100%" height="auto" />
             </div>
             {/* Loading the svg for small devices */}
+{/* WORK IN PROGRESS */}
+
           </div>
         </div>
       </div>

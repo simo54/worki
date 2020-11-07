@@ -1,3 +1,4 @@
+// Modal component where will create the cookies with employer's email and password
 import React, { useState } from "react";
 import { Modal, Button, Nav } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
@@ -7,12 +8,13 @@ import "./Style/LoginEmployer.css";
 
 export default function LoginEmployer() {
   const [show, setShow] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const history = useHistory();
 
+  // Checking existing data and redirect employer to its profile
   const loginSubmission = (e) => {
     e.preventDefault();
     axios
@@ -27,7 +29,6 @@ export default function LoginEmployer() {
           alert("please insert right credentials");
         }
         if (res.status === 200) {
-          console.log("OK");
           history.push("/employer/profile"); // Redirect on user profile if everything went good
         }
       });

@@ -1,3 +1,4 @@
+// This modal component will update the employer basic info 
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import apiUrl from "../config";
@@ -23,9 +24,11 @@ export default function UpdatePersonalInfo(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Function that will update the employer info
   const updateInfo = () => {
     const id = props.data;
     // const mobile = `${prefixNumber + mobileNoPrefix}`;
+    // Is it possible also to update the profile picture
     const dataLogo = new FormData();
     dataLogo.append("name", nameLogo);
     dataLogo.append("file", fileLogo);
@@ -64,6 +67,7 @@ export default function UpdatePersonalInfo(props) {
 
   return (
     <>
+    {/* Settings "Button" using a gear svg */}
       <span id="setting">
         <a onClick={handleShow}>
           <svg
@@ -81,6 +85,7 @@ export default function UpdatePersonalInfo(props) {
           </svg>
         </a>
       </span>
+          {/* Settings "Button" using a gear svg */}
 
       <Modal
         show={show}
@@ -92,7 +97,6 @@ export default function UpdatePersonalInfo(props) {
         <Modal.Header closeButton>
           <Modal.Title>
             Settings
-            {/* <small>You can change your personal info here</small> */}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -204,16 +208,6 @@ export default function UpdatePersonalInfo(props) {
                   />
                 </div>
               </div>
-              {/* <div className="form-group">
-                <label>
-                  <h5>Company Size</h5>
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  onChange={(e) => setCompanysize(e.target.value)}
-                />
-              </div> */}
               <div className="form-group">
                 <label>
                   <h5>About us</h5>
@@ -228,6 +222,7 @@ export default function UpdatePersonalInfo(props) {
               <form encType="multipart/form-data">
                 <h3>Do you want to upload a logo of your company?</h3>
                 <div className="d-flex justify-content-around">
+                  {/* Hiding input for style purpouse */}
                   <input
                     id="check1"
                     onChange={(e) => {

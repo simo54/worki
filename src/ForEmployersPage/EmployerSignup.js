@@ -1,3 +1,4 @@
+// Signup for employer, we will just get all info provided and create a new entry on our database
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
@@ -8,25 +9,23 @@ import axios from "axios";
 import apiUrl from "../config";
 import "./Style/ForEmployer.css";
 
-export default function ForEmployer() {
+export default function Employersignup() {
   const [toggle, setToggle] = useState(false);
   const [agreement, setAgreement] = useState(false);
   const [warning, setWarning] = useState(false);
   const location = useLocation();
 
-  // Fixing issues when switching between pages (without this will let you see the page on half)
+  // Fixing issues when switching between pages (without this will let you see the page on half when reaching this page from another url)
   useEffect(() => {
     if (location.pathname === "/employersignup") {
       window.scrollTo(0, 0);
     }
   }, [location.pathname]);
 
-  // UseState of signup details
   const [companyname, setCompanyname] = useState();
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [middlename, setMiddlename] = useState();
-  // const [logo, setLogo] = useState();
   const [email, setEmail] = useState();
   const [prefixNumber, setPrefixNumber] = useState();
   const [mobileNoPrefix, setMobile] = useState();
@@ -42,18 +41,17 @@ export default function ForEmployer() {
     setPrefixNumber(prefix);
   };
 
+  // Function that check if person is a freelance
   const checkBox = () => {
     setToggle(!toggle);
   };
 
-  // const checkBoxLogo = () => {
-  //   setToggleLogo(!toggleLogo);
-  // };
-
+  // Check if employer agreed on terms and conditions
   const checkAgreement = () => {
     setAgreement(!agreement);
   };
 
+// This post the new user into our database, if agreement has been accepted)
   const signup = (e) => {
     if (agreement === false) {
       setWarning(true);
@@ -63,7 +61,6 @@ export default function ForEmployer() {
     axios
       .post(`${apiUrl}employer/create`, {
         companyname,
-        // logo,
         firstname,
         lastname,
         middlename,
@@ -83,8 +80,9 @@ export default function ForEmployer() {
         }
         if (res.status === 200) {
           alert(
-            `✔✔✔ Thanks for the signup! ✔✔✔\n\nPlease Click on Login button on the right-bottom side once this window is closed!`
+            `✔✔✔ Thanks for the signup! ✔✔✔\n\nPlease Click on Login button on the right-bottom side once this window is closed and page is reloaded!`
           );
+          window.location.reload();
         }
       });
   };
@@ -154,32 +152,6 @@ export default function ForEmployer() {
                   </div>{" "}
                 </>
               ) : null}
-              {/* <div className="custom-control custom-checkbox">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customLogoCheck"
-                  onClick={checkBoxLogo}
-                />
-
-                <label
-                  className="custom-control-label mt-4"
-                  htmlFor="customLogoCheck"
-                >
-                  <p>Do you have a company logo?</p>
-                </label>
-              </div>
-              {toggleLogo ? (
-                <div className="form-group">
-                  <label>Choose the file you want to upload</label>
-                  <input
-                    type="file"
-                    className="form-control-file"
-                    id="exampleFormControlFile1"
-                    onChange={(e) => setLogo(e.target.value)}
-                  />
-                </div>
-              ) : null} */}
               <div className="mt-2">
                 <label className="mandatory">Email</label>
                 <input
