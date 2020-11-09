@@ -25,7 +25,7 @@ export default function IsAuthenticated(props) {
           setId(res.data.user_id); // Getting the ID from authenticated user/employer
         })
         .catch((e) => {
-          console.log((e) => console.log(e));
+          console.log(e);
           setError(true);
         });
     }
