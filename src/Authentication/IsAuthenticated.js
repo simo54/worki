@@ -1,18 +1,18 @@
 // This is an HOC that is used to check if path user/profile, employer/profile and jobs have been accessed with an authentication token
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import apiUrl from "../config";
 
 export default function IsAuthenticated(props) {
+  // let { WrappedComponent, typeOfUser, location } = props;
   let { WrappedComponent, typeOfUser, location } = props;
   const [error, setError] = useState(false);
   const [id, setId] = useState(); // This is the id taken from the axios fetch, it will assign the id of the user or the employer
 
   useEffect(() => {
-    if (location && location.state && location.state.typeOfUser)
-      typeOfUser = location.state.typeOfUser;
+    // if (location && location.state && location.state.typeOfUser)
+    //   typeOfUser = location.state.typeOfUser;
     if (typeOfUser) {
       const route =
         typeOfUser === "user"

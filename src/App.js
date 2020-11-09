@@ -9,7 +9,6 @@ import UserProfile from "./UserProfile/UserProfile";
 import Footer from "./Footer/Footer";
 import EmployerProfile from "./EmployerProfile/EmployerProfile";
 import Howitworks from "./HowDoesItwork/HowDoesItWork";
-import GeoMap from "./LeafletMap/MapGeoTest";
 import IsAuthenticated from "./Authentication/IsAuthenticated";
 
 export default function App(props) {
@@ -18,7 +17,7 @@ export default function App(props) {
       <div>
         <Navigation />
         <Switch>
-          <Route
+          {/* <Route
             path="/jobs"
             component={(props) => (
               <IsAuthenticated
@@ -27,7 +26,8 @@ export default function App(props) {
                 typeOfUser={"user"}
               />
             )}
-          />
+          /> */}
+          <Route path="/jobs" component={JobList} />
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
           <Route path="/employer/profile">
@@ -45,7 +45,6 @@ export default function App(props) {
             />
           </Route>
           <Route path="/employersignup" component={EmployerSignup} />
-          <Route path="/geomap" component={GeoMap} />
           <Route path="/" exact component={Homepage} />
         </Switch>
         <Footer />
