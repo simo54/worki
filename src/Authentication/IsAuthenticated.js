@@ -8,7 +8,7 @@ import apiUrl from "../config";
 export default function IsAuthenticated(props) {
   let { WrappedComponent, typeOfUser, location } = props;
   const [error, setError] = useState(false);
-  const [id, setId] = useState(); // This is the id taken from the axios fetch, it will assign the id of the user or the employer 
+  const [id, setId] = useState(); // This is the id taken from the axios fetch, it will assign the id of the user or the employer
 
   useEffect(() => {
     if (location && location.state && location.state.typeOfUser)
@@ -21,9 +21,11 @@ export default function IsAuthenticated(props) {
       axios
         .get(route, { withCredentials: true })
         .then((res) => {
+          console.log(res);
           setId(res.data.user_id); // Getting the ID from authenticated user/employer
         })
         .catch((e) => {
+          console.log((e) => console.log(e));
           setError(true);
         });
     }

@@ -27,7 +27,7 @@ export default function App(props) {
                 typeOfUser={"user"}
               />
             )}
-          ></Route>
+          />
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/usersignup" component={UserSignUp} />
           <Route path="/employer/profile">
