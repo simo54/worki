@@ -17,28 +17,18 @@ export default function LoginEmployer() {
   // Checking existing data and redirect employer to its profile
   const loginSubmission = (e) => {
     e.preventDefault();
-    axios
-      .post(
-        `${apiUrl}login/userEmployer`,
-        { email, password },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        if (res.status !== 200) {
-          console.log("Bad credentials");
-          alert("please insert right credentials");
-        }
-        if (res.status === 200) {
-          history.push("/employer/profile"); // Redirect on user profile if everything went good
-        }
-      });
+    axios.post(`${apiUrl}login/userEmployer`, { email, password }, { withCredentials: true }).then((res) => {
+      if (res.status !== 200) {
+        alert("please insert right credentials"); // Asking to double check if request is not equal to 200
+      }
+      if (res.status === 200) {
+        history.push("/employer/profile"); // Redirect on user profile if everything went good
+      }
+    });
   };
   return (
-    <div className="d-inline">
-      <Nav.Link
-        onClick={handleShow}
-        className="navLink align-items-center d-inline p-0 mr-1 ml-1"
-      >
+    <div className='d-inline'>
+      <Nav.Link onClick={handleShow} className='navLink align-items-center d-inline p-0 mr-1 ml-1'>
         Login
       </Nav.Link>
 
@@ -49,31 +39,18 @@ export default function LoginEmployer() {
         <Modal.Body>
           <div>
             <label>Username / Email</label>
-            <input
-              type="text"
-              placeholder="Enter Username"
-              name="uname"
-              required
-              className="w-100 form-control mb-3"
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <input type='text' placeholder='Enter Username' name='uname' required className='w-100 form-control mb-3' onChange={(e) => setEmail(e.target.value)} />
             <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              required
-              className="w-100 form-control"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <input type='password' placeholder='Enter Password' required className='w-100 form-control' onChange={(e) => setPassword(e.target.value)} />
           </div>
         </Modal.Body>
         <Modal.Footer>
           <div>
             Not a member?
-            <Link to="/employersignup">Click here!</Link>
+            <Link to='/employersignup'>Click here!</Link>
           </div>
           <Button
-            variant="primary"
+            variant='primary'
             onClick={(e) => {
               handleClose();
               loginSubmission(e);

@@ -1,3 +1,4 @@
+// Component where all jobs will be displayed. After getting the data from the database we
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "react-bootstrap";
@@ -15,18 +16,19 @@ export default function JobsList({ dataId }) {
   useEffect(() => {
     axios.get(`${apiUrl}jobs`).then((results) => {
       const jobs = results.data;
-      const titles = jobs.map((array) => array.jobtitle); // Fetching data from endpoint, map them and get jobtitles, this was taken from homepage and originally this was displayed in an input tag at the homepage
-      // setOptions(titles); //Setting array of jobtitles
       setJobList(jobs);
+      // const titles = jobs.map((array) => array.jobtitle);
+      // Fetching data from endpoint, map them and get jobtitles, this was taken from homepage and originally this was displayed in an input tag at the homepage
+      // setOptions(titles); //Setting array of jobtitles
     });
   }, []);
 
+  // Passing fetched data into a usestate for displaying them inside the right card on the right side
   const clickViewJob = (e) => {
     setJobDetails(e);
   };
 
   const search = () => {
-    console.log("check");
     let i, txtValue, items;
     let input = document.getElementById("inputSearch");
     let filter = input.value.toUpperCase();
@@ -45,59 +47,38 @@ export default function JobsList({ dataId }) {
   };
 
   return (
-    <div className="container">
-      <div className="container d-flex justify-content-center mt-4">
-        <input
-          type="text"
-          onKeyUp={search}
-          placeholder="Search here..."
-          className="form-control w-50"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-          id="inputSearch"
-        />
+    <div className='container'>
+      <div className='container d-flex justify-content-center mt-4'>
+        <input type='text' onKeyUp={search} placeholder='Search here...' className='form-control w-50' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-sm' id='inputSearch' />
       </div>
-      <div className="container mt-4">
-        <div className="row">
-          <div className="col-4">
+      <div className='container mt-4'>
+        <div className='row'>
+          <div className='col-4'>
             {jobsList && jobsList.length
               ? jobsList.map((element, index) => (
-                  <div className="card mb-2 searchPositions" key={index}>
-                    <div className="card-body">
-                      <h4 className="card-title">{element.jobtitle}</h4>
-                      <p className="card-text">{element.role}</p>
-                      <p className="card-text">{element.country}</p>
-                      <p className="card-text">{element.city}</p>
-                      <p className="card-text">{element.zip}</p>
-                      <p className="card-text">
-                        <small className="text-muted">
+                  <div className='card mb-2 searchPositions' key={index}>
+                    <div className='card-body'>
+                      <h4 className='card-title'>{element.jobtitle}</h4>
+                      <p className='card-text'>{element.role}</p>
+                      <p className='card-text'>{element.country}</p>
+                      <p className='card-text'>{element.city}</p>
+                      <p className='card-text'>{element.zip}</p>
+                      <p className='card-text'>
+                        <small className='text-muted'>
                           Published on <strong>{element.datejobpost}</strong>
                         </small>
                       </p>
-                      <p className="card-text">
-                        <small className="text-muted">
+                      <p className='card-text'>
+                        <small className='text-muted'>
                           Job ID: <strong>{element.jobref}</strong>
                         </small>
                       </p>
                       <button
-                        className="btn btn-info"
+                        className='btn btn-info'
                         data-id={element.id}
                         jobreference={element.jobref}
                         onClick={(e) => {
-                          clickViewJob([
-                            element.id,
-                            element.jobtitle,
-                            element.employmenttype,
-                            element.introduction,
-                            element.role,
-                            element.requirements,
-                            element.address,
-                            element.zip,
-                            element.city,
-                            element.country,
-                            element.contactdetails,
-                            element.jobref,
-                          ]);
+                          clickViewJob([element.id, element.jobtitle, element.employmenttype, element.introduction, element.role, element.requirements, element.address, element.zip, element.city, element.country, element.contactdetails, element.jobref]);
                         }}
                       >
                         View Details and Apply
@@ -107,14 +88,15 @@ export default function JobsList({ dataId }) {
                 ))
               : null}
           </div>
-          <div id="jobselectedCol" className="col-8">
+          {/* Right big card that will show more details regarding a job selected */}
+          <div id='jobselectedCol' className='col-8'>
             {jobDetails && jobDetails.length ? (
-              <div className="card" fixed="top">
-                <div id="bigCard" className="card-body">
-                  <div className="row">
-                    <div className="col">
-                      <h5 className="card-title">{jobDetails[1]}</h5>
-                      <p className="card-text">{jobDetails[2]}</p>
+              <div className='card' fixed='top'>
+                <div id='bigCard' className='card-body'>
+                  <div className='row'>
+                    <div className='col'>
+                      <h5 className='card-title'>{jobDetails[1]}</h5>
+                      <p className='card-text'>{jobDetails[2]}</p>
                       <p>{jobDetails[3]}</p>
                       <hr />
                       <p>{jobDetails[4]}</p>
@@ -129,26 +111,19 @@ export default function JobsList({ dataId }) {
                       <p>
                         Job Reference: <strong>{jobDetails[11]}</strong>
                       </p>
-                      <Button
-                        variant="primary"
-                        onClick={() => setModalShow(true)}
-                      >
+                      <Button variant='primary' onClick={() => setModalShow(true)}>
                         Apply!
                       </Button>
-                      <Application
-                        data={dataId}
-                        jobref={jobDetails[11]}
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                      />
+                      {/* Passing props to application.js */}
+                      <Application data={dataId} jobref={jobDetails[11]} show={modalShow} onHide={() => setModalShow(false)} />
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
               <div>
-                <h1 className="text-center">Select a job and apply!</h1>
-                <img src={svg} />
+                <h1 className='text-center'>Select a job and apply!</h1>
+                <img src={svg} alt='' />
               </div>
             )}
           </div>
