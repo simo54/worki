@@ -1,3 +1,4 @@
+// User signup component, here we collect all user info and we create a new entry on our database
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";

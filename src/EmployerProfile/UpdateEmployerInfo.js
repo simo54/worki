@@ -1,4 +1,4 @@
-// This modal component will update the employer basic info 
+// This modal component will update the employer basic info
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import apiUrl from "../config";
@@ -61,13 +61,14 @@ export default function UpdatePersonalInfo(props) {
         .catch((err) => console.log(err));
     }
 
+    alert("Info upated!");
     // Reloading page in order to see updated profile
     window.location.reload();
   };
 
   return (
     <>
-    {/* Settings "Button" using a gear svg */}
+      {/* Settings "Button" using a gear svg */}
       <span id="setting">
         <a onClick={handleShow}>
           <svg
@@ -85,7 +86,7 @@ export default function UpdatePersonalInfo(props) {
           </svg>
         </a>
       </span>
-          {/* Settings "Button" using a gear svg */}
+      {/* Settings "Button" using a gear svg */}
 
       <Modal
         show={show}
@@ -95,9 +96,7 @@ export default function UpdatePersonalInfo(props) {
         scrollable={true}
       >
         <Modal.Header closeButton>
-          <Modal.Title>
-            Settings
-          </Modal.Title>
+          <Modal.Title>Settings</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="col">

@@ -8,10 +8,18 @@ Comments about the code, README.md, bug fixing and style fixing are going to be 
 
 Also be aware that to NOT submit any personal data (yours or others) on the website.
 
+You can use the following user and employer credentials:
+
+- User
+
+  - email: user@user.com
+  - psw: user
+
+- Employer
+  - email: test@test.test
+  - psw: test
+
 Frontend: https://github.com/simo54/worki
 Backend: https://github.com/simo54/workiServer
 
 ====================== Readme under construction ======================
-
-
-

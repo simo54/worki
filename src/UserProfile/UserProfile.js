@@ -1,3 +1,4 @@
+// User private area component, where all user data will be displayed
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -19,6 +20,7 @@ export default function UserProfile({ dataId }) {
     axios.get(`${apiUrl}user/${id}`).then((res) => {
       setProfile(res.data);
     });
+    // Separate profile picture fetching
     axios.get(`${apiUrl}user/${id}/getprofilepicture`).then((res) => {
       const url = res.config.url;
       setProfilePicture(url);
@@ -51,6 +53,7 @@ export default function UserProfile({ dataId }) {
     window.location.reload();
   };
 
+  // Function that will open the uploaded pdf in a new page
   const getResume = () => {
     const id = dataId;
     axios

@@ -1,3 +1,4 @@
+// Modal component where we create the token session for existing user
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";

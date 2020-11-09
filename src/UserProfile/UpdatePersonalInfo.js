@@ -1,3 +1,4 @@
+// Component where user has the chance to update its personal info, it is possible to uplaod a new picture (jpeg) and a new resume (pdf)
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import apiUrl from "../config";
@@ -48,7 +49,7 @@ export default function UpdatePersonalInfo(props) {
     );
     axios.put(`${apiUrl}user/${id}/updateinfo`, myParam);
 
-    // Updating profile picture
+    // If profile picture has been uploaded, we update it as well
     if (filePicture) {
       axios
         .put(`${apiUrl}user/${id}/profilepicture`, dataPicture)
@@ -56,6 +57,7 @@ export default function UpdatePersonalInfo(props) {
         .catch((err) => console.log(err));
     }
 
+    // If resume has been uploaded, we update it as well
     if (fileResume) {
       axios
         .put(`${apiUrl}user/${id}/resume`, dataResume)

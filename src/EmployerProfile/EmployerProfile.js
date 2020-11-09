@@ -29,7 +29,7 @@ export default function RecruiterProfile({ dataId }) {
       await axios.get(`${apiUrl}jobs/company/${id}`).then((res) => {
         setJobs(res.data);
       });
- 
+
       // Getting the logo from database
       await axios.get(`${apiUrl}employer/${id}/getlogo`).then((res) => {
         const url = res.config.url;
@@ -39,7 +39,7 @@ export default function RecruiterProfile({ dataId }) {
     load();
   }, [dataId, logo]);
 
-// Uploading logo
+  // Uploading logo
   const sendLogo = async (event) => {
     const id = dataId;
     const dataLogo = new FormData();
@@ -49,12 +49,10 @@ export default function RecruiterProfile({ dataId }) {
       .put(`${apiUrl}employer/${id}/logo`, dataLogo)
       // If upload is successfully, alert the user and reload the page to see the image
       .then((res) => {
-        console.log(res);
-        alert("logo uploaded")
+        alert("logo uploaded");
         window.location.reload();
       })
       .catch((err) => console.log(err));
-  
   };
 
   return (
@@ -66,8 +64,7 @@ export default function RecruiterProfile({ dataId }) {
           <UpdateInfo data={dataId} />
         </div>
         <div className="row">
-
-        {/* ======= Left column ======= */}
+          {/* ======= Left column ======= */}
           <div className="col-4">
             {/* If profile logo exist, show it, otherwise we will ask if they want to upload it */}
             {profile.logo !== null ? (

@@ -1,3 +1,4 @@
+// Sticky navigation bar. To make it more stylish, if we navigate in employersignup (where we find also the employer login), the login and signup component will not be displayed
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Navbar, Nav } from "react-bootstrap";
