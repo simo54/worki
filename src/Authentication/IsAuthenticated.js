@@ -6,7 +6,8 @@ import apiUrl from "../config";
 
 export default function IsAuthenticated(props) {
   // let { WrappedComponent, typeOfUser, location } = props;
-  let { WrappedComponent, typeOfUser, location } = props;
+  let { WrappedComponent, typeOfUser } = props;
+  // let { WrappedComponent, typeOfUser, location } = props;
   const [error, setError] = useState(false);
   const [id, setId] = useState(); // This is the id taken from the axios fetch, it will assign the id of the user or the employer
 
