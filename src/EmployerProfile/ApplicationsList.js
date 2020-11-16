@@ -16,14 +16,11 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
 
   // Fetch all people that applied for the job
   useEffect(() => {
-    async function load() {
-      const id = jobref;
-      axios.get(`${apiUrl}employer/applications/${id}`).then((res) => {
-        setApplicants(res.data); // Getting the data from applicants
-        setApplicantsNumber(res.data.length); // Getting the lenght for style only (see line 40)
-      });
-    }
-    load();
+    const id = jobref;
+    axios.get(`${apiUrl}employer/applications/${id}`).then((res) => {
+      setApplicants(res.data); // Getting the data from applicants
+      setApplicantsNumber(res.data.length); // Getting the lenght for style only (see line 40)
+    });
   }, [jobref]);
 
   return (
@@ -38,7 +35,7 @@ export default function ApplicationsList({ jobtitle, employmenttype, jobref }) {
         <span>{jobref} </span>
         {/* This badge will display a number that will automatically updated when a new user apply for a certain job */}
         <span className="badge badge-primary badge-pill">
-          {applicantsNumber} 
+          {applicantsNumber}
         </span>
       </a>
 

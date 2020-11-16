@@ -19,24 +19,21 @@ export default function RecruiterProfile({ dataId }) {
 
   // Fetching from multiple endpoints
   useEffect(() => {
-    async function load() {
-      const id = dataId; // Employer Id from props
-      // Getting employer data
-      await axios.get(`${apiUrl}employer/${id}`).then((res) => {
-        setProfile(res.data);
-      });
-      // Getting the jobs posted by the employer
-      await axios.get(`${apiUrl}jobs/company/${id}`).then((res) => {
-        setJobs(res.data);
-      });
-
-      // Getting the logo from database
-      await axios.get(`${apiUrl}employer/${id}/getlogo`).then((res) => {
-        const url = res.config.url;
-        setLogo(url);
-      });
-    }
-    load();
+    // Employer Id from props
+    const id = dataId;
+    // Getting employer data
+    axios.get(`${apiUrl}employer/${id}`).then((res) => {
+      setProfile(res.data);
+    });
+    // Getting the jobs posted by the employer
+    axios.get(`${apiUrl}jobs/company/${id}`).then((res) => {
+      setJobs(res.data);
+    });
+    // Getting the logo from database
+    axios.get(`${apiUrl}employer/${id}/getlogo`).then((res) => {
+      const url = res.config.url;
+      setLogo(url);
+    });
   }, [dataId, logo]);
 
   // Uploading logo

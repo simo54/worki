@@ -11,13 +11,11 @@ export default function UpdatePersonalInfo(props) {
   const [lastname, setLastname] = useState();
   const [middlename, setMiddlename] = useState();
   const [email, setEmail] = useState();
-  //   const [prefixNumber, setPrefixNumber] = useState();
   const [mobile, setMobile] = useState();
   const [address, setAddress] = useState();
   const [city, setCity] = useState();
   const [zip, setZip] = useState();
   const [country, setCountry] = useState();
-  // const [companysize, setCompanysize] = useState();
   const [aboutus, setAboutus] = useState();
   const [nameLogo, setNameLogo] = useState();
   const [fileLogo, setFileLogo] = useState();
@@ -55,10 +53,7 @@ export default function UpdatePersonalInfo(props) {
 
     // Updating profile picture
     if (fileLogo) {
-      axios
-        .put(`${apiUrl}employer/${id}/logo`, dataLogo)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+      axios.put(`${apiUrl}employer/${id}/logo`, dataLogo);
     }
 
     alert("Info upated!");
