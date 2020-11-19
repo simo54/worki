@@ -1,10 +1,10 @@
 # Worki
 
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
+[![Github All Releases](https://img.shields.io/badge/README.md-in%20progress-yellow)]()
+
 
 ![](newhome.gif)
-
-## ========= Readme under construction =========
 
 Please note that the project is under review due the code freeze on 04th November as this was a 3 week "challenge/project".
 
