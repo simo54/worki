@@ -1,16 +1,12 @@
 # Worki
 
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
+[![Github All Releases](https://img.shields.io/badge/README.md-in%20progress-yellow)]()
+
 
 ![](newhome.gif)
 
-## ========= Readme under construction =========
-
-Please note that the project is under review due the code freeze on 04th November as this was a 3 week "challenge/project".
-
-Eventual comments about the code, README.md, bug fixing and style fixing are going to be done in the next weeks.
-
-Also be aware to NOT submit any personal data (yours or others) on the project.
+Be aware to NOT submit any personal data (yours or others) on the project.
 
 Frontend: https://github.com/simo54/worki
 Backend: https://github.com/simo54/workiServer
