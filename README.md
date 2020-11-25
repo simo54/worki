@@ -18,8 +18,7 @@ This is the final project of my coding academy's bootcamp. I decided to build up
 Known issue:
 
 - Login Authentication 401 on existing user/employer
-  - In deployed version is it possible to signup and create either a user account or an employer account. The frontend has been designed with a React HOC component where, according a positive response status (200), will allow the user or the employer to have access in their private area. If different result status, the frontend will redirect to the signup page.
-    The problem could rely on the creation of the cookies (JWT and UUID session token) on Browser (on localhost the cookies are created regularly).
+  - In the deployed version, is it possible to signup and create either a user account or an employer account. The frontend has been designed with a React HOC component where, according to a positive response status (200), will allow the user or the employer to have access to their private area. If different result status, the frontend will redirect to the signup page. The problem could rely on the creation of the cookies (JWT and UUID session token) on Browser (on localhost the cookies are created regularly).
 
 ## Tech Stack (Frontend)
 
